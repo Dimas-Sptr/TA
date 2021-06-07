@@ -6,7 +6,7 @@ if (!isset($_SESSION['username'])) {
     //echo "<script>alert('Anda Harus Melakukan Login Terlebih Dahulu');document.location= '../../login2/index.php'</script>";
 }
 if ($_SESSION['level'] != "admin cnp") {
-    die("Anda bukan Admin");
+    // die("Anda bukan Admin");
     header("Location:../login/login.php?pesan=failed");
 }
 ?>

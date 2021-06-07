@@ -5,6 +5,8 @@ if (!isset($_SESSION['nama'])) {
     header("Location:../login/login.php?pesan=failed");
     //echo "<script>alert('Anda Harus Melakukan Login Terlebih Dahulu');document.location= '../../login2/index.php'</script>";
 }
+if ($_SESSION['level'] != "admin cnp") {
+    header("Location:../login/login.php?pesan=failed");
 ?>
 
 <?php

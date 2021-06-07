@@ -17,12 +17,10 @@
 
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/bg.css">
-  <link href="js/sweetalert2.min.css" rel="stylesheet">
-  <script src="js/sweetalert2.min.js"></script>
   <link href="css/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link href="css/buttons.bootstrap4.min.css" rel="stylesheet">
-
-
-
+  <link href="js/sweetalert2.min.css" rel="stylesheet">
+  <script src="js/sweetalert2.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>

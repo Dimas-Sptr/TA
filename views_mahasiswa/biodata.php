@@ -25,51 +25,59 @@ include '../component/header.php';
     ?>
     <?php
 
-    $data = mysqli_query($conn, "select * from tb_cvmahasiswa where id='$_SESSION[username]' ");
+    $data = mysqli_query($conn, "select * from tb_cvmahasiswa where nim='$_SESSION[username]'")  or die(mysqli_error($conn));
 
-    $d = mysqli_fetch_array($data)
+    $cek_row = mysqli_fetch_row($data);
+
+    if ($cek_row) {
+        while ($d = mysqli_fetch_assoc($data)) {
+
+
     ?>
-    <div class="container-fluid">
-        <nav aria-label="breadcrumb ">
-            <ol class="breadcrumb col-lg-4">
-                <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Biodata Mahasiswa</li>
-            </ol>
-        </nav>
-        <div class="row">
-            <div class="col-xl-12 col-lg-10">
-                <form id="frm-example" action="proses_updateprofile.php" method="POST" enctype="multipart/form-data">
-                    <div class="card">
-                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">Biodata Mahasiswa</h6>
-                        </div>
-                        <div class="card-body">
-                            <form id="frm-example" action="proses_updateprofile.php" method="POST">
-                                <div class="row">
-                                    <div class="form-group col-lg-6">
-                                        <label><b>NIM</b></label>
-                                        <input type="text" class="form-control form-control-user" name="nim" required="">
-                                    </div>
-
-                                    <div class="form-group col-lg-6">
-                                        <label><b>Nama Mahasiswa</b></label>
-                                        <input type="text" class="form-control form-control-user" name="nama" required>
-                                    </div>
+            <div class="container-fluid">
+                <nav aria-label="breadcrumb ">
+                    <ol class="breadcrumb col-lg-4">
+                        <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Biodata Mahasiswa</li>
+                    </ol>
+                </nav>
+                <div class="row">
+                    <div class="col-xl-12 col-lg-10">
+                        <form id="frm-example" action="proses_updatebiodata.php" method="POST" enctype="multipart/form-data">
+                            <div class="card">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Biodata Mahasiswa</h6>
                                 </div>
-                                <div class="row">
-                                    <div class="form-group col-lg-6">
-                                        <label><b>Nomor Handphone</b></label>
-                                        <input type="number" class="form-control form-control-user" name="nohp" required>
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <label><b>Jurusan</b></label>
-                                        <select class="custom-select" name="jurusan" required>
-                                            <option selected>Pilih Jurusan...</option>
-                                            <option value="AB">Administrasi Bisnis</option>
-                                            <option value="TK">Teknologi Komputer</option>
-                                            <option value="AK">Akutansi</option>
-                                        </select>
-                                    </div>
+                                <div class="card-body">
+                                    <form id="frm-example" action="proses_updatebiodata.php" method="POST">
+                                        <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
+                                        <div class="row">
+                                            <div class="form-group col-lg-6">
+                                                <label><b>NIM</b></label>
+                                                <input type="text" class="form-control form-control-user" name="nim" value="<?php echo $d['nim']; ?>" required>
+                                            </div>
+
+                                            <div class="form-group col-lg-6">
+                                                <label><b>Nama Mahasiswa</b></label>
+                                                <input type="text" class="form-control form-control-user" name="nama" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-lg-6">
+                                                <label><b>Nomor Handphone</b></label>
+                                                <input type="number" class="form-control form-control-user" name="nohp" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-lg-6">
+                                            <label><b>Jurusan</b></label>
+                                            <select class="custom-select" name="jurusan" required>
+                                                <option selected>Pilih Jurusan...</option>
+                                                <option value="AB">Administrasi Bisnis</option>
+                                                <option value="TK">Teknologi Komputer</option>
+                                                <option value="AK">Akutansi</option>
+                                            </select>
+                                        </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-6">
@@ -79,6 +87,7 @@ include '../component/header.php';
                                             <option value="1">Magang</option>
                                             <option value="0">Tidak Magang</option>
 
+                                            ?>
                                         </select>
                                     </div>
 
@@ -90,13 +99,13 @@ include '../component/header.php';
                                 <div class="row">
                                     <div class=" form-group col-lg-6">
                                         <label><b>Posisi</b></label>
-                                        <input type="text" class="form-control form-control-user" name="jabatan">
+                                        <input type="text" class="form-control form-control-user" name="posisi">
                                     </div>
-
-                                    <div class="form-group col-lg-6">
-                                        <label><b>Tahun Angkatan</b></label>
-                                        <input type="number" class="form-control form-control-user" name="angkatan" required>
-                                    </div>
+                              
+                                <div class="form-group col-lg-6">
+                                    <label><b>Tahun Angkatan</b></label>
+                                    <input type="text" class="form-control form-control-user" name="angkatan" required>
+                                </div>
                                 </div>
                                 <div class="row">
                                     <div class=" form-group col-lg-6">
@@ -106,7 +115,18 @@ include '../component/header.php';
 
                                     <div class="form-group col-lg-6">
                                         <label><b>Ip 2</b></label>
-                                        <input type="number" class="form-control form-control-user" name="angkatan" required>
+                                        <input type="text" class="form-control form-control-user" name="ip2" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class=" form-group col-lg-6">
+                                        <label><b>IP 3</b></label>
+                                        <input type="text" class="form-control form-control-user" name="ip3" required>
+                                    </div>
+
+                                    <div class="form-group col-lg-6">
+                                        <label><b>Ip 4</b></label>
+                                        <input type="text" class="form-control form-control-user" name="ip4" required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -128,10 +148,13 @@ include '../component/header.php';
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+
                     </div>
-            </div>
+                </div>
+
+                </form>
+
 
             <?php
             include '../component/script.php';

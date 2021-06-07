@@ -72,7 +72,7 @@ include '../component/header.php';
                                                 <input type="text" class="form-control form-control-user" name="tgl_berakhir" placeholder="Pilih Tanggal Berakhir ..." onfocus="(this.type='date')">
                                             </div>
                                             <div class="form-group col-lg-12">
-                                                <input type="text" class="form-control form-control-user" name="alamat" placeholder="Ketik Alamat Perusahaan ..." required>
+                                                <textarea class="form-control form-control-user" name="alamat" placeholder="Ketik Alamat Perusahaan ..." required></textarea>
                                             </div>
                                         </div>
                                 </div>

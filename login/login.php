@@ -149,7 +149,8 @@ include '../component/header.php';
 
   if ($pesan == 'failed') {
 
-    echo " <script>Swal.fire(
+    echo " <script>
+    Swal.fire(
   'GAGAL',
   'Maaf, Anda harus login terlebih dahulu',
   'error')
