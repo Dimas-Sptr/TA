@@ -130,12 +130,22 @@ function is_active($sidebar)
       <div id="data_permintaan" class=" collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Permintaan</h6>
-          <a class="collapse-item" href="data_permintaan.php">Data Permintaan</a>
-          <a class="collapse-item" href="pengajuan_magang.php">Pengajuan Lowongan</a>
+          <a class="collapse-item" href="data_permintaan.php">Pengajuan Lowongan</a>
+          <a class="collapse-item" href="pengajuan_magang.php">Pengajuan Magang</a>
 
 
         </div>
       </div>
+    </li>
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+      History
+    </div>
+    <li class="nav-item <?php is_active('history.php'); ?>">
+      <a class="nav-link" href="history.php">
+        <i class="fas fa-history"></i>
+        <span>History Approved</span></a>
     </li>
 
 

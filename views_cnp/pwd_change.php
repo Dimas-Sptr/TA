@@ -7,6 +7,7 @@ if (!isset($_SESSION['nama'])) {
 }
 if ($_SESSION['level'] != "admin cnp") {
     header("Location:../login/login.php?pesan=failed");
+}
 ?>
 
 <?php
@@ -19,9 +20,7 @@ include '../component/header.php';
 
     <?php
     include 'menu.php';
-    ?>
-    <?php
-    include '../component/profile.php';
+    include '../component/profile1.php';
     ?>
     <?php
 
@@ -45,7 +44,6 @@ include '../component/header.php';
                         </div>
                         <div class="card-body">
                             <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
-                            <input type="hidden" name="kode" value="<?php echo $d['kode']; ?>">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
@@ -75,20 +73,18 @@ include '../component/header.php';
                             </div>
                         </div>
 
+                    </form>
                 </div>
             </div>
 
         </div>
-        </form>
+
     </div>
     <?php
     include '../component/script.php';
     include '../component/script_datatable.php';
     ?>
-    <?php
-    include '../component/footer.php';
 
-    ?>
     <?php
     $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
 
@@ -120,6 +116,12 @@ include '../component/header.php';
     }
 
     ?>
+
+    <?php
+    include '../component/footer.php';
+
+    ?>
+
 </body>
 
 

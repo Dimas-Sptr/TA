@@ -14,43 +14,49 @@ $ip1 = $_POST['ip1'];
 $ip2 = $_POST['ip2'];
 $ip3 = $_POST['ip3'];
 $ip4 = $_POST['ip4'];
-$total = $_POST['total'];
+
+
 // Carefully
 
-$rand = rand(1, 99999);
-$ekstensi =  array('pdf');
-$filename = $_FILES['gambar']['name']; // Carefully
-$ukuran = $_FILES['gambar']['size']; // Carefully
-$ext = pathinfo($filename, PATHINFO_EXTENSION);
-
-// menyeleksi data user dengan username dan password yang sesuai
-$ceknim = mysqli_query($conn, "SELECT * FROM tb_cvmahasiswa WHERE nim='$nim' ") or die(mysqli_error($conn));
-
-if (mysqli_num_rows($ceknim) == 0) {
-    if (!in_array($ext, $ekstensi)) {
+$gambar = $_FILES['gambar']['name'];
+$ipk = ((int)$_POST['ip1'] + (int)$_POST['ip2'] + (int)$_POST['ip3'] + (int)$_POST['ip4']) / 4;
+if ($gambar != "") {
+    $ekstensi_diperbolehkan = array('pdf'); //ekstensi file gambar yang bisa diupload 
+    $x = explode('.', $gambar); //memisahkan nama file dengan ekstensi yang diupload
+    $ekstensi = strtolower(end($x));
+    $file_tmp = $_FILES['gambar']['tmp_name'];
+    $angka_acak     = rand(1, 99999);
+    $nama_gambar_baru = $angka_acak . '-' . $gambar; //menggabungkan angka acak dengan nama file sebenarnya
+    if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
+        move_uploaded_file($file_tmp, '../file_cv/' . $nama_gambar_baru);
         // Carefully
-        header('location:cv_mahasiswa.php?pesan=nothing_PDF');
-    } else {
-        if ($ukuran < 1044070) {
-            $gambar = $rand . '_' . $filename; // Carefully
-            move_uploaded_file($_FILES['gambar']['tmp_name'], '../file_cv/' . $rand . '_' . $filename); // Carefully
-            $query = mysqli_query($conn, "INSERT INTO tb_cvmahasiswa VALUES('' ,'$nim', '$nama', '$nohp' , '$jurusan',
-            '$status_M', '$perusahaan', '$posisi', '$thn_angkatan','$ip1','$ip2','$ip3','$ip4','$total', '$gambar')"); // Carefully ''
-
-            if (!$query) {
-                header("location:cv_mahasiswa.php?pesan=add_failed");
-            } else {
-                header("location:cv_mahasiswa.php?pesan=add_success");
-            }
+        $query = "INSERT INTO tb_cvmahasiswa (id,nim,nama_mahasiswa,no_hp,jurusan,status_mahasiswa,perusahaan,jabatan,tahun_angkatan,
+        ip1,ip2,ip3,ip4,total,gambar) VALUES ('','$nim', '$nama', '$nohp' , '$jurusan',
+        '$status_M', '$perusahaan', '$posisi', '$thn_angkatan','$ip1','$ip2','$ip3','$ip4','$ipk', '$nama_gambar_baru')";
+        $result = mysqli_query($conn, $query);
+        // periska query apakah ada error
+        if (!$result) {
+            header("location:cv_mahasiswa.php?pesan=add_failed");
         } else {
-            $query = mysqli_query($conn, "INSERT INTO tb_cvmahasiswa VALUES('' ,'$nim', '$nama', '$nohp' , '$jurusan',
-            '$status_M', '$perusahaan', '$posisi', '$thn_angkatan','$ip1','$ip2','$ip3','$ip4','$total', NULL)");
-
-            if (!$query) {
-                header("location:cv_mahasiswa.php?pesan=add_failed");
-            } else {
-                header("location:cv_mahasiswa.php?pesan=add_success");
-            }
+            //tampil alert dan akan redirect ke halaman index.php
+            //silahkan ganti index.php sesuai halaman yang akan dituju
+            header("location:cv_mahasiswa.php?pesan=add_success");
         }
+    } else {
+        //jika file ekstensi tidak jpg dan png maka alert ini yang tampil
+        echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='cv_mahasiswa.php';</script>";
+    }
+} else {
+    $query = "INSERT INTO tb_cvmahasiswa (id,nim,nama_mahasiswa,no_hp,jurusan,status_mahasiswa,perusahaan,jabatan,tahun_angkatan,
+    ip1,ip2,ip3,ip4,total,gambar) VALUES ('','$nim', '$nama', '$nohp' , '$jurusan',
+        '$status_M', '$perusahaan', '$posisi', '$thn_angkatan','$ip1','$ip2','$ip3','$ip4','$ipk')";
+    $result = mysqli_query($conn, $query);
+    // periska query apakah ada error
+    if (!$result) {
+        header("location:cv_mahasiswa.php?pesan=add_failed");
+    } else {
+        //tampil alert dan akan redirect ke halaman index.php
+        //silahkan ganti index.php sesuai halaman yang akan dituju
+        header("location:cv_mahasiswa.php?pesan=add_success");
     }
 }

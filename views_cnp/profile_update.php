@@ -21,9 +21,7 @@ include '../component/header.php';
 
     <?php
     include 'menu.php';
-    ?>
-    <?php
-    include '../component/profile.php';
+    include '../component/profile1.php';
     ?>
     <?php
 

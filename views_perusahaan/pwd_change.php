@@ -46,7 +46,6 @@ include '../component/header.php';
                         </div>
                         <div class="card-body">
                             <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
-                            <input type="hidden" name="kode" value="<?php echo $d['kode']; ?>">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">

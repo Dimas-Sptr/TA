@@ -21,7 +21,7 @@ include '../component/header.php';
 
     <?php
     include 'menu.php';
-    include '../component/profile.php';
+    include '../component/profile1.php';
     ?>
     <div class="container-fluid">
         <nav aria-label="breadcrumb ">

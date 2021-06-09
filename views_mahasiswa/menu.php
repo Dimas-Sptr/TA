@@ -50,9 +50,16 @@ function is_active($sidebar)
         <i class="fas fa-clipboard-list"></i>
         <span>Daftar Lowongan</span></a>
     </li>
+    <hr class="sidebar-divider">
 
-
-
+    <div class="sidebar-heading">
+      History
+    </div>
+    <li class="nav-item <?php is_active('history.php'); ?>">
+      <a class="nav-link" href="history.php">
+        <i class="fas fa-history"></i>
+        <span>History Pengajuan</span></a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

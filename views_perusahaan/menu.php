@@ -63,6 +63,18 @@ function is_active($sidebar)
         <span>Rekomendasi Mahasiswa</span></a>
     </li>
 
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+      History
+    </div>
+
+    <li class="nav-item <?php is_active('history.php'); ?>">
+      <a class="nav-link" href="history.php">
+        <i class="fas fa-history"></i>
+        <span>History</span></a>
+    </li>
+
 
 
 

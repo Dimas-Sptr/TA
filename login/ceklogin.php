@@ -55,9 +55,9 @@ if ($cek > 0) {
 
 	// kembali ke halaman login jika password salah dan munculkan pesan
 	else {
-		//header("location:login.php?pesan=gagal_login");
+		header("location:login.php?pesan=gagal_login");
 	}
 } else {
 	// pesan untuk memunculkan jika user tidak terdaftar
-	//header("location:login.php?pesan=gagal_login");
+	header("location:login.php?pesan=gagal_login");
 }

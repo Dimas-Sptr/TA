@@ -21,7 +21,7 @@ include '../component/header.php';
 
   <?php
   include 'menu.php';
-  include '../component/profile.php';
+  include '../component/profile1.php';
   ?>
   <div class="container-fluid">
     <div class="alert alert-primary " role="alert">
@@ -30,6 +30,103 @@ include '../component/header.php';
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">×</span>
       </button>
+
+    </div>
+    <div class="row">
+
+      <?php
+
+      $daftar_akunPer = mysqli_query($conn, "SELECT * FROM pass_adm where level='perusahaan'");
+
+      $jumlah = mysqli_num_rows($daftar_akunPer);
+
+      ?>
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-success shadow py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2 h-10">
+                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Akun Perusahaan Terdaftar</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah ?></div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-building fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php
+
+      $daftar_akun = mysqli_query($conn, "SELECT * FROM pass_adm where level='admin cnp'");
+
+      $jumlah = mysqli_num_rows($daftar_akun);
+
+      ?>
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-primary shadow py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2 h-10">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Akun CNP Terdaftar</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah ?></div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-user fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <?php
+
+      $daftar_pengajuan = mysqli_query($conn, "SELECT * FROM tb_pengajuanmagang where status=1");
+
+      $jumlah = mysqli_num_rows($daftar_pengajuan);
+
+      ?>
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-warning shadow py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2 h-10">
+                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pengajuan Magang Approved</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah ?></div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-comments fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <?php
+
+      $daftar_lowongan = mysqli_query($conn, "SELECT * FROM tb_lowonganmagang where status=1");
+
+      $jumlah = mysqli_num_rows($daftar_lowongan);
+
+      ?>
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-danger shadow py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2 h-10">
+                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Lowongan Magang Approved</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah ?></div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-briefcase fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     </div>
   </div>
 

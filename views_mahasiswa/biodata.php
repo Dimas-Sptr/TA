@@ -14,7 +14,12 @@ if ($_SESSION['level'] != "mahasiswa") {
 include '../conn/koneksi.php';
 include '../component/header.php';
 ?>
-
+<script>
+    function basicPopup(url) {
+        popupWindow = window.open(url, 'popUpWindow',
+            'height=300, width=700, left=50, top=50, resizable=yes, scrollbar=yes, toolbar=yes, menubar=no, location=no, directories=no, status = yes ')
+    }
+</script>
 
 <body id="page-top">
 
@@ -23,147 +28,190 @@ include '../component/header.php';
     include 'menu.php';
     include '../component/profile.php';
     ?>
-    <?php
 
-    $data = mysqli_query($conn, "select * from tb_cvmahasiswa where nim='$_SESSION[username]'")  or die(mysqli_error($conn));
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb ">
+            <ol class="breadcrumb col-lg-4">
+                <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Biodata Mahasiswa</li>
+            </ol>
+        </nav>
 
-    $cek_row = mysqli_fetch_row($data);
+        <form id="frm-example" action="proses_updatebiodata.php" method="POST" enctype="multipart/form-data">
+            <div class="card">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Biodata Mahasiswa</h6>
+                </div>
+                <?php
+                $data = mysqli_query($conn, "select * from tb_cvmahasiswa where nim='$_SESSION[username]'");
 
-    if ($cek_row) {
-        while ($d = mysqli_fetch_assoc($data)) {
+                while ($d = mysqli_fetch_array($data)) {
 
-
-    ?>
-            <div class="container-fluid">
-                <nav aria-label="breadcrumb ">
-                    <ol class="breadcrumb col-lg-4">
-                        <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Biodata Mahasiswa</li>
-                    </ol>
-                </nav>
-                <div class="row">
-                    <div class="col-xl-12 col-lg-10">
-                        <form id="frm-example" action="proses_updatebiodata.php" method="POST" enctype="multipart/form-data">
-                            <div class="card">
-                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Biodata Mahasiswa</h6>
+                ?>
+                    <div class="card-body">
+                        <form id="frm-example" action="proses_updatebiodata.php" method="POST">
+                            <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
+                            <input type="text" class="form-control form-control-user" id="nim" name="nim" value="<?php echo $d['nim']; ?>" hidden>
+                            <div class="row">
+                                <div class="form-group col-lg-6 ">
+                                    <label><b>Nama Mahasiswa</b></label>
+                                    <input type="text" class="form-control form-control-user" id="nama" name="nama" value="<?php echo $d['nama_mahasiswa']; ?>" required>
                                 </div>
-                                <div class="card-body">
-                                    <form id="frm-example" action="proses_updatebiodata.php" method="POST">
-                                        <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
-                                        <div class="row">
-                                            <div class="form-group col-lg-6">
-                                                <label><b>NIM</b></label>
-                                                <input type="text" class="form-control form-control-user" name="nim" value="<?php echo $d['nim']; ?>" required>
-                                            </div>
-
-                                            <div class="form-group col-lg-6">
-                                                <label><b>Nama Mahasiswa</b></label>
-                                                <input type="text" class="form-control form-control-user" name="nama" required>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="form-group col-lg-6">
-                                                <label><b>Nomor Handphone</b></label>
-                                                <input type="number" class="form-control form-control-user" name="nohp" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group col-lg-6">
-                                            <label><b>Jurusan</b></label>
-                                            <select class="custom-select" name="jurusan" required>
-                                                <option selected>Pilih Jurusan...</option>
-                                                <option value="AB">Administrasi Bisnis</option>
-                                                <option value="TK">Teknologi Komputer</option>
-                                                <option value="AK">Akutansi</option>
-                                            </select>
-                                        </div>
+                                <div class="form-group col-lg-6">
+                                    <label><b>Nomor Handphone</b></label>
+                                    <input type="text" class="form-control form-control-user" id="nohp" name="no_hp" value="<?php echo $d['no_hp']; ?>" required>
                                 </div>
-                                <div class="row">
-                                    <div class="form-group col-lg-6">
-                                        <label><b>Status Mahasiswa</b></label>
-                                        <select class="custom-select" name="status_M" required>
-                                            <option selected>Pilih Status Mahasiswa...</option>
-                                            <option value="1">Magang</option>
-                                            <option value="0">Tidak Magang</option>
+                            </div>
+                            <div class="row">
 
-                                            ?>
-                                        </select>
-                                    </div>
+                                <div class="form-group col-lg-6">
 
-                                    <div class="form-group col-lg-6">
-                                        <label><b>Nama Perusahaan</b></label>
-                                        <input type="text" class="form-control form-control-user" name="perusahaan">
-                                    </div>
+                                    <label><b>Jurusan</b></label>
+                                    <select class="custom-select" style="font-size: 14px;" name="jurusan" required>
+                                        <?php
+                                        if ($d['jurusan'] == "") echo "<option selected >Pilih Jurusan</option>";
+
+                                        if ($d['jurusan'] == "TK") echo "<option  value='TK' selected >Teknologi Komputer</option> ";
+                                        else echo "<option  value='TK'>Teknologi Komputer</option>";
+
+                                        if ($d['jurusan'] == "AB") echo "<option  value='AB' selected >Administrasi Bisnis</option> ";
+                                        else echo "<option  value='AB'>Administrasi Bisnis</option>";
+
+                                        if ($d['jurusan'] == "AK") echo "<option  value='AK' selected >Akutansi</option> ";
+                                        else echo "<option  value='AK'>Akutansi</option>";
+
+                                        ?>
+                                    </select>
                                 </div>
-                                <div class="row">
-                                    <div class=" form-group col-lg-6">
-                                        <label><b>Posisi</b></label>
-                                        <input type="text" class="form-control form-control-user" name="posisi">
-                                    </div>
-                              
+
+
+                                <div class="form-group col-lg-6">
+                                    <label><b>Status Mahasiswa</b></label>
+                                    <select class="custom-select " style="font-size: 14px;" name="status_M" required>
+                                        <?php
+                                        if ($d['status_mahasiswa'] == "") echo "<option selected >Pilih Status Mahasiswa</option>";
+
+                                        if ($d['status_mahasiswa'] == "1") echo "<option  value='1' selected >Magang</option> ";
+                                        else echo "<option  value='1'>Magang</option>";
+
+                                        if ($d['status_mahasiswa'] == "0") echo "<option  value='0' selected >Tidak Magang</option> ";
+                                        else echo "<option  value='0'>Tidak Magang</option>";
+
+
+                                        ?>
+
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="form-group col-lg-6">
+                                    <label><b>Nama Perusahaan</b></label>
+                                    <input type="text" class="form-control form-control-user" id="perusahaan" name="perusahaan" value="<?php echo $d['perusahaan']; ?>">
+                                </div>
+
+
+                                <div class=" form-group col-lg-6">
+                                    <label><b>Posisi</b></label>
+                                    <input type="text" class="form-control form-control-user" id="jabatan" name="posisi" value="<?php echo $d['jabatan']; ?>">
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="form-group col-lg-6">
                                     <label><b>Tahun Angkatan</b></label>
-                                    <input type="text" class="form-control form-control-user" name="angkatan" required>
+                                    <input type="text" class="form-control form-control-user" id="angkatan" name="angkatan" value="<?php echo $d['tahun_angkatan']; ?>" required>
                                 </div>
-                                </div>
-                                <div class="row">
-                                    <div class=" form-group col-lg-6">
-                                        <label><b>IP 1</b></label>
-                                        <input type="text" class="form-control form-control-user" name="ip1" required>
-                                    </div>
 
-                                    <div class="form-group col-lg-6">
-                                        <label><b>Ip 2</b></label>
-                                        <input type="text" class="form-control form-control-user" name="ip2" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class=" form-group col-lg-6">
-                                        <label><b>IP 3</b></label>
-                                        <input type="text" class="form-control form-control-user" name="ip3" required>
-                                    </div>
 
-                                    <div class="form-group col-lg-6">
-                                        <label><b>Ip 4</b></label>
-                                        <input type="text" class="form-control form-control-user" name="ip4" required>
-                                    </div>
+                                <div class=" form-group col-lg-6">
+                                    <label><b>IP 1</b></label>
+                                    <input type="text" class="form-control form-control-user" id="ip1" name="ip1" value="<?php echo $d['ip1']; ?>" required>
                                 </div>
-                                <div class="row">
-                                    <div class="form-group col-lg-6">
-                                        <input type="file" id="gambar" name="gambar" style="display:none" placeholder="CV WAJIB DIISI" onchange="document.getElementById('filename').value=this.value">
-                                        <input type="text" class="form-control " id="filename" readonly>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label><b>Ip 2</b></label>
+                                    <input type="text" class="form-control form-control-user" id="ip2" name="ip2" value="<?php echo $d['ip2']; ?>" required>
+                                </div>
 
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <input type="button" class="btn  btn-danger btn-block" value="Pilih CV" onclick="document.getElementById('gambar').click()" required>
-                                    </div>
+
+                                <div class=" form-group col-lg-6">
+                                    <label><b>IP 3</b></label>
+                                    <input type="text" class="form-control form-control-user" id="ip3" name="ip3" value="<?php echo $d['ip3']; ?>" required>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="card-footer">
-                                            <div class="form-group">
-                                                <button class="btn btn-info btn-lg btn-block" style="margin-top: 20px;" type="submit">Simpan</button>
-                                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label><b>Ip 4</b></label>
+                                    <input type="text" class="form-control form-control-user" id="ip4" name="ip4" value="<?php echo $d['ip4']; ?>" required>
+                                </div>
+
+
+                                <div class="form-group col-lg-5">
+                                    <label><b>CV</b></label>
+
+                                    <input type="file" class="form-control " name="gambar" value="<?php echo $d['gambar']; ?>" required>
+
+                                </div>
+                                <label></label>
+                                <div class="form-group col-lg-1" style="margin-top: 30px;">
+                                    <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="badge badge-info" onclick="basicPopup(this.href); return false" style="margin-top: 10px;">Lihat CV</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card-footer">
+                                        <div class="form-group">
+                                            <button class="btn btn-info btn-lg btn-block" style="margin-top: 20px;" type="submit">Simpan</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                        </form>
+
                     </div>
-                </div>
+                <?php
+                }
+                ?>
+            </div>
 
-                </form>
+        </form>
 
 
-            <?php
-            include '../component/script.php';
-            include '../component/script_datatable.php';
-            ?>
-            <?php
-            include '../component/footer.php';
+    </div>
 
-            ?>
+    <?php
+    include '../component/script.php';
+    include '../component/script_datatable.php';
+    ?>
+
+
+    <?php
+    $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
+
+    if ($pesan == 'add_success') {
+        echo "<script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: ' Data Berhasil Disimpan',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            </script>";
+    } else {
+    }
+    ?>
+
+
+
+    <?php
+    include '../component/footer.php';
+
+    ?>
 
 </body>
 
