@@ -34,7 +34,7 @@ include '../component/header.php';
 
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between ">
-                <h6 class="m-0 font-weight-bold text-primary">Data Permintaan</h6>
+                <h6 class="m-0 font-weight-bold text-primary">History</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -57,7 +57,7 @@ include '../component/header.php';
                         <tbody>
                             <?php
                             $no = 0;
-                            $data = mysqli_query($conn, "select * from tb_pengajuanmagang where status='1' ");
+                            $data = mysqli_query($conn, "select * from tb_pengajuanmagang where status ");
 
                             while ($d = mysqli_fetch_array($data)) {
                                 $no++;
@@ -66,7 +66,7 @@ include '../component/header.php';
                                 if ($d['status'] == 0) {
                                     $status = '<span class="badge badge-pill badge-info" style="margin-top: 5px; font-size: 14px; ">Pending</span>';
                                 }
-                                if ($d['status'] == 1) {
+                                if ($d['status'] > 0) {
                                     $status = '<span class="badge badge-pill badge-success" style="margin-top: 5px; font-size: 14px;">Approved</span>';
                                 }
 

@@ -12,4 +12,4 @@ $status = $_POST['status'];
 
 mysqli_query($conn, "insert into tb_lowonganmagang values('','$nama','$posisi','$persyaratan','$tgl_berakhir','$alamat','$status')") or die(mysqli_error($conn));
 
-header("location:buat_lowongan.php?pesan=success");
+header("location:status_lowongan.php?pesan=add_success");

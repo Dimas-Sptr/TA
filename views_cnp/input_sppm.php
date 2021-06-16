@@ -39,83 +39,126 @@ include '../component/header.php';
             </span>
             <span class="text">Tambah</span>
             </a></button>
-
-
         </div>
 
-      </div>
 
 
 
 
-      <!-- ################# AWAL TAMBAH ##################################################### -->
-      <!-- Tambah SPPM -->
-      <div class="modal fade  bd-example-modal-lg" id="tambah_sppm" tabindex="-1" aria-labelledby="aktivasi" aria-hidden="true">
-        <div class="modal-dialog modal-lg  " role="document">
-          <div class="modal-content">
-            <div class="modal-header ">
-              <h5 class="modal-title" id="aktivasi">Tambah SPPM!</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
+
+        <!-- ################# AWAL TAMBAH ##################################################### -->
+        <!-- Tambah SPPM -->
+        <div class="modal fade  bd-example-modal-lg" id="tambah_sppm" tabindex="-1" aria-labelledby="aktivasi" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable " role="document">
+            <div class="modal-content">
+              <div class="modal-header ">
+                <h5 class="modal-title" id="aktivasi">Tambah SPPM!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
 
 
-            <div class="modal-body">
-              <form class="user" method="POST" action="proses_tambahSppm.php">
-                <div class="form-row">
-                  <div class="form-group col-lg-6">
-                    <input type="text" class="form-control form-control-user" name="nim" placeholder="Ketik NIM kamu..." required="">
+              <div class="modal-body">
+                <form class="user" method="POST" action="proses_tambahSppm.php">
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">NIM</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" name="nim" id="recipient-name">
+                    </div>
                   </div>
-                  <div class="form-group col-lg-6">
-                    <input type="text" class="form-control form-control-user" name="nama" placeholder="Ketik Nama Lengkap ..." required>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Nama Mahasiswa</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control " name="nama" required>
+                    </div>
                   </div>
-                  <div class="form-group col-lg-6">
-                    <input type="text" class="form-control form-control-user" name="tempat" placeholder="Ketik Tempat Tinggal..." required>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Tempat Lahir</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control " name="tempat" required>
+                    </div>
                   </div>
-                  <div class="form-group col-lg-6">
-                    <input type="text" class="form-control form-control-user" name="tanggal" placeholder="Pilih Tanggal Lahir ..." onfocus="(this.type='date')">
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Tanggal Lahir</label>
+                    <div class="col-sm-8">
+                      <input type="date" class="form-control " name="tanggal">
+                    </div>
                   </div>
-                  <div class="form-group col-lg-6">
-                    <select class="custom-select" style="height: 50px;  border-radius: 30px;" name="prodi" required>
-                      <option selected>Pilih Jurusan...</option>
-                      <option value="AB">Administrasi Bisnis</option>
-                      <option value="TK">Teknologi Komputer</option>
-                      <option value="AK">Akutansi</option>
-                    </select>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Jurusan</label>
+                    <div class="col-sm-8">
+                      <select class="custom-select" name="prodi" required>
+                        <option selected>Pilih Jurusan...</option>
+                        <option value="AB">Administrasi Bisnis</option>
+                        <option value="TK">Teknologi Komputer</option>
+                        <option value="AK">Akutansi</option>
+                      </select>
+                    </div>
                   </div>
-                  <div class="form-group col-lg-6">
-                    <input type="text" class="form-control form-control-user" name="lokasi" placeholder="Ketik Lokasi Kampus ..." required>
+
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Lokasi Kampus</label>
+                    <div class="col-sm-8">
+                      <select class="custom-select" name="lokasi" required>
+                        <option selected>Pilih Lokasi...</option>
+                        <option value="MM">Politeknik LP3I Medan Marelan</option>
+                        <option value="MP">Politeknik LP3I Medan </option>
+
+                      </select>
+                    </div>
                   </div>
-                  <div class="form-group col-lg-6">
-                    <input type="text" class="form-control form-control-user" name="usia" placeholder="Ketik Usia ...">
+
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Nomor handphone</label>
+                    <div class="col-sm-8">
+                      <input type="number" class="form-control " name="nohp">
+                    </div>
                   </div>
-                  <div class="form-group col-lg-6">
-                    <input type="number" class="form-control form-control-user" name="nohp" placeholder="Ketik Nomor Handphone ...">
+
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">IP 1</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control " id="ipk1" name="ipk1" maxlength="2">
+                    </div>
                   </div>
-                  <div class="form-group col-lg-6">
-                    <input type="text" class="form-control form-control-user" onkeyup="sum();" id="ipk1" name="ipk1" placeholder="Ketik IPK1..." required>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">IP 2</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control " id="ipk2" name="ipk2" maxlength="2">
+                    </div>
                   </div>
-                  <div class="form-group col-lg-6">
-                    <input type="text" class="form-control form-control-user" onkeyup="sum();" id="ipk2" name="ipk2" placeholder="Ketik IPK2..." required>
+
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">IP 3</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control " id="ipk3" name="ipk3" maxlength="2">
+                    </div>
                   </div>
-                  <div class="form-group col-lg-6">
-                    <input type="text" class="form-control form-control-user" onkeyup="sum();" id="ipk3" name="ipk3" placeholder="Ketik IPK3..." required>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">IP 4</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control " id="ipk4" name="ipk4" maxlength="2">
+                    </div>
                   </div>
-                  <div class="form-group col-lg-6">
-                    <input type="text" class="form-control form-control-user" onkeyup="sum();" id="ipk4" name="ipk4" placeholder="Ketik IPK4..." required>
+
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Tahun Angkatan</label>
+                    <div class="col-sm-8">
+                      <input name="angkatan" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="4" />
+                    </div>
                   </div>
-                  <div class="form-group col-lg-12">
-                    <input type="text" class="form-control form-control-user" name="angkatan" style="text-align: center;" placeholder="Ketik Tahun Angkatan..." required>
-                  </div>
-                </div>
+              </div>
 
 
-                <div class="modal-footer ">
-                  <button type="submit" name="simpan" class="btn  btn-user btn-primary  btn-block"> Simpan </button>
 
-                </div>
+
+              <div class="modal-footer ">
+                <button type="submit" name="simpan" class="btn   btn-primary  "> Simpan </button>
+
+              </div>
               </form>
+
             </div>
           </div>
         </div>
@@ -161,7 +204,7 @@ include '../component/header.php';
                     <!-- ############## EDIT DATA ##################################################################### -->
                     <!-- Edit Modal -->
                     <div class="modal fade" id="edit<?php echo $d['id']; ?>" tabindex="-1" aria-hidden="true" role="dialog">
-                      <div class="modal-dialog modal-lg  ">
+                      <div class="modal-dialog    modal-dialog-scrollable  " role="document">
                         <div class="modal-content">
                           <div class="modal-header ">
                             <h5 class="modal-title" id="edit">Edit SPPM!</h5>
@@ -172,21 +215,34 @@ include '../component/header.php';
                           <div class="modal-body">
                             <form class="user" method="POST" action="proses_editSppm.php">
                               <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
-                              <div class="form-row">
-                                <div class="form-group col-lg-6">
-                                  <input type="text" class="form-control form-control-user" name="nim" placeholder="Ketik NIM kamu..." value="<?php echo $d['nim']; ?>" required="">
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">NIM</label>
+                                <div class="col-sm-8">
+                                  <input type="text" class="form-control " name="nim" value="<?php echo $d['nim']; ?>" required="">
                                 </div>
-                                <div class="form-group col-lg-6">
-                                  <input type="text" class="form-control form-control-user" name="nama" placeholder="Ketik Nama Lengkap ..." value="<?php echo $d['nama']; ?>" required>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Nama Mahasiswa</label>
+                                <div class="col-sm-8">
+                                  <input type="text" class="form-control " name="nama" value="<?php echo $d['nama']; ?>" required>
                                 </div>
-                                <div class="form-group col-lg-6">
-                                  <input type="text" class="form-control form-control-user" name="tempat" placeholder="Ketik Tempat Tinggal..." value="<?php echo $d['tempat']; ?>" required>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Tempat Lahir</label>
+                                <div class="col-sm-8">
+                                  <input type="text" class="form-control " name="tempat" value="<?php echo $d['tempat']; ?>" required>
                                 </div>
-                                <div class=" form-group col-lg-6">
-                                  <input type="date" class="form-control form-control-user" name="tanggal" placeholder="Pilih Tanggal Lahir ..." value="<?php echo $d['tgl_lahir']; ?>" required>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Tanggal Lahir</label>
+                                <div class="col-sm-8">
+                                  <input type="date" class="form-control " name="tanggal" value="<?php echo $d['tgl_lahir']; ?>" required>
                                 </div>
-                                <div class="form-group col-lg-6">
-                                  <select class="custom-select" style="height: 50px;  border-radius: 30px;" name="prodi" required>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Jurusan</label>
+                                <div class="col-sm-8">
+                                  <select class="custom-select" name="prodi" required>
                                     <?php
                                     if ($d['prodi'] == "") echo "<option selected >Pilih Jurusan</option>";
 
@@ -202,45 +258,74 @@ include '../component/header.php';
                                     ?>
                                   </select>
                                 </div>
-                                <div class="form-group col-lg-6">
-                                  <input type="text" class="form-control form-control-user" name="lokasi" placeholder="Ketik Lokasi Kampus ..." value="<?php echo $d['lokasi_kampus']; ?>" required>
-                                </div>
-                                <div class="form-group col-lg-6">
-                                  <input type="text" class="form-control form-control-user" name="usia" placeholder="Ketik Usia ..." value="<?php echo $d['usia']; ?>">
-                                </div>
-                                <div class="form-group col-lg-6">
-                                  <input type="number" class="form-control form-control-user" name="nohp" placeholder="Ketik Nomor Handphone ..." value="<?php echo $d['nohp']; ?>">
-                                </div>
-                                <div class="col-lg-6">
-                                  <input type="text" class="form-control form-control-user" id="ipk1e" name="ipk1" placeholder="Ketik IPK1..." value="<?php echo $d['ipk1']; ?>" required>
-                                </div>
-                                <div class="form-group col-lg-6">
-                                  <input type="text" class="form-control form-control-user" id="ipk2e" name="ipk2" placeholder="Ketik IPK2..." value="<?php echo $d['ipk2']; ?>" required>
-                                </div>
-                                <div class="form-group col-lg-6">
-                                  <input type="text" class="form-control form-control-user" id="ipk3e" name="ipk3" placeholder="Ketik IPK3..." value="<?php echo $d['ipk3']; ?>" required>
-                                </div>
-                                <div class="form-group col-lg-6">
-                                  <input type="text" class="form-control form-control-user" id="ipk4e" name="ipk4" placeholder="Ketik IPK4..." value="<?php echo $d['ipk4']; ?>" required>
-                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Lokasi Kampus</label>
+                                <div class="col-sm-8">
+                                  <select class="custom-select" name="lokasi" required>
+                                    <?php
+                                    if ($d['lokasi_kampus'] == "") echo "<option selected >Pilih Jurusan</option>";
 
-                                <input type="hidden" class="form-control form-control-user" id="totale" name="total" placeholder="Total..." readonly>
+                                    if ($d['lokasi_kampus'] == "MM") echo "<option  value='MM' selected >Politeknik LP3I Medan Marelan</option> ";
+                                    else echo "<option  value='MM'>Teknologi Komputer</option>";
 
-                                <div class="form-group col-lg-12">
-                                  <input type="text" class="form-control form-control-user" style="text-align: center;" name="angkatan" placeholder="Ketik Tahun Angkatan..." value="<?php echo $d['tahun_angkatan']; ?>" required>
+                                    if ($d['lokasi_kampus'] == "MP") echo "<option  value='MP' selected >Politeknik LP3I Medan </option> ";
+                                    else echo "<option  value='MP'>Administrasi Bisnis</option>";
+
+
+                                    ?>
+                                  </select>
+
                                 </div>
                               </div>
-
-
-                              <div class="modal-footer ">
-                                <button type="submit" name="simpan" class="  btn  btn-user btn-primary  btn-block "> Update </button>
-
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Nomor handphone</label>
+                                <div class="col-sm-8">
+                                  <input type="number" class="form-control " name="nohp" value="<?php echo $d['nohp']; ?>">
+                                </div>
                               </div>
-                            </form>
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">IP 1</label>
+                                <div class="col-sm-8">
+                                  <input type="text" class="form-control " id="ipk1e" name="ipk1" value="<?php echo $d['ipk1']; ?>" maxlength="2">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">IP 2</label>
+                                <div class="col-sm-8">
+                                  <input type="text" class="form-control " id="ipk2e" name="ipk2" value="<?php echo $d['ipk2']; ?>" maxlength="2">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">IP 3</label>
+                                <div class="col-sm-8">
+                                  <input type="text" class="form-control " id="ipk3e" name="ipk3" value="<?php echo $d['ipk3']; ?>" maxlength="2">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">IP 4</label>
+                                <div class="col-sm-8">
+                                  <input type="text" class="form-control " id="ipk4e" name="ipk4" value="<?php echo $d['ipk4']; ?>" maxlength="2">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Tahun Angkatan</label>
+                                <div class="col-sm-8">
+                                  <input name="angkatan" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="4" value="<?php echo $d['tahun_angkatan'] ?>" />
+                                </div>
+                              </div>
                           </div>
+
+
+                          <div class="modal-footer ">
+                            <button type="submit" name="simpan" class="  btn   btn-primary   "> Simpan</button>
+
+                          </div>
+                          </form>
                         </div>
                       </div>
                     </div>
+
 
                     <!-- ############ AKHIR EDIT DATA ######################################################### -->
                     <a href="delete_sppm.php?id=<?= $d['id'] ?>" class="btn btn-danger btn-xs  btn-circle delete-data">
@@ -255,7 +340,7 @@ include '../component/header.php';
                       <div class="modal-dialog modal-lg modal-dialog-scrollable ">
                         <div class="modal-content">
                           <div class="modal-header ">
-                            <h5 class="modal-title" id="view">Detail SPPM Atas Nama <?php echo $d['nama']; ?></h5>
+                            <h5 class="modal-title" id="view">Detail SPPM </h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
@@ -266,73 +351,76 @@ include '../component/header.php';
                               <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">NIM</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" value="<?php echo $d['nim']; ?>" readonly>
+                                  <input type="text" class="form-control " value="<?php echo $d['nim']; ?>" readonly>
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Nama</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" value="<?php echo $d['nama']; ?>" readonly>
+                                  <input type="text" class="form-control " value="<?php echo $d['nama']; ?>" readonly>
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Alamat</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" value="<?php echo $d['tempat']; ?>" readonly>
+                                  <input type="text" class="form-control " value="<?php echo $d['tempat']; ?>" readonly>
                                 </div>
                               </div>
                               <div class=" form-group row">
                                 <label class="col-sm-4 col-form-label">Tanggal Lahir</label>
                                 <div class="col-sm-8">
-                                  <input type="date" class="form-control form-control-user" value="<?php echo $d['tgl_lahir']; ?>" readonly>
+                                  <input type="date" class="form-control " value="<?php echo $d['tgl_lahir']; ?>" readonly>
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Program Studi</label>
+                                <label class="col-sm-4 col-form-label">Jurusan</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" value="<?php echo $d['prodi']; ?>" readonly>
+                                  <input type="text" class="form-control " value="<?php $jurusan = $d['prodi'];
+                                                                                  if ($jurusan == "-") {
+                                                                                    echo $jurusan = "-";
+                                                                                  } else if ($jurusan == "AB") {
+                                                                                    echo $jurusan = "Administrasi Bisnis";
+                                                                                  } else if ($jurusan == "TK") {
+                                                                                    echo $jurusan = "Teknologi Komputer";
+                                                                                  } else {
+                                                                                    echo $jurusan = "Akutansi";
+                                                                                  } ?>" readonly>
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Lokasi Kampus</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" value="<?php echo $d['lokasi_kampus']; ?>" readonly>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Usia</label>
-                                <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" value="<?php echo $d['usia']; ?>" readonly>
+                                  <input type="text" class="form-control " value="<?php echo $d['lokasi_kampus']; ?>" readonly>
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Nomor Handphone</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" value="<?php echo $d['nohp']; ?>" readonly>
+                                  <input type="text" class="form-control " value="<?php echo $d['nohp']; ?>" readonly>
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">IPK 1</label>
+                                <label class="col-sm-4 col-form-label">IP 1</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" onkeyup="autosum();" id="ipk1e" value="<?php echo $d['ipk1']; ?>" readonly>
+                                  <input type="text" class="form-control " id="ipk1e" value="<?php echo $d['ipk1']; ?>" readonly>
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">IPK 2</label>
+                                <label class="col-sm-4 col-form-label">IP 2</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" onkeyup="autosum();" id="ipk2e" name="ipk2" placeholder="Ketik IPK2..." value="<?php echo $d['ipk2']; ?>" readonly>
+                                  <input type="text" class="form-control " id="ipk2e" name="ipk2" placeholder="Ketik IPK2..." value="<?php echo $d['ipk2']; ?>" readonly>
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">IPK 3</label>
+                                <label class="col-sm-4 col-form-label">IP 3</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" onkeyup="autosum();" id="ipk3e" name="ipk3" placeholder="Ketik IPK3..." value="<?php echo $d['ipk3']; ?>" readonly>
+                                  <input type="text" class="form-control " id="ipk3e" name="ipk3" placeholder="Ketik IPK3..." value="<?php echo $d['ipk3']; ?>" readonly>
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">IPK 4</label>
+                                <label class="col-sm-4 col-form-label">IP 4</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" onkeyup="autosum();" id="ipk4e" name="ipk4" placeholder="Ketik IPK4..." value="<?php echo $d['ipk4']; ?>" readonly>
+                                  <input type="text" class="form-control " id="ipk4e" name="ipk4" placeholder="Ketik IPK4..." value="<?php echo $d['ipk4']; ?>" readonly>
                                 </div>
                               </div>
                               <div class="form-group row">
@@ -341,24 +429,24 @@ include '../component/header.php';
                                 ?>
                                 <label class="col-sm-4 col-form-label">Total</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" id="totale" name="total" placeholder="Total..." value="<?php echo $ipk; ?>" readonly>
+                                  <input type="text" class="form-control " id="totale" name="total" placeholder="Total..." value="<?php echo $ipk; ?>" readonly>
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Tahun Angkatan</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" name="angkatan" placeholder="Ketik Tahun Angkatan..." value="<?php echo $d['tahun_angkatan']; ?>" readonly>
+                                  <input type="text" class="form-control " name="angkatan" placeholder="Ketik Tahun Angkatan..." value="<?php echo $d['tahun_angkatan']; ?>" readonly>
                                 </div>
                               </div>
 
-
-
-                              <div class="modal-footer ">
-                                <button type="button" class="btn  btn-danger " data-dismiss="modal">Close</button>
-
-                              </div>
-                            </form>
                           </div>
+
+                          <div class="modal-footer ">
+                            <button type="button" class="btn  btn-danger " data-dismiss="modal">Close</button>
+
+                          </div>
+                          </form>
+
                         </div>
                       </div>
                     </div>
@@ -370,13 +458,13 @@ include '../component/header.php';
             </tbody>
 
           </table>
-
-
         </div>
+
       </div>
     </div>
-
   </div>
+
+
 
 
 
@@ -386,11 +474,184 @@ include '../component/header.php';
   include '../component/script_datatable.php';
   ?>
 
+
+
+  <script type="text/javascript">
+    var ipk1 = document.getElementById("ipk1");
+    ipk1.addEventListener("keyup", function(e) {
+      ipk1.value = formatRupiah(this.value, "");
+    });
+
+    function formatRupiah(angka, prefix) {
+      var number_string = angka.replace(/[^,\d]/g, "").toString(),
+        split = number_string.split(","),
+        sisa = split[0].length % 2,
+        rupiah = split[0].substr(0, sisa),
+        ribuan = split[0].substr(sisa).match(/\d{1}/gi);
+      if (ribuan) {
+        separator = sisa ? "." : "";
+        rupiah += separator + ribuan.join(".");
+      }
+      rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+      return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+    }
+  </script>
+
+  <script type="text/javascript">
+    var ipk2 = document.getElementById("ipk2");
+    ipk2.addEventListener("keyup", function(e) {
+      ipk2.value = formatRupiah(this.value, "");
+    });
+
+    function formatRupiah(angka, prefix) {
+      var number_string = angka.replace(/[^,\d]/g, "").toString(),
+        split = number_string.split(","),
+        sisa = split[0].length % 2,
+        rupiah = split[0].substr(0, sisa),
+        ribuan = split[0].substr(sisa).match(/\d{1}/gi);
+      if (ribuan) {
+        separator = sisa ? "." : "";
+        rupiah += separator + ribuan.join(".");
+      }
+      rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+      return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+    }
+  </script>
+
+  <script type="text/javascript">
+    var ipk3 = document.getElementById("ipk3");
+    ipk3.addEventListener("keyup", function(e) {
+      ipk3.value = formatRupiah(this.value, "");
+    });
+
+    function formatRupiah(angka, prefix) {
+      var number_string = angka.replace(/[^,\d]/g, "").toString(),
+        split = number_string.split(","),
+        sisa = split[0].length % 2,
+        rupiah = split[0].substr(0, sisa),
+        ribuan = split[0].substr(sisa).match(/\d{1}/gi);
+      if (ribuan) {
+        separator = sisa ? "." : "";
+        rupiah += separator + ribuan.join(".");
+      }
+      rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+      return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+    }
+  </script>
+
+  <script type="text/javascript">
+    var ipk4 = document.getElementById("ipk4");
+    ipk4.addEventListener("keyup", function(e) {
+      ipk4.value = formatRupiah(this.value, "");
+    });
+
+    function formatRupiah(angka, prefix) {
+      var number_string = angka.replace(/[^,\d]/g, "").toString(),
+        split = number_string.split(","),
+        sisa = split[0].length % 2,
+        rupiah = split[0].substr(0, sisa),
+        ribuan = split[0].substr(sisa).match(/\d{1}/gi);
+      if (ribuan) {
+        separator = sisa ? "." : "";
+        rupiah += separator + ribuan.join(".");
+      }
+      rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+      return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+    }
+  </script>
+
+
+  <script type="text/javascript">
+    var ipk1e = document.getElementById("ipk1e");
+    ipk1e.addEventListener("keyup", function(e) {
+      ipk1e.value = formatRupiah(this.value, "");
+    });
+
+    function formatRupiah(angka, prefix) {
+      var number_string = angka.replace(/[^,\d]/g, "").toString(),
+        split = number_string.split(","),
+        sisa = split[0].length % 2,
+        rupiah = split[0].substr(0, sisa),
+        ribuan = split[0].substr(sisa).match(/\d{1}/gi);
+      if (ribuan) {
+        separator = sisa ? "." : "";
+        rupiah += separator + ribuan.join(".");
+      }
+      rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+      return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+    }
+  </script>
+
+  <script type="text/javascript">
+    var ipk2e = document.getElementById("ipk2e");
+    ipk2e.addEventListener("keyup", function(e) {
+      ipk2e.value = formatRupiah(this.value, "");
+    });
+
+    function formatRupiah(angka, prefix) {
+      var number_string = angka.replace(/[^,\d]/g, "").toString(),
+        split = number_string.split(","),
+        sisa = split[0].length % 2,
+        rupiah = split[0].substr(0, sisa),
+        ribuan = split[0].substr(sisa).match(/\d{1}/gi);
+      if (ribuan) {
+        separator = sisa ? "." : "";
+        rupiah += separator + ribuan.join(".");
+      }
+      rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+      return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+    }
+  </script>
+  <script type="text/javascript">
+    var ipk3e = document.getElementById("ipk3e");
+    ipk3e.addEventListener("keyup", function(e) {
+      ipk3e.value = formatRupiah(this.value, "");
+    });
+
+    function formatRupiah(angka, prefix) {
+      var number_string = angka.replace(/[^,\d]/g, "").toString(),
+        split = number_string.split(","),
+        sisa = split[0].length % 2,
+        rupiah = split[0].substr(0, sisa),
+        ribuan = split[0].substr(sisa).match(/\d{1}/gi);
+      if (ribuan) {
+        separator = sisa ? "." : "";
+        rupiah += separator + ribuan.join(".");
+      }
+      rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+      return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+    }
+  </script>
+  <script type="text/javascript">
+    var ipk4e = document.getElementById("ipk4e");
+    ipk4e.addEventListener("keyup", function(e) {
+      ipk4e.value = formatRupiah(this.value, "");
+    });
+
+    function formatRupiah(angka, prefix) {
+      var number_string = angka.replace(/[^,\d]/g, "").toString(),
+        split = number_string.split(","),
+        sisa = split[0].length % 2,
+        rupiah = split[0].substr(0, sisa),
+        ribuan = split[0].substr(sisa).match(/\d{1}/gi);
+      if (ribuan) {
+        separator = sisa ? "." : "";
+        rupiah += separator + ribuan.join(".");
+      }
+      rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+      return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+    }
+  </script>
+
+
+
+
+
   <?php
 
   $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
 
-  if ($pesan == 'update_success') {
+  if ($pesan == 'success') {
 
     echo " <script>
     Swal.fire({
@@ -441,7 +702,6 @@ include '../component/header.php';
         .appendTo('#datatable_wrapper .col-md-6:eq(0)');
     });
   </script>
-
 
 
   <?php

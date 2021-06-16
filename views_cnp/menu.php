@@ -105,7 +105,7 @@ function is_active($sidebar)
     <li class="nav-item <?php is_active('mahasiswa_magang.php'); ?>">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#datarelease" aria-expanded="true" aria-controls="collapsePages">
         <i class="fas fa-fw fa-folder"></i>
-        <span>Data Realease</span>
+        <span>Data Release</span>
       </a>
       <div id="datarelease" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
@@ -145,7 +145,7 @@ function is_active($sidebar)
     <li class="nav-item <?php is_active('history.php'); ?>">
       <a class="nav-link" href="history.php">
         <i class="fas fa-history"></i>
-        <span>History Approved</span></a>
+        <span>History</span></a>
     </li>
 
 

@@ -2,8 +2,11 @@
 
   <div id="content">
     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+      <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+        <i class="fa fa-bars"></i>
+      </button>
       <?php
+      include '../conn/koneksi.php';
       include '../component/hari.php';
       echo date(', d F Y');
       ?>
@@ -35,7 +38,7 @@
             <h6 class="dropdown-header">
               Notification
             </h6>
-            <a class="dropdown-item d-flex align-items-center" href="#">
+            <a class="dropdown-item d-flex align-items-center" href="pengajuan_magang.php">
               <div class="mr-3">
                 <div class="icon-circle bg-warning">
                   <i class="fas fa-comment text-white"></i>
@@ -46,7 +49,7 @@
                 <span class="font-weight-bold">PENGAJUAN MAGANG = <?php echo $jumlah2; ?></span>
               </div>
             </a>
-            <a class="dropdown-item d-flex align-items-center" href="#">
+            <a class="dropdown-item d-flex align-items-center" href="data_permintaan.php">
               <div class="mr-3">
                 <div class="icon-circle bg-primary">
                   <i class="fas fa-building text-white"></i>
@@ -61,7 +64,7 @@
 
         <div class="topbar-divider d-none d-sm-block"></div>
         <!-- Nav Item - User Information -->
-        <li class="nav-item dropdown no-arrow" style="margin-right: 50px;">
+        <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="mr-2 d-none d-lg-inline text-gray-600 large">
               <?php

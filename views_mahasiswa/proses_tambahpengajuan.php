@@ -21,8 +21,7 @@ if ($periksa = 0) {
     header("location:daftar_lowongan.php?pesan=add_failed");
 } else {
 
-    $save_login = "insert into tb_pengajuanmagang values('','$nim','$nama_M','$nama_P','$posisi','$persyaratan',
-    '$tgl_berakhir','$alamat','$status')";
+    $save_login = "insert into tb_pengajuanmagang values('','$nim','$nama_M','$nama_P','$posisi','$persyaratan','$tgl_berakhir','$alamat','$status')";
     $q_sl = mysqli_query($conn, $save_login) or die(mysqli_error($conn));
 
     if ($q_sl) {

@@ -69,8 +69,8 @@ include '../component/header.php';
                                     <label><b>Jurusan</b></label>
                                     <select class="custom-select" style="font-size: 14px;" name="jurusan" required>
                                         <?php
-                                        if ($d['jurusan'] == "") echo "<option selected >Pilih Jurusan</option>";
-
+                                        if ($d['jurusan'] == "") echo "<option selected value='-'>Pilih Jurusan</option>";
+                                        else echo "<option  value='-'>Pilih Jurusan</option>";
                                         if ($d['jurusan'] == "TK") echo "<option  value='TK' selected >Teknologi Komputer</option> ";
                                         else echo "<option  value='TK'>Teknologi Komputer</option>";
 
@@ -89,7 +89,8 @@ include '../component/header.php';
                                     <label><b>Status Mahasiswa</b></label>
                                     <select class="custom-select " style="font-size: 14px;" name="status_M" required>
                                         <?php
-                                        if ($d['status_mahasiswa'] == "") echo "<option selected >Pilih Status Mahasiswa</option>";
+                                        if ($d['status_mahasiswa'] == "-") echo "<option selected value='-'>Pilih Status Mahasiswa</option>";
+                                        else echo "<option  value='-'>Pilih Status Mahasiswa</option>";
 
                                         if ($d['status_mahasiswa'] == "1") echo "<option  value='1' selected >Magang</option> ";
                                         else echo "<option  value='1'>Magang</option>";
@@ -120,7 +121,7 @@ include '../component/header.php';
                             <div class="row">
                                 <div class="form-group col-lg-6">
                                     <label><b>Tahun Angkatan</b></label>
-                                    <input type="text" class="form-control form-control-user" id="angkatan" name="angkatan" value="<?php echo $d['tahun_angkatan']; ?>" required>
+                                    <input name="angkatan" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="4" value="<?php echo $d['tahun_angkatan']; ?>" readonly />
                                 </div>
 
 

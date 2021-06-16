@@ -43,7 +43,8 @@ $jumlah = mysqli_num_rows($daftar_lowongan);
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2 h-10">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Daftar Lowongan</div>
+                                <a href="daftar_lowongan.php" class="text-xs font-weight-bold text-primary text-uppercase mb-1">Daftar Lowongan
+                                </a>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah ?></div>
                             </div>
                             <div class="col-auto">
@@ -55,15 +56,15 @@ $jumlah = mysqli_num_rows($daftar_lowongan);
             </div>
             <?php
 
-            $data = mysqli_query($conn, "select * from tb_lowonganmagang where status='0' ");
+            $data = mysqli_query($conn, "SELECT * from tb_pengajuanmagang where nim= '$_SESSION[username]' AND status='0' ");
 
             while ($d = mysqli_fetch_array($data)) {
 
-                if ($d['status'] == 0) {
-                    $status = '<span class="badge badge-pill badge-info" style="margin-top: 5px; font-size: 14px; ">Pending</span>';
+                if ($d['status'] < 2 && $d['nim'] == $_SESSION['username']) {
+                    $status = '<div class="alert alert-info" style="text-align: center;">Pengajuan Magang Anda <a href="#" class="btn btn-info btn-sm">Pending</a></div>';
                 }
-                if ($d['status'] == 1) {
-                    $status = '<span class="badge badge-pill badge-success" style="margin-top: 5px; font-size: 14px;">Approved</span>';
+                if ($d['status'] == 2 && $d['nim'] == $_SESSION['username']) {
+                    $status = '<div class="alert alert-success" style="text-align: center;">Pengajuan Magang Anda <a href="history.php" class="btn btn-success btn-sm">Approved</a></div>';
                 }
 
 
@@ -77,14 +78,7 @@ $jumlah = mysqli_num_rows($daftar_lowongan);
                             <h6 class="m-0 font-weight-bold text-primary">Informasi Status Pengajuan</h6>
                         </div>
                         <div class="card-body">
-                            <?php
-                            if ($d['status'] == 0) {
-                                $status = '<div class="alert alert-info" style="text-align: center;">Pengajuan Magang Anda <a href="history.php" class="btn btn-info btn-sm">Pending</a></div>';
-                            }
-                            if ($d['status'] == 1) {
-                                $status = '<span class="badge badge-pill badge-success" style="margin-top: 5px; font-size: 14px;">Approved</span>';
-                            }
-                            ?>
+
                             <?php echo $status; ?>
                         </div>
                     </div>
@@ -99,11 +93,12 @@ $jumlah = mysqli_num_rows($daftar_lowongan);
             $jml = mysqli_num_rows($daftar_pengajuan);
             ?>
             <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-info shadow h-40 py-2">
+                <div class="card border-left-success shadow h-40 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2 h-10">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">History Magang</div>
+                                <a href="history.php" class="text-xs font-weight-bold text-success text-uppercase mb-1">History Magang
+                                </a>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jml; ?></div>
                             </div>
                             <div class="col-auto">

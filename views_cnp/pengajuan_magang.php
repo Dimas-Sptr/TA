@@ -88,7 +88,7 @@ include '../component/header.php';
                                         <!-- ################# Edit  ##################################################### -->
                                         <!-- Edit CV Mahasiswa-->
                                         <div class="modal fade  bd-example-modal-lg" id="edit<?php echo $d['id']; ?>" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
-                                            <div class="modal-dialog  modal-lg " role="document">
+                                            <div class="modal-dialog  modal-lg modal-dialog-scrollable " role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header ">
                                                         <h5 class="modal-title" id="edit">Pratinjau Pengajuan Magang</h5>
@@ -102,57 +102,66 @@ include '../component/header.php';
                                                         <form class="user" method="POST" action="proses_editpengajuan.php" enctype="multipart/form-data">
                                                             <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
                                                             <div class="form-row">
-                                                                <div class="form-group col-lg-6">
-                                                                    <input type="text" class="form-control form-control-user" name="nim" placeholder="Ketik NIM Mahasiswa.." value="<?php echo $d['nim']; ?>" required="">
+                                                                <div class="form-group col-lg-12">
+                                                                    <label class="col-sm-4 col-form-label">NIM</label>
+                                                                    <input type="text" class="form-control " name="nim" style="font-size: 14px;" value="<?php echo $d['nim']; ?>" required="">
                                                                 </div>
-                                                                <div class="form-group col-lg-6">
-                                                                    <input type="text" class="form-control form-control-user" name="nama_M" placeholder="Ketik Nama Mahasiswa.." value="<?php echo $d['nama_mahasiswa']; ?>" required="">
-                                                                </div>
-                                                                <div class="form-group col-lg-6">
-                                                                    <input type="text" class="form-control form-control-user" name="nama_P" placeholder="Ketik Nama Perusahaan..." value="<?php echo $d['nama_perusahaan']; ?>" required="">
-                                                                </div>
-                                                                <div class="form-group col-lg-6">
-                                                                    <input type="text" class="form-control form-control-user" name="posisi" placeholder="Ketik Posisi Yang Dibutuhkan..." value="<?php echo $d['posisi']; ?>" required>
+
+                                                                <div class="form-group col-lg-12">
+                                                                    <label class="col-sm-4 col-form-label">Nama Mahasiswa</label>
+                                                                    <input type="text" class="form-control " name="nama_M" style="font-size: 14px;" value="<?php echo $d['nama_mahasiswa'];  ?>" required>
                                                                 </div>
                                                                 <div class="form-group col-lg-12">
-                                                                    <textarea class="ckeditor" id="ckedtor" name="persyaratan" placeholder="Ketik persyaratan" required><?php echo $d['persyaratan']; ?></textarea>
+                                                                    <label class="col-sm-4 col-form-label">Nama Perusahaan</label>
+                                                                    <input type="text" class="form-control " name="nama_P" style="font-size: 14px;" value="<?php echo $d['nama_perusahaan']; ?>" required>
                                                                 </div>
-                                                                <div class="form-group col-lg-6">
-                                                                    <input type="text" class="form-control form-control-user" name="tgl_berakhir" placeholder="Pilih Tanggal Berakhir ..." onfocus="(this.type='date')" value="<?php echo $d['tgl_berakhir']; ?>">
+                                                                <div class="form-group col-lg-12">
+                                                                    <label class="col-sm-4 col-form-label">Posisi</label>
+                                                                    <input type="text" class="form-control " name="posisi" style="font-size: 14px;" value="<?php echo $d['posisi']; ?>" required>
                                                                 </div>
-                                                                <div class="form-group col-lg-6">
-                                                                    <textarea class="form-control form-control-user" style="height: 30px;" name="alamat" required=""><?php echo $d['alamat']; ?></textarea>
+                                                                <div class="form-group col-lg-12">
+                                                                    <label class="col-sm-4 col-form-label">Persyaratan</label>
+                                                                    <textarea class="ckeditor" id="ckedtor" name="persyaratan" placeholder="Ketik persyaratan" style="font-size: 14px;" required><?php echo $d['persyaratan']; ?></textarea>
+                                                                </div>
+                                                                <div class="form-group col-lg-12">
+                                                                    <label class="col-sm-4 col-form-label">tanggal Berakhir</label>
+                                                                    <input type="text" class="form-control " name="tgl_berakhir" style="font-size: 14px;" placeholder="Pilih Tanggal Berakhir ..." onfocus="(this.type='date')" value="<?php echo $d['tgl_berakhir']; ?>">
+                                                                </div>
+                                                                <div class="form-group col-lg-12">
+                                                                    <label class="col-sm-4 col-form-label">Alamat</label>
+                                                                    <textarea class="form-control " style="height: 30px;" name="alamat" required=""><?php echo $d['alamat']; ?></textarea>
 
                                                                 </div>
-
-
                                                             </div>
 
 
-                                                            <div class="modal-footer ">
-                                                                <button type="submit" name="status" class="btn   btn-primary  " style="font-size: medium;" value="1"> Approve </button>
-                                                                <button type="submit" name="status" class="btn   btn-danger  " style="font-size: medium;" value="3"> Reject </button>
-
-                                                            </div>
-                                                        </form>
                                                     </div>
+
+
+                                                    <div class="modal-footer ">
+                                                        <button type="submit" name="status" class="btn   btn-primary  " style="font-size: medium;" value="1"> Approve </button>
+                                                        <button type="submit" name="status" class="btn   btn-danger  " style="font-size: medium;" value="3"> Reject </button>
+
+                                                    </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                                    </td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
-
-                    </table>
                 </div>
+                </td>
+                </tr>
+            <?php
+                            }
+            ?>
+            </tbody>
 
-
-
+            </table>
             </div>
+
+
+
         </div>
+    </div>
 
     </div>
     <?php

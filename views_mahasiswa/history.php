@@ -79,11 +79,12 @@ include '../component/header.php';
 
                                     </td>
                                 </tr>
+                            <?php
+                            }
+                            ?>
                         </tbody>
                     </table>
-                <?php
-                            }
-                ?>
+
 
                 </div>
 

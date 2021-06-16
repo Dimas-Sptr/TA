@@ -61,21 +61,29 @@ include '../component/header.php';
               <form class="user" method="POST" action="proses_tambahLowongan.php">
                 <div class="form-row">
                   <div class="form-group col-lg-12">
-                    <input type="text" class="form-control form-control-user" name="nama" placeholder="Ketik Nama Perusahaan..." required="">
+                    <label class="col-sm-4 col-form-label">Nama Perusahaan</label>
+                    <input type="text" class="form-control " name="nama" required="">
                   </div>
                   <div class="form-group col-lg-12">
-                    <input type="text" class="form-control form-control-user" name="posisi" placeholder="Ketik Posisi ..." required>
+                    <label class="col-sm-4 col-form-label">Posisi</label>
+                    <input type="text" class="form-control " name="posisi" required>
                   </div>
                   <div class="form-group col-lg-12">
+                    <label class="col-sm-4 col-form-label">Persyaratan</label>
                     <textarea class="ckeditor" id="ckedtor" name="persyaratan" placeholder="Ketik persyaratan" required></textarea>
                   </div>
                   <div class="form-group col-lg-12">
-                    <input type="text" class="form-control form-control-user" name="tgl_berakhir" placeholder="Pilih Tanggal Berakhir ..." onfocus="(this.type='date')">
+                    <label class="col-sm-4 col-form-label">Tanggal Berakhir</label>
+                    <input type="text" class="form-control " name="tgl_berakhir" onfocus="(this.type='date')">
+                  </div>
+                  <div class="form-group col-lg-12">
+                    <label class="col-sm-4 col-form-label">Alamat</label>
+                    <textarea class="form-control" name="alamat" required></textarea>
                   </div>
                 </div>
             </div>
-            <div class="modal-footer ">
-              <button type="submit" name="simpan" class="btn  btn-user btn-primary  btn-block"> Simpan </button>
+            <div class=" modal-footer ">
+              <button type=" submit" name="status" class="btn   btn-primary  " value="1"> Simpan </button>
 
             </div>
             </form>
@@ -149,26 +157,31 @@ include '../component/header.php';
                             <form class="user" method="POST" action="proses_editLowongan.php">
                               <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
                               <div class="form-row">
-                                <div class="form-group col-lg-6">
-                                  <input type="text" class="form-control form-control-user" name="nama" placeholder="Ketik Nama Perusahaan..." value="<?php echo $d['nama_perusahaan'];  ?>" required="">
-                                </div>
-                                <div class="form-group col-lg-6">
-                                  <input type="text" class="form-control form-control-user" name="posisi" placeholder="Ketik Posisi ..." value="<?php echo $d['posisi'];  ?>" required>
+                                <div class="form-group col-lg-12">
+                                  <label class="col-sm-4 col-form-label">Nama Perusahaan</label>
+                                  <input type="text" class="form-control " name="nama" style="font-size: 14px;" value="<?php echo $d['nama_perusahaan'];  ?>" required="">
                                 </div>
                                 <div class="form-group col-lg-12">
-                                  <textarea class="ckeditor" id="ckedtor" name="persyaratan" placeholder="Ketik persyaratan" required><?php echo $d['persyaratan'];  ?></textarea>
+                                  <label class="col-sm-4 col-form-label">Posisi</label>
+                                  <input type="text" class="form-control " name="posisi" style="font-size: 14px;" value="<?php echo $d['posisi'];  ?>" required>
                                 </div>
-                                <div class="form-group col-lg-6">
-                                  <input type="date" class="form-control form-control-user" name="tgl_berakhir" value="<?php echo $d['tgl_berakhir'];  ?>">
+                                <div class="form-group col-lg-12">
+                                  <label class="col-sm-4 col-form-label">Persyaratan</label>
+                                  <textarea class="ckeditor" id="editor" name="persyaratan" placeholder="Ketik persyaratan" style="font-size: 14px;" required><?php echo $d['persyaratan'];  ?></textarea>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                  <label class="col-sm-4 col-form-label">Tanggal Berakhir</label>
+                                  <input type="date" class="form-control " name="tgl_berakhir" value="<?php echo $d['tgl_berakhir'];  ?>" style="font-size: 14px;">
                                 </div>
 
-                                <div class="form-group col-lg-6">
-                                  <input type="text" class="form-control form-control-user" name="alamat" placeholder="Ketik Alamat Perusahaan ..." value="<?php echo $d['alamat'];  ?>" required>
+                                <div class="form-group col-lg-12">
+                                  <label class="col-sm-4 col-form-label">Alamat</label>
+                                  <textarea class="form-control" name="alamat" style="font-size: 14px;" required><?php echo $d['alamat']; ?></textarea>
                                 </div>
                               </div>
                           </div>
                           <div class="modal-footer ">
-                            <button type="submit" name="simpan" class="btn  btn-user btn-primary  btn-block">Simpan </button>
+                            <button type="submit" name="simpan" class="btn   btn-primary  ">Simpan </button>
 
                           </div>
                           </form>
@@ -199,6 +212,7 @@ include '../component/header.php';
   include '../component/script.php';
   include '../component/script_datatable.php';
   ?>
+
   <?php
   $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
 
@@ -207,6 +221,20 @@ include '../component/header.php';
     echo " <script>Swal.fire(
   'Berhasil',
   'Data Berhasil Disimpan',
+  'success')
+  </script>";
+  } else {
+  }
+
+  ?>
+  <?php
+  $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
+
+  if ($pesan == 'add_success') {
+
+    echo " <script>Swal.fire(
+  'Berhasil',
+  'Lowongan Berhasil Ditambahkan',
   'success')
   </script>";
   } else {

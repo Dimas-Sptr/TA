@@ -40,7 +40,7 @@ include '../component/header.php';
         <!-- ################# AWAL TAMBAH ##################################################### -->
         <!-- Buat Akun-->
         <div class="modal fade  bd-example-modal-lg" id="buat_akun" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-scrollable   " role="document">
+            <div class="modal-dialog modal-lg   " role="document">
                 <div class="modal-content">
                     <div class="modal-header ">
                         <h5 class="modal-title">Tambah Akun</h5>
@@ -54,16 +54,21 @@ include '../component/header.php';
                         <form class="user" method="POST" action="proses_tambahAkun.php">
                             <div class="form-row">
                                 <div class="form-group col-lg-6">
-                                    <input type="text" class="form-control form-control-user" name="kode" placeholder="Ketik Kode Pengguna..." required="">
+                                    <label for="recipient-name" class="col-form-label"><b>Kode</b></label>
+                                    <input type="text" class="form-control " name="kode" required="">
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <input type="text" class="form-control form-control-user" name="nama" placeholder="Ketik Nama Pengguna ..." required>
+                                    <label for="recipient-name" class="col-form-label"><b>Nama Pengguna</b></label>
+                                    <input type="text" class="form-control " name="nama" required>
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <input type="text" class="form-control form-control-user" name="email" placeholder="Ketik Email atau Fax Pengguna ...">
+                                    <label for="recipient-name" name="email" class="col-form-label"><b>Email</b></label>
+                                    <input type="text" class="form-control ">
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <select class="custom-select" style="height: 50px;  border-radius: 30px;" name="level" required>
+                                    <label for="recipient-name" class="col-form-label"><b>Hak Akses</b></label>
+
+                                    <select class="custom-select" name="level" required>
                                         <option selected>Pilih Hak Akses...</option>
                                         <option value="admin cnp">Admin CNP</option>
                                         <option value="perusahaan">Perusahaan</option>

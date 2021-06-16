@@ -48,7 +48,7 @@ if ($gambar != "") {
     }
 } else {
     $query = "INSERT INTO tb_cvmahasiswa (id,nim,nama_mahasiswa,no_hp,jurusan,status_mahasiswa,perusahaan,jabatan,tahun_angkatan,
-    ip1,ip2,ip3,ip4,total,gambar) VALUES ('','$nim', '$nama', '$nohp' , '$jurusan',
+    ip1,ip2,ip3,ip4,total) VALUES ('','$nim', '$nama', '$nohp' , '$jurusan',
         '$status_M', '$perusahaan', '$posisi', '$thn_angkatan','$ip1','$ip2','$ip3','$ip4','$ipk')";
     $result = mysqli_query($conn, $query);
     // periska query apakah ada error

@@ -73,10 +73,10 @@ include '../component/header.php';
                                         <!-- ################# Edit  ##################################################### -->
                                         <!-- Edit CV Mahasiswa-->
                                         <div class="modal fade  bd-example-modal-lg" id="edit<?php echo $d['id']; ?>" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
-                                            <div class="modal-dialog  modal-sm " role="document">
+                                            <div class="modal-dialog   " role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header ">
-                                                        <h5 class="modal-title" id="edit">Edit Data Release</h5>
+                                                        <h5 class="modal-title" id="edit">Edit Mahasiswa Magang</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -86,15 +86,22 @@ include '../component/header.php';
                                                     <div class="modal-body">
                                                         <form class="user" method="POST" action="proses_editRelease.php" enctype="multipart/form-data">
                                                             <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
-                                                            <div class="form-row">
-                                                                <div class="form-group col-lg-10">
-                                                                    <input type="text" class="form-control form-control-user" name="nim" placeholder="Ketik NIM kamu..." value="<?php echo $d['nim']; ?>" required="">
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">NIM</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" class="form-control " name="nim" value="<?php echo $d['nim']; ?>" required="">
                                                                 </div>
-                                                                <div class="form-group col-lg-10">
-                                                                    <input type="text" class="form-control form-control-user" name="nama" placeholder="Ketik Nama Mahasiswa ..." value="<?php echo $d['nama_mahasiswa']; ?>" required>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Nama Mahasiswa</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" class="form-control " name="nama" value="<?php echo $d['nama_mahasiswa']; ?>" required>
                                                                 </div>
-                                                                <div class="form-group col-lg-10">
-                                                                    <select class="custom-select" style="height: 50px;  border-radius: 30px;" name="status_M" required>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Status Mahasiswa</label>
+                                                                <div class="col-sm-8">
+                                                                    <select class="custom-select" name="status_M" required>
                                                                         <?php
                                                                         if ($d['status_mahasiswa'] == "") echo "<option selected >Pilih Status</option>";
 
@@ -106,34 +113,34 @@ include '../component/header.php';
                                                                         ?>
                                                                     </select>
                                                                 </div>
-
-
                                                             </div>
 
-
-                                                            <div class="modal-footer ">
-                                                                <button type="submit" name="simpan" class="btn  btn-user btn-primary  btn-block" style="font-size: medium;"> Simpan </button>
-
-                                                            </div>
-                                                        </form>
                                                     </div>
+
+
+                                                    <div class="modal-footer ">
+                                                        <button type="submit" name="simpan" class="btn   btn-primary " style="font-size: medium;"> Simpan </button>
+
+                                                    </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!----------- Akhir Edit  Modal -------------->
-                                    </td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
-
-                    </table>
                 </div>
+                <!----------- Akhir Edit  Modal -------------->
+                </td>
+                </tr>
+            <?php
+                            }
+            ?>
+            </tbody>
+
+            </table>
             </div>
-
-
         </div>
+
+
+    </div>
     </div>
 
 

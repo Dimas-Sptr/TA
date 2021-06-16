@@ -2,7 +2,7 @@
     session_start();
     include '../conn/koneksi.php';
 
-    $old_pwd    = $_POST['old_pwd'];
+    $old_pwd    =  $_POST['old_pwd'];
     $old_Pwd    = md5($old_pwd);
     $new_pwd    = $_POST['new_pwd'];
     $pass       = md5($_POST['new_pwd']);

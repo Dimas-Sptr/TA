@@ -45,7 +45,7 @@ include '../component/header.php';
       <!-- ################# AWAL TAMBAH ##################################################### -->
       <!-- Tambah Mahasiswa-->
       <div class="modal fade  bd-example-modal-lg" id="tambahMhs" tabindex="-1" aria-labelledby="tambah" aria-hidden="true">
-        <div class="modal-dialog  modal-lg " role="document">
+        <div class="modal-dialog  modal-dialog-scrollable" role="document">
           <div class="modal-content">
             <div class="modal-header ">
               <h5 class="modal-title" id="aktivasi">Tambah Mahasiswa</h5>
@@ -57,28 +57,44 @@ include '../component/header.php';
 
             <div class="modal-body">
               <form class="user" method="POST" action="proses_tambahMhs.php">
-                <div class="form-row">
-                  <div class="form-group col-lg-6">
-                    <input type="text" class="form-control form-control-user" name="nim" placeholder="Ketik NIM kamu..." required="">
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label">NIM</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control " name="nim" required="">
                   </div>
-                  <div class="form-group col-lg-6">
-                    <input type="text" class="form-control form-control-user" name="nama" placeholder="Ketik Nama Lengkap ..." required>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label">Nama Mahasiswa</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control " name="nama" required>
                   </div>
-                  <div class="form-group col-lg-6">
-                    <input type="text" class="form-control form-control-user" name="tempat" placeholder="Ketik Tempat Tinggal..." required>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label">Tempat Lahir</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control " name="tempat" required>
                   </div>
-                  <div class=" form-group col-lg-6">
-                    <input type="text" class="form-control form-control-user" name="tanggal" placeholder="Pilih Tanggal Berakhir ..." onfocus="(this.type='date')">
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label">Tanggal Lahir</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control " name="tanggal" onfocus="(this.type='date')">
                   </div>
-                  <div class="form-group col-lg-6">
-                    <select class="custom-select" style="height: 50px;  border-radius: 30px;" name="jenkel" required>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label">Jenis Kelamin</label>
+                  <div class="col-sm-8">
+                    <select class="custom-select" name="jenkel" required>
                       <option selected>Pilih Jenis Kelamin...</option>
                       <option value="1">Laki-Laki</option>
                       <option value="2">Prempuan</option>
                     </select>
                   </div>
-                  <div class="form-group col-lg-6">
-                    <select class="custom-select" style="height: 50px;  border-radius: 30px;" name="status" required>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label">Status Mahasiswa</label>
+                  <div class="col-sm-8">
+                    <select class="custom-select" name="status" required>
                       <option selected>Pilih Status...</option>
                       <option value="Aktif">Aktif</option>
                       <option value="U-30">U-30</option>
@@ -86,21 +102,25 @@ include '../component/header.php';
                       <option value="Batal Registrasi">Batal Registrasi</option>
                     </select>
                   </div>
-                  <div class="form-group col-lg-12">
-                    <input type="text" class="form-control form-control-user" name="angkatan" placeholder="Ketik Tahun Angkatan ..." style="text-align: center;">
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label">Tahun Angkatan</label>
+                  <div class="col-sm-8">
+                    <input name="angkatan" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="4" />
                   </div>
                 </div>
-
-
-                <div class="modal-footer ">
-                  <button type="submit" name="simpan" class="btn  btn-user btn-primary  btn-block"> Simpan </button>
-
-                </div>
-              </form>
             </div>
+
+
+            <div class="modal-footer ">
+              <button type="submit" name="simpan" class="btn btn-primary "> Simpan </button>
+
+            </div>
+            </form>
           </div>
         </div>
       </div>
+
       <!---------------- AKHIR TAMBAH DATA ----------------->
       <div class="card-body">
         <div class="table-responsive">
@@ -140,7 +160,7 @@ include '../component/header.php';
                     <!-- ################# AWAL EDIT ##################################################### -->
                     <!-- Edit Mahasiswa -->
                     <div class="modal fade" id="edit<?php echo $d['id']; ?>" role="dialog">
-                      <div class="modal-dialog ">
+                      <div class="modal-dialog  modal-dialog-scrollable ">
                         <div class="modal-content">
                           <div class="modal-header ">
                             <h5 class="modal-title" id="edit_mahasiswa">Edit Mahasiswa</h5>
@@ -152,22 +172,36 @@ include '../component/header.php';
 
                           <div class="modal-body">
                             <form class="user" method="POST" action="proses_editMhs.php">
-                              <div class="form-row">
-                                <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
-                                <div class="form-group col-lg-6">
-                                  <input type="text" class="form-control form-control-user" name="nim" placeholder="Ketik NIM kamu..." value="<?php echo $d['nim']; ?>" required="">
+
+                              <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">NIM</label>
+                                <div class="col-sm-8">
+                                  <input type="text" class="form-control " name="nim" value="<?php echo $d['nim']; ?>" required="">
                                 </div>
-                                <div class="form-group col-lg-6">
-                                  <input type="text" class="form-control form-control-user" name="nama" placeholder="Ketik Nama Lengkap ..." value="<?php echo $d['nama']; ?>" required>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Nama Mahasiswa</label>
+                                <div class="col-sm-8">
+                                  <input type="text" class="form-control " name="nama" value="<?php echo $d['nama']; ?>" required>
                                 </div>
-                                <div class="form-group col-lg-6">
-                                  <input type="text" class="form-control form-control-user" name="tempat" placeholder="Ketik Tempat Tinggal..." value="<?php echo $d['tempat_lahir']; ?>" required>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Tempat Lahir</label>
+                                <div class="col-sm-8">
+                                  <input type="text" class="form-control " name="tempat" value="<?php echo $d['tempat_lahir']; ?>" required>
                                 </div>
-                                <div class=" form-group col-lg-6">
-                                  <input type="date" class="form-control form-control-user" name="tanggal" placeholder="Pilih Tanggal Lahir ..." value="<?php echo $d['tgl_lahir']; ?>" required>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Tanggal Lahir</label>
+                                <div class="col-sm-8">
+                                  <input type="date" class="form-control " name="tanggal" value="<?php echo $d['tgl_lahir']; ?>" required>
                                 </div>
-                                <div class="form-group col-lg-6">
-                                  <select class="custom-select" style="height: 50px;  border-radius: 30px;" name="jenkel" required>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Jenis Kelamin</label>
+                                <div class="col-sm-8">
+                                  <select class="custom-select" name="jenkel" required>
                                     <?php
                                     if ($d['jenkel'] == "") echo "<option selected >Pilih Jenis Kelamin</option>";
 
@@ -180,8 +214,11 @@ include '../component/header.php';
                                     ?>
                                   </select>
                                 </div>
-                                <div class="form-group col-lg-6">
-                                  <select class="custom-select" style="height: 50px;  border-radius: 30px;" name="status" required>
+                              </div>
+                              <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Status Mahasiswa</label>
+                                <div class="col-sm-8">
+                                  <select class="custom-select" name="status" required>
                                     <?php
                                     if ($d['status'] == "") echo "<option selected>Pilih Status</option>";
 
@@ -202,167 +239,171 @@ include '../component/header.php';
                                     ?>
                                   </select>
                                 </div>
-                                <div class="form-group col-lg-12">
-                                  <input type="text" class="form-control form-control-user" name="angkatan" value="<?php echo $d['angkatan']; ?>" placeholder="Ketik Tahun Angkatan ..." style="text-align: center;">
-                                </div>
-                              </div>
-                              <div class="modal-footer ">
-                                <button type="submit" name="Update" class="btn  btn-user btn-primary  btn-block"> Update </button>
-
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!---------------- AKHIR EDIT DATA ----------------->
-
-                    <a href="delete_mhs.php?id=<?= $d['id'] ?>" class="btn btn-danger btn-xs delete-data btn-circle">
-                      <i class="far fa-trash-alt"></i>
-                    </a>
-                    <a href="#" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#detail<?php echo $d['id']; ?>">
-                      <i class="fa fa-info" aria-hidden="true"></i>
-                    </a>
-
-                    <!--- AWAL MODAL DETAIL -->
-                    <div class="modal fade" id="detail<?php echo $d['id']; ?>" tabindex="-1" aria-hidden="true" role="dialog">
-                      <div class="modal-dialog modal-lg ">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="view">Detail Data Mahasiswa</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <form class="user">
-                              <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
-                              <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">NIM</label>
-                                <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" value="<?php echo $d['nim']; ?>" readonly>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Nama</label>
-                                <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" value="<?php echo $d['nama']; ?>" readonly>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Alamat</label>
-                                <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" value="<?php echo $d['tempat_lahir']; ?>" readonly>
-                                </div>
-                              </div>
-                              <div class=" form-group row">
-                                <label class="col-sm-4 col-form-label">Tanggal Lahir</label>
-                                <div class="col-sm-8">
-                                  <input type="date" class="form-control form-control-user" value="<?php echo $d['tgl_lahir'];  ?>" readonly>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Jenis Kelamin</label>
-                                <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" value="<?php $jenkel = $d['jenkel'];
-                                                                                                    if ($jenkel == "2") {
-                                                                                                      echo $jenkel = "Prempuan";
-                                                                                                    } else {
-                                                                                                      echo $jenkel = "Laki-Laki";
-                                                                                                    } ?>" readonly>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Status</label>
-                                <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" value="<?php echo $d['status']; ?>" readonly>
-                                </div>
                               </div>
                               <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Tahun Angkatan</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control form-control-user" value="<?php echo $d['angkatan']; ?>" readonly>
+                                  <input name="angkatan" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="4" value="<?php echo $d['angkatan']; ?>" />
                                 </div>
                               </div>
-                            </form>
-                            <div class="modal-footer ">
-                              <button type="button" class="btn  btn-danger " data-dismiss="modal">Close</button>
-
-                            </div>
+                          </div>
+                          <div class="modal-footer ">
+                            <button type="submit" name="Update" class="btn  btn-primary "> Simpan </button>
 
                           </div>
+                          </form>
                         </div>
                       </div>
                     </div>
-                    <!--- End -->
-
-                  </td>
-                </tr>
-              <?php }
-              ?>
-            </tbody>
-
-          </table>
         </div>
-      </div>
+        <!---------------- AKHIR EDIT DATA ----------------->
 
+        <a href="delete_mhs.php?id=<?= $d['id'] ?>" class="btn btn-danger btn-xs delete-data btn-circle">
+          <i class="far fa-trash-alt"></i>
+        </a>
+        <a href="#" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#detail<?php echo $d['id']; ?>">
+          <i class="fa fa-info" aria-hidden="true"></i>
+        </a>
+
+        <!--- AWAL MODAL DETAIL -->
+        <div class="modal fade" id="detail<?php echo $d['id']; ?>" tabindex="-1" aria-hidden="true" role="dialog">
+          <div class="modal-dialog modal-lg ">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="view">Detail Data Mahasiswa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="user">
+                  <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">NIM</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control " value="<?php echo $d['nim']; ?>" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Nama</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control " value="<?php echo $d['nama']; ?>" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Alamat</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control " value="<?php echo $d['tempat_lahir']; ?>" readonly>
+                    </div>
+                  </div>
+                  <div class=" form-group row">
+                    <label class="col-sm-4 col-form-label">Tanggal Lahir</label>
+                    <div class="col-sm-8">
+                      <input type="date" class="form-control " value="<?php echo $d['tgl_lahir'];  ?>" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Jenis Kelamin</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control " value="<?php $jenkel = $d['jenkel'];
+                                                                      if ($jenkel == "2") {
+                                                                        echo $jenkel = "Prempuan";
+                                                                      } else {
+                                                                        echo $jenkel = "Laki-Laki";
+                                                                      } ?>" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Status</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control " value="<?php echo $d['status']; ?>" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Tahun Angkatan</label>
+                    <div class="col-sm-8">
+                      <input name="angkatan" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="4" value="<?php echo $d['angkatan']; ?>" readonly />
+                    </div>
+                  </div>
+                </form>
+                <div class="modal-footer ">
+                  <button type="button" class="btn  btn-danger " data-dismiss="modal">Close</button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--- End -->
+
+        </td>
+        </tr>
+      <?php }
+      ?>
+      </tbody>
+
+      </table>
+      </div>
     </div>
 
-    <?php
-    include '../component/script.php';
-    include '../component/script_datatable.php';
-    ?>
-    <?php
-    $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
+  </div>
 
-    if ($pesan == 'success') {
+  <?php
+  include '../component/script.php';
+  include '../component/script_datatable.php';
+  ?>
+  <?php
+  $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
 
-      echo " <script>Swal.fire(
+  if ($pesan == 'success') {
+
+    echo " <script>Swal.fire(
   'Berhasil',
   'Data Berhasil Disimpan',
   'success')
   </script>";
-    } else {
-    }
+  } else {
+  }
 
-    ?>
+  ?>
 
-    <script type="text/javascript">
-      $('.delete-data').on('click', function(e) {
-        e.preventDefault();
-        var getLink = $(this).attr('href');
+  <script type="text/javascript">
+    $('.delete-data').on('click', function(e) {
+      e.preventDefault();
+      var getLink = $(this).attr('href');
 
-        Swal.fire({
-          title: 'Hapus Data?',
-          text: "Data akan dihapus permanen",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Hapus'
-        }).then((result) => {
-          if (result.value) {
+      Swal.fire({
+        title: 'Hapus Data?',
+        text: "Data akan dihapus permanen",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Hapus'
+      }).then((result) => {
+        if (result.value) {
 
-            window.location.href = getLink;
-          }
-        })
+          window.location.href = getLink;
+        }
+      })
+    });
+  </script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var table = $('#datatable').DataTable({
+        lengthChange: false,
+        buttons: ['copy', 'excel', 'pdf', 'colvis']
       });
-    </script>
 
-    <script type="text/javascript">
-      $(document).ready(function() {
-        var table = $('#datatable').DataTable({
-          lengthChange: false,
-          buttons: ['copy', 'excel', 'pdf', 'colvis']
-        });
-
-        table.buttons().container()
-          .appendTo('#datatable_wrapper .col-md-6:eq(0)');
-      });
-    </script>
-    <?php
-    include '../component/footer.php';
-    ?>
+      table.buttons().container()
+        .appendTo('#datatable_wrapper .col-md-6:eq(0)');
+    });
+  </script>
+  <?php
+  include '../component/footer.php';
+  ?>
 
 </body>
 

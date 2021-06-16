@@ -87,70 +87,59 @@ include '../component/header.php';
 
 
                                                     <div class="modal-body">
-                                                        <form class="user" method="POST" action="#">
+                                                        <form class="user" method="POST" action="proses_tambahpengajuan.php">
                                                             <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
                                                             <div class="form-row">
                                                                 <div class="form-group col-lg-12">
-                                                                    <input type="text" class="form-control form-control-user" name="nama_P" placeholder="Ketik Nama Perusahaan..." value="<?php echo $d['nama_perusahaan'];  ?>" readonly>
+                                                                    <label class="col-sm-4 col-form-label">Nama Perusahaan</label>
+                                                                    <input type="text" class="form-control " name="nama_P" style="font-size: 14px;" value="<?php echo $d['nama_perusahaan'];  ?>" readonly>
                                                                 </div>
                                                                 <div class="form-group col-lg-12">
-                                                                    <input type="text" class="form-control form-control-user" name="posisi" placeholder="Ketik Posisi ..." value="<?php echo $d['posisi'];  ?>" readonly>
+                                                                    <label class="col-sm-4 col-form-label">Posisi</label>
+                                                                    <input type="text" class="form-control " name="posisi" style="font-size: 14px;" value="<?php echo $d['posisi'];  ?>" readonly>
                                                                 </div>
                                                                 <div class="form-group col-lg-12">
-                                                                    <textarea class="ckeditor" id="editor" name="persyaratan" readonly="readonly"><?php echo $d['persyaratan']; ?> </textarea>
+                                                                    <label class="col-sm-4 col-form-label">Persyaratan</label>
+                                                                    <textarea class="ckeditor" id="editor" name="persyaratan" style="font-size: 14px;" readonly="readonly"><?php echo $d['persyaratan']; ?> </textarea>
                                                                 </div>
                                                                 <div class="form-group col-lg-12">
-                                                                    <input type="date" class="form-control form-control-user" name="tgl_berakhir" value="<?php echo $d['tgl_berakhir'];  ?>" readonly>
+                                                                    <label class="col-sm-4 col-form-label">Tanggal Berakhir</label>
+                                                                    <input type="date" class="form-control " name="tgl_berakhir" style="font-size: 14px;" value="<?php echo $d['tgl_berakhir'];  ?>" readonly>
                                                                 </div>
                                                                 <div class="form-group col-lg-12">
-
-                                                                    <textarea class="form-control  form-control-user" name="alamat" aria-label="With textarea" readonly><?php echo $d['alamat']; ?></textarea>
+                                                                    <label class="col-sm-4 col-form-label">Alamat</label>
+                                                                    <textarea class="form-control  " name="alamat" style="font-size: 14px;" aria-label="With textarea" readonly><?php echo $d['alamat']; ?></textarea>
                                                                 </div>
 
                                                             </div>
-                                                    </div><?php
-                                                        }
-                                                            ?>
-                                                <div class="modal-footer ">
-                                                    <?php
-                                                    $data = mysqli_query($conn, "select * from tb_pengajuanmagang where nim = '$_SESSION[username]'  ");
+                                                    </div>
+                                                    <div class="modal-footer ">
+                                                        <button type="submit" name="simpan" class="btn  btn-user btn-success"> Ajukan Magang </button>
+                                                    </div>
 
-                                                    while ($d = mysqli_fetch_array($data)) {
-                                                        if ($d['status'] < 2) {
-                                                            $status = '<button type="submit" name="simpan" class="btn  btn-user btn-success" disabled > Ajukan Magang </button>';
-                                                        }
-                                                        if ($d['status'] > 2) {
-                                                            $status = '<button type="submit" name="simpan" class="btn  btn-user btn-success"> Ajukan Magang </button>';
-                                                        }
-
-                                                    ?>
-                                                        <?php echo $status; ?>
-
-
-                                                    <?php
-                                                    }
-                                                    ?>
 
                                                 </div>
 
                                                 </form>
 
-                                                </div>
                                             </div>
                                         </div>
-                                        <!---------------- AKHIR Edit Lowongan ----------------->
-
-                                    </td>
-                                </tr>
-
-                        </tbody>
-
-                    </table>
                 </div>
+                <!---------------- AKHIR Edit Lowongan ----------------->
 
+                </td>
+                </tr>
+            <?php
+                            }
+            ?>
+            </tbody>
 
+            </table>
             </div>
+
+
         </div>
+    </div>
     </div>
 
 

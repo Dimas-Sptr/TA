@@ -76,7 +76,7 @@ include '../component/header.php';
                                         <!-- ################# Edit  ##################################################### -->
                                         <!-- Edit admin C&P Mahasiswa-->
                                         <div class="modal fade  bd-example-modal-lg" id="edit<?php echo $d['id']; ?>" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
-                                            <div class="modal-dialog  modal-sm " role="document">
+                                            <div class="modal-dialog  " role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header ">
                                                         <h5 class="modal-title" id="edit">Edit AKun Mahasiswa</h5>
@@ -90,20 +90,22 @@ include '../component/header.php';
                                                         <form class="user" method="POST" action="proses_editakunM.php" enctype="multipart/form-data">
                                                             <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
                                                             <div class="form-row">
-                                                                <div class="form-group col-lg-10">
-                                                                    <input type="text" class="form-control form-control-user" name="kode" placeholder="Ketik Nim Mahasiswa..." value="<?php echo $d['kode']; ?>" required="">
+                                                                <div class="form-group col-lg-6">
+                                                                    <label><b> NIM</b> </label>
+                                                                    <input type="text" class="form-control " name="kode" value="<?php echo $d['kode']; ?>" required="">
                                                                 </div>
-                                                                <div class="form-group col-lg-10">
-                                                                    <input type="text" class="form-control form-control-user" name="nama" placeholder="Ketik Nama Mahasiswa ..." value="<?php echo $d['nama']; ?>" required>
+                                                                <div class="form-group col-lg-6">
+                                                                    <label><b> Nama Mahasiswa</b> </label>
+                                                                    <input type="text" class="form-control " name="nama" value="<?php echo $d['nama']; ?>" required>
                                                                 </div>
-                                                                <div class="form-group col-lg-10">
-                                                                    <input type="text" class="form-control form-control-user" name="email" placeholder="Ketik Email Mahasiswa ..." value="<?php echo $d['email']; ?>">
+                                                                <div class="form-group col-lg-6">
+                                                                    <label><b> Email</b> </label>
+                                                                    <input type="text" class="form-control " name="email" value="<?php echo $d['email']; ?>">
                                                                 </div>
-                                                                <div class="form-group col-lg-10">
-                                                                    <input type="password" class="form-control form-control-user" name="password" placeholder="Ketik password Login ...">
-                                                                </div>
-                                                                <div class="form-group col-lg-10">
-                                                                    <select class="custom-select" style="height: 50px;  border-radius: 30px;" name="level" required>
+
+                                                                <div class="form-group col-lg-6">
+                                                                    <label><b> Hak Akses</b> </label>
+                                                                    <select class="custom-select" name="level" required>
                                                                         <?php
                                                                         if ($d['level'] == "") echo "<option selected >Pilih Status</option>";
 
@@ -125,7 +127,8 @@ include '../component/header.php';
 
 
                                                             <div class="modal-footer ">
-                                                                <button type="submit" name="simpan" class="btn  btn-user btn-primary  btn-block" style="font-size: medium;"> Simpan </button>
+                                                                <a href="reset_passM.php" type="submit" name="reset" class="btn  btn-danger " style="font-size: medium;"> Reset Password </a>
+                                                                <button type="submit" name="simpan" class="btn   btn-primary " style="font-size: medium;"> Simpan </button>
 
                                                             </div>
                                                         </form>
@@ -134,6 +137,7 @@ include '../component/header.php';
                                             </div>
                                         </div>
                                         <!----------- Akhir Edit  Modal -------------->
+
                                         <a href="delete_AkunM.php?id=<?= $d['id'] ?>" class="btn btn-danger btn-xs delete-data btn-circle">
                                             <i class="far fa-trash-alt"></i>
                                         </a>
@@ -173,6 +177,38 @@ include '../component/header.php';
     } else {
     }
     ?>
+    <?php
+    $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
+
+    if ($pesan == 'reset_success') {
+
+        echo " <script>
+        Swal.fire(
+            'Reset Berhasil',
+            '<b>Kode</b> Adalah <b>Username</b> Dan <b>Password</b> Kamu',
+            'success')
+    </script>";
+    } else {
+    }
+
+    ?>
+
+    <?php
+    $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
+
+    if ($pesan == 'fail') {
+        echo "<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Gagal',
+        text: 'Perikas Kembali!',
+        
+      })
+        </script>";
+    } else {
+    }
+    ?>
+
 
     <script type="text/javascript">
         $('.delete-data').on('click', function(e) {

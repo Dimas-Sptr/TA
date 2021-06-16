@@ -42,6 +42,7 @@ include '../component/header.php';
                         </a></button>
                 </div>
             </div>
+
             <!-- ################# AWAL TAMBAH ##################################################### -->
             <!-- Tambah Lowongan-->
             <div class="modal fade  bd-example-modal-lg" id="buat_lowongan" tabindex="-1" aria-hidden="true">
@@ -59,24 +60,29 @@ include '../component/header.php';
                             <form class="user" method="POST" action="proses_tambahLowongan.php">
                                 <div class="form-row">
                                     <div class="form-group col-lg-12">
-                                        <input type="text" class="form-control form-control-user" name="nama" placeholder="Ketik Nama Perusahaan..." required="">
+                                        <label class="col-sm-4 col-form-label">Nama Perusahaan</label>
+                                        <input type="text" class="form-control " name="nama" value="<?php echo $_SESSION['nama']; ?>" readonly>
                                     </div>
                                     <div class="form-group col-lg-12">
-                                        <input type="text" class="form-control form-control-user" name="posisi" placeholder="Ketik Posisi Yang Dibutuhkan ..." required>
+                                        <label class="col-sm-4 col-form-label">Posisi</label>
+                                        <input type="text" class="form-control " name="posisi" required>
                                     </div>
                                     <div class="form-group col-lg-12">
-                                        <textarea class="ckeditor" id="editor" name="persyaratan" required></textarea>
+                                        <label class="col-sm-4 col-form-label">Persyaratan</label>
+                                        <textarea class="ckeditor" id="ckedtor" name="persyaratan" placeholder="Ketik persyaratan" required></textarea>
                                     </div>
                                     <div class="form-group col-lg-12">
-                                        <input type="text" class="form-control form-control-user" name="tgl_berakhir" placeholder="Pilih Tanggal Berakhir ..." onfocus="(this.type='date')">
+                                        <label class="col-sm-4 col-form-label">Tanggal Berakhir</label>
+                                        <input type="text" class="form-control " name="tgl_berakhir" onfocus="(this.type='date')">
                                     </div>
                                     <div class="form-group col-lg-12">
-                                        <textarea class="form-control form-control-user" name="alamat" placeholder="Ketik Alamat Perusahaan ..." required></textarea>
+                                        <label class="col-sm-4 col-form-label">Alamat</label>
+                                        <textarea class="form-control" name="alamat" required></textarea>
                                     </div>
                                 </div>
                         </div>
-                        <div class="modal-footer ">
-                            <button type="submit" name="simpan" class="btn  btn-user btn-primary  btn-block"> Simpan </button>
+                        <div class=" modal-footer ">
+                            <button type=" submit" name="status" class="btn   btn-primary  " value="0"> Simpan </button>
 
                         </div>
                         </form>
@@ -85,7 +91,6 @@ include '../component/header.php';
                 </div>
             </div>
             <!---------------- AKHIR TAMBAH Lowongan ----------------->
-
 
             <div class="card-body">
                 <div class="table-responsive">
@@ -98,7 +103,7 @@ include '../component/header.php';
                                 <th scope="col" style="color: white">Persyaratan</th>
                                 <th scope="col" style="color: white">Tanggal Berakhir</th>
                                 <th scope="col" style="color: white">Status</th>
-                                <th scope="col" style="color: white; width: 120px">Aksi</th>
+                                <th scope="col" style="color: white; ">Aksi</th>
 
                             </tr>
                         </thead>
@@ -137,7 +142,7 @@ include '../component/header.php';
                                             <div class="modal-dialog modal-lg modal-dialog-scrollable   " role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header ">
-                                                        <h5 class="modal-title" id="aktivasi">Edit Pengajuan Lowongan</h5>
+                                                        <h5 class="modal-title" id="aktivasi">Edit Lowongan</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -149,36 +154,30 @@ include '../component/header.php';
                                                             <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
                                                             <div class="form-row">
                                                                 <div class="form-group col-lg-12">
-                                                                    <input type="text" class="form-control form-control-user" name="nama" placeholder="Ketik Nama Perusahaan..." value="<?php echo $d['nama_perusahaan'];  ?>" required="">
+                                                                    <label class="col-sm-4 col-form-label">Nama Perusahaan</label>
+                                                                    <input type="text" class="form-control " name="nama" style="font-size: 14px;" value="<?php echo $d['nama_perusahaan'];  ?>" readonly>
                                                                 </div>
                                                                 <div class="form-group col-lg-12">
-                                                                    <input type="text" class="form-control form-control-user" name="posisi" placeholder="Ketik Posisi ..." value="<?php echo $d['posisi'];  ?>" required>
+                                                                    <label class="col-sm-4 col-form-label">Posisi</label>
+                                                                    <input type="text" class="form-control " name="posisi" style="font-size: 14px;" value="<?php echo $d['posisi'];  ?>" required>
                                                                 </div>
                                                                 <div class="form-group col-lg-12">
-                                                                    <textarea class="ckeditor" id="editor" name="persyaratan" required><?php echo $d['persyaratan']; ?></textarea>
+                                                                    <label class="col-sm-4 col-form-label">Persyaratan</label>
+                                                                    <textarea class="ckeditor" id="editor" name="persyaratan" placeholder="Ketik persyaratan" style="font-size: 14px;" required><?php echo $d['persyaratan'];  ?></textarea>
                                                                 </div>
                                                                 <div class="form-group col-lg-12">
-                                                                    <input type="date" class="form-control form-control-user" name="tgl_berakhir" value="<?php echo $d['tgl_berakhir'];  ?>" required>
+                                                                    <label class="col-sm-4 col-form-label">Tanggal Berakhir</label>
+                                                                    <input type="date" class="form-control " name="tgl_berakhir" value="<?php echo $d['tgl_berakhir'];  ?>" style="font-size: 14px;">
                                                                 </div>
-                                                                <div class="form-group col-lg-12">
 
-                                                                    <textarea class="form-control  form-control-user" name="alamat" aria-label="With textarea"><?php echo $d['alamat']; ?></textarea>
-                                                                </div>
-                                                                <?php
-                                                                if ($d['status'] == 0) {
-                                                                    $status = "Pending";
-                                                                }
-                                                                if ($d['status'] == 1) {
-                                                                    $status = "Approved";
-                                                                }
-                                                                ?>
                                                                 <div class="form-group col-lg-12">
-                                                                    <input type="text" class="form-control form-control-user" name="status" value="<?php echo $status  ?>" readonly>
+                                                                    <label class="col-sm-4 col-form-label">Alamat</label>
+                                                                    <textarea class="form-control" name="alamat" style="font-size: 14px;" required><?php echo $d['alamat']; ?></textarea>
                                                                 </div>
                                                             </div>
                                                     </div>
                                                     <div class="modal-footer ">
-                                                        <button type="submit" name="simpan" class="btn  btn-user btn-primary  btn-block"> Update </button>
+                                                        <button type="submit" name="simpan" class="btn   btn-primary  ">Simpan </button>
 
                                                     </div>
                                                     </form>
@@ -187,6 +186,9 @@ include '../component/header.php';
                                             </div>
                                         </div>
                                         <!---------------- AKHIR Edit Lowongan ----------------->
+                                        <a href="delete_lowongan.php?id=<?= $d['id'] ?>" class="btn btn-danger btn-xs delete-data btn-circle">
+                                            <i class="far fa-trash-alt"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             <?php
@@ -209,12 +211,7 @@ include '../component/header.php';
     include '../component/script.php';
     include '../component/script_datatable.php';
     ?>
-    <script>
-        CKEDITOR.replace('editor', {
-            extraPlugins: 'editorplaceholder',
-            editorplaceholder: 'Ketik Persyaratan Perusahaan'
-        });
-    </script>
+
     <?php
     $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
 
@@ -231,7 +228,29 @@ include '../component/header.php';
     } else {
     }
     ?>
-    <?php
+
+    <script type="text/javascript">
+        $('.delete-data').on('click', function(e) {
+            e.preventDefault();
+            var getLink = $(this).attr('href');
+
+            Swal.fire({
+                title: 'Hapus Data?',
+                text: "Data akan dihapus permanen",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Hapus'
+            }).then((result) => {
+                if (result.value) {
+
+                    window.location.href = getLink;
+                }
+            })
+        });
+    </script>
+    <?
     include '../component/footer.php';
 
     ?>

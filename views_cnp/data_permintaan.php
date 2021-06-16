@@ -28,7 +28,7 @@ include '../component/header.php';
         <nav aria-label="breadcrumb ">
             <ol class="breadcrumb col-lg-3">
                 <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Data Permintaan</li>
+                <li class="breadcrumb-item active" aria-current="page">Pengajuan Lowongan</li>
             </ol>
         </nav>
 
@@ -100,20 +100,25 @@ include '../component/header.php';
                                                         <form class="user" method="POST" action="proses_editpermintaan.php" enctype="multipart/form-data">
                                                             <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
                                                             <div class="form-row">
-                                                                <div class="form-group col-lg-6">
-                                                                    <input type="text" class="form-control form-control-user" name="nama" placeholder="Ketik Nama Perusahaan..." value="<?php echo $d['nama_perusahaan']; ?>" required="">
-                                                                </div>
-                                                                <div class="form-group col-lg-6">
-                                                                    <input type="text" class="form-control form-control-user" name="posisi" placeholder="Ketik Posisi Yang Dibutuhkan..." value="<?php echo $d['posisi']; ?>" required>
+                                                                <div class="form-group col-lg-12">
+                                                                    <label class="col-sm-4 col-form-label">Nama Perusahaan</label>
+                                                                    <input type="text" class="form-control " name="nama" placeholder="Ketik Nama Perusahaan..." style="font-size: 14px;" value="<?php echo $d['nama_perusahaan']; ?>" readonly>
                                                                 </div>
                                                                 <div class="form-group col-lg-12">
-                                                                    <textarea class="ckeditor" id="ckedtor" name="persyaratan" placeholder="Ketik persyaratan" required><?php echo $d['persyaratan']; ?></textarea>
+                                                                    <label class="col-sm-4 col-form-label">Posisi</label>
+                                                                    <input type="text" class="form-control " name="posisi" value="<?php echo $d['posisi']; ?>" style="font-size: 14px;" required>
                                                                 </div>
-                                                                <div class="form-group col-lg-6">
-                                                                    <input type="text" class="form-control form-control-user" name="tgl_berakhir" placeholder="Pilih Tanggal Berakhir ..." onfocus="(this.type='date')" value="<?php echo $d['tgl_berakhir']; ?>">
+                                                                <div class="form-group col-lg-12">
+                                                                    <label class="col-sm-4 col-form-label">Persyaratan</label>
+                                                                    <textarea class="ckeditor" id="ckedtor" name="persyaratan" placeholder="Ketik persyaratan" style="font-size: 14px;" required><?php echo $d['persyaratan']; ?></textarea>
                                                                 </div>
-                                                                <div class="form-group col-lg-6">
-                                                                    <input type="text" class="form-control form-control-user" name="alamat" placeholder="Ketik Nama Perusahaan..." value="<?php echo $d['alamat']; ?>" required="">
+                                                                <div class="form-group col-lg-12">
+                                                                    <label class="col-sm-4 col-form-label">Tanggal Berakhir</label>
+                                                                    <input type="text" class="form-control " name="tgl_berakhir" style="font-size: 14px;" placeholder="Pilih Tanggal Berakhir ..." onfocus="(this.type='date')" value="<?php echo $d['tgl_berakhir']; ?>">
+                                                                </div>
+                                                                <div class="form-group col-lg-12">
+                                                                    <label class="col-sm-4 col-form-label">Alamat</label>
+                                                                    <textarea class="form-control" name="alamat" style="font-size: 14px;" required><?php echo $d['alamat']; ?></textarea>
                                                                 </div>
 
 

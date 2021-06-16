@@ -101,29 +101,29 @@ include '../component/header.php';
 
                             ?>
                                 <tr>
-                                    <th scope=" row" style="font-size: 14px"><?php echo $no; ?></th>
-                                    <td style="font-size: 14px"><?php echo $d['nim'];  ?></td>
-                                    <td style="font-size: 14px"><?php echo $d['nama_mahasiswa'];  ?></td>
-                                    <td style="font-size: 14px"><?php echo $d['tempat_lahir'];  ?></td>
-                                    <td style="font-size: 14px"><?php echo $date =  date('d M Y', strtotime($date));  ?></td>
-                                    <td style="font-size: 14px"><?php $jurusan = $d['jurusan'];
-                                                                if ($jurusan == "-") {
-                                                                    echo $jurusan = "-";
-                                                                } else if ($jurusan == "AB") {
-                                                                    echo $jurusan = "Administrasi Bisnis";
-                                                                } else if ($jurusan == "TK") {
-                                                                    echo $jurusan = "Teknologi Komputer";
-                                                                } else {
-                                                                    echo $jurusan = "Akutansi";
-                                                                } ?> </td>
-                                    <td style="font-size: 14px"><?php echo number_format($d['total'], 1, '.', '');   ?></td>
-                                    <td style="font-size: 14px"><a href="view_cv.php?id=<?php echo $d['id']; ?>" class="badge badge-info" onclick="basicPopup(this.href); return false">Lihat CV</a></td>
-                                    <td style="font-size: 14px"><a href="#" class="btn btn-warning btn-circle" data-target="#lihat<?php echo $d['nim']; ?>" data-toggle="modal">
+                                    <th scope=" row"><?php echo $no; ?></th>
+                                    <td><?php echo $d['nim'];  ?></td>
+                                    <td><?php echo $d['nama_mahasiswa'];  ?></td>
+                                    <td><?php echo $d['tempat_lahir'];  ?></td>
+                                    <td><?php echo $date =  date('d M Y', strtotime($date));  ?></td>
+                                    <td><?php $jurusan = $d['jurusan'];
+                                        if ($jurusan == "-") {
+                                            echo $jurusan = "-";
+                                        } else if ($jurusan == "AB") {
+                                            echo $jurusan = "Administrasi Bisnis";
+                                        } else if ($jurusan == "TK") {
+                                            echo $jurusan = "Teknologi Komputer";
+                                        } else {
+                                            echo $jurusan = "Akutansi";
+                                        } ?> </td>
+                                    <td><?php echo number_format($d['total'], 1, '.', '');   ?></td>
+                                    <td><a href="view_cv.php?id=<?php echo $d['id']; ?>" class="badge badge-info" onclick="basicPopup(this.href); return false" style="margin-top: 5px;">Lihat CV</a></td>
+                                    <td><a href="#" class="btn btn-warning btn-circle" data-target="#lihat<?php echo $d['nim']; ?>" data-toggle="modal">
                                             <i class="fas fa-info"></i>
                                         </a>
                                         <!-- AWAL DETAIL -->
                                         <div class="modal fade" id="lihat<?php echo $d['nim']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="exampleModalLabel">Detail Mahasiswa</h5>
@@ -133,29 +133,33 @@ include '../component/header.php';
                                                     </div>
                                                     <div class="modal-body">
                                                         <form>
-                                                            <div class="row">
-                                                                <div class="form-group col-6">
-                                                                    <label for="recipient-name" class="col-form-label"><b>NIM</b></label>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">NIM</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php echo $d['nim']; ?>" readonly>
                                                                 </div>
-                                                                <div class="form-group col-6">
-                                                                    <label for="message-text" class="col-form-label"><b>Nama Mahasiswa</b></label>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Nama Mahasiswa</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php echo $d['nama_mahasiswa']; ?>" readonly>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="form-group col-6">
-                                                                    <label for="recipient-name" class="col-form-label"><b>Tempat Lahir</b></label>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Tempat Lahir</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php echo $d['tempat_lahir']; ?>" readonly>
                                                                 </div>
-                                                                <div class="form-group col-6">
-                                                                    <label for="message-text" class="col-form-label"><b>Tanggal Lahir</b></label>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Tanggal Lahir</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php echo $date =  date('d M Y', strtotime($date));  ?>" readonly>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="form-group col-6">
-                                                                    <label for="recipient-name" class="col-form-label"><b>Jenis Kelamin</b></label>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Jenisa Kelamin</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php $jenkel = $d['jenkel'];
                                                                                                                     if ($jenkel == "2") {
                                                                                                                         echo $jenkel = "Prempuan";
@@ -163,15 +167,16 @@ include '../component/header.php';
                                                                                                                         echo $jenkel = "Laki-Laki";
                                                                                                                     } ?>" readonly>
                                                                 </div>
-                                                                <div class="form-group col-6">
-                                                                    <label for="recipient-name" class="col-form-label"><b> Handphone</b></label>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Nomor Handphone</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php echo $d['no_hp']; ?>" readonly>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
-
-                                                                <div class="form-group col-6">
-                                                                    <label for="message-text" class="col-form-label"><b>Jurusan</b></label>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Jurusan</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php $jurusan = $d['jurusan'];
                                                                                                                     if ($jurusan == "-") {
                                                                                                                         echo $jurusan = "-";
@@ -183,100 +188,103 @@ include '../component/header.php';
                                                                                                                         echo $jurusan = "Akutansi";
                                                                                                                     } ?>" readonly>
                                                                 </div>
-                                                                <div class="form-group col-6">
-                                                                    <label for="message-text" class="col-form-label"><b>Tahun Angkatan</b></label>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Tahun Angkatan</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php echo $d['tahun_angkatan']; ?>" readonly>
                                                                 </div>
                                                             </div>
 
-                                                            <div class="row">
-                                                                <div class="form-group col-6">
-                                                                    <label for="recipient-name" class="col-form-label"><b>IP1</b></label>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">IP 1</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php echo $d['ip1']; ?>" readonly>
                                                                 </div>
-                                                                <div class="form-group col-6">
-                                                                    <label for="message-text" class="col-form-label"><b>IP2</b></label>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">IP 2</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php echo $d['ip2']; ?>" readonly>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="form-group col-6">
-                                                                    <label for="recipient-name" class="col-form-label"><b>IP3</b></label>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">IP 3</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php echo $d['ip3']; ?>" readonly>
                                                                 </div>
-                                                                <div class="form-group col-6">
-                                                                    <label for="message-text" class="col-form-label"><b>IP4</b></label>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">IP 4</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php echo $d['ip4']; ?>" readonly>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="form-group col-6">
-                                                                    <label for="recipient-name" class="col-form-label"><b>Total</b></label>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Total</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php echo number_format($d['total'], 1, '.', ''); ?>" readonly>
                                                                 </div>
-                                                                <div class="form-group col-6">
-                                                                    <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="badge badge-info" style="margin-top: 45px; font-size: 14px; " onclick="basicPopup(this.href); return false">Lihat CV</a>
+                                                            </div>
+
+                                                    </div>
+
+
+
+                                                    <div class="modal-footer">
+                                                        <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="btn btn-info" style=" font-size: 16px; " onclick="basicPopup(this.href); return false">Lihat CV</a>
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- AKHIR DETAIL MODAL -->
+
+
                                     </td>
+                                    </td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
+                        </tbody>
 
-
+                    </table>
                 </div>
             </div>
-            </form>
+
+
 
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-        </div>
-
-    </div>
     </div>
 
-    </div>
 
-    <!-- AKHIR DETAIL MODAL -->
-
-
-
-    </td>
-    </tr>
-<?php
-                            }
-?>
-</tbody>
-
-</table>
-</div>
-</div>
+    <?php
+    include '../component/script.php';
+    include '../component/script_datatable.php';
+    ?>
 
 
 
-</div>
-</div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var table = $('#datatable').DataTable({
+                lengthChange: false,
+                buttons: ['copy', 'excel', 'pdf', 'colvis']
+            });
 
-
-<?php
-include '../component/script.php';
-include '../component/script_datatable.php';
-?>
-
-
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        var table = $('#datatable').DataTable({
-            lengthChange: false,
-            buttons: ['copy', 'excel', 'pdf', 'colvis']
+            table.buttons().container()
+                .appendTo('#datatable_wrapper .col-md-6:eq(0)');
         });
+    </script>
+    <?php
+    include '../component/footer.php';
 
-        table.buttons().container()
-            .appendTo('#datatable_wrapper .col-md-6:eq(0)');
-    });
-</script>
-<?php
-include '../component/footer.php';
-
-?>
+    ?>
 
 </body>
 
