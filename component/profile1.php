@@ -15,14 +15,15 @@
         <?php
 
         $daftar_lowongan = mysqli_query($conn, "SELECT * FROM tb_lowonganmagang where status=0");
-
         $jumlah1 = mysqli_num_rows($daftar_lowongan);
 
         $daftar_pengajuan = mysqli_query($conn, "SELECT * FROM tb_pengajuanmagang where status=0");
-
         $jumlah2 = mysqli_num_rows($daftar_pengajuan);
 
-        $total = $jumlah1 + $jumlah2;
+        $daftar_rekrutmen = mysqli_query($conn, "SELECT * FROM tb_rekrutmen where status=0");
+        $jumlah3 = mysqli_num_rows($daftar_rekrutmen);
+
+        $total = $jumlah1 + $jumlah2 + $jumlah3;
 
 
         ?>
@@ -60,6 +61,18 @@
                 <span class="font-weight-bold">PENGAJUAN LOWONGAN = <?php echo $jumlah1; ?></span>
               </div>
             </a>
+            <a class="dropdown-item d-flex align-items-center" href="pengajuan_rekrutmen.php">
+              <div class="mr-3">
+                <div class="icon-circle bg-success">
+                  <i class="fas fa-address-book text-white"></i>
+                </div>
+              </div>
+              <div>
+                <div class="small text-gray-500"><?php echo date(', d F Y'); ?></div>
+                <span class="font-weight-bold">PENGAJUAN REKRUTMEN= <?php echo $jumlah3; ?></span>
+              </div>
+            </a>
+
         </li>
 
         <div class="topbar-divider d-none d-sm-block"></div>

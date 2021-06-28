@@ -132,23 +132,23 @@ include '../component/header.php';
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form>
+                                                        <form class="user" method="POST" action="proses_rekrutmen.php" enctype="multipart/form-data">
                                                             <div class="form-group row">
                                                                 <label class="col-sm-4 col-form-label">NIM</label>
                                                                 <div class="col-sm-8">
-                                                                    <input type="text" class="form-control" value="<?php echo $d['nim']; ?>" readonly>
+                                                                    <input type="number" name="nim" class="form-control" value="<?php echo $d['nim']; ?>" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-sm-4 col-form-label">Nama Mahasiswa</label>
                                                                 <div class="col-sm-8">
-                                                                    <input type="text" class="form-control" value="<?php echo $d['nama_mahasiswa']; ?>" readonly>
+                                                                    <input type="text" class="form-control" name="nama_M" value="<?php echo $d['nama_mahasiswa']; ?>" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-sm-4 col-form-label">Tempat Lahir</label>
                                                                 <div class="col-sm-8">
-                                                                    <input type="text" class="form-control" value="<?php echo $d['tempat_lahir']; ?>" readonly>
+                                                                    <input type="text" class="form-control" name="tempat" value="<?php echo $d['tempat_lahir']; ?>" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -158,7 +158,7 @@ include '../component/header.php';
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-sm-4 col-form-label">Jenisa Kelamin</label>
+                                                                <label class="col-sm-4 col-form-label">Jenis Kelamin</label>
                                                                 <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php $jenkel = $d['jenkel'];
                                                                                                                     if ($jenkel == "2") {
@@ -171,23 +171,37 @@ include '../component/header.php';
                                                             <div class="form-group row">
                                                                 <label class="col-sm-4 col-form-label">Nomor Handphone</label>
                                                                 <div class="col-sm-8">
-                                                                    <input type="text" class="form-control" value="<?php echo $d['no_hp']; ?>" readonly>
+                                                                    <input type="text" class="form-control" name="nohp" value="<?php echo $d['no_hp']; ?>" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-sm-4 col-form-label">Jurusan</label>
                                                                 <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php $jurusan = $d['jurusan'];
-                                                                                                                    if ($jurusan == "-") {
-                                                                                                                        echo $jurusan = "-";
+                                                                                                                    if ($jurusan == "TK") {
+                                                                                                                        echo $jurusan = "Teknologi Komputer";
                                                                                                                     } else if ($jurusan == "AB") {
                                                                                                                         echo $jurusan = "Administrasi Bisnis";
-                                                                                                                    } else if ($jurusan == "TK") {
-                                                                                                                        echo $jurusan = "Teknologi Komputer";
                                                                                                                     } else {
                                                                                                                         echo $jurusan = "Akutansi";
                                                                                                                     } ?>" readonly>
                                                                 </div>
+                                                                <select class="custom-select" name="jurusan" style="display: none;">
+                                                                    <?php
+                                                                    if ($d['jurusan'] == "-") echo "<option selected value='-' >Pilih Jurusan</option>";
+
+                                                                    if ($d['jurusan'] == "TK") echo "<option  value='TK' selected >Teknologi Komputer</option> ";
+                                                                    else echo "<option  value='TK'>Teknologi Komputer</option>";
+
+                                                                    if ($d['jurusan'] == "AB") echo "<option  value='AB' selected >Administrasi Bisnis</option> ";
+                                                                    else echo "<option  value='AB'>Administrasi Bisnis</option>";
+
+                                                                    if ($d['jurusan'] == "AK") echo "<option  value='AK' selected >Akutansi</option> ";
+                                                                    else echo "<option  value='AK'>Akutansi</option>";
+
+                                                                    ?>
+                                                                </select>
+
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-sm-4 col-form-label">Tahun Angkatan</label>
@@ -223,19 +237,19 @@ include '../component/header.php';
                                                             <div class="form-group row">
                                                                 <label class="col-sm-4 col-form-label">Total</label>
                                                                 <div class="col-sm-8">
-                                                                    <input type="text" class="form-control" value="<?php echo number_format($d['total'], 1, '.', ''); ?>" readonly>
+                                                                    <input type="text" class="form-control" name="total" value="<?php echo number_format($d['total'], 1, '.', ''); ?>" readonly>
                                                                 </div>
                                                             </div>
-
                                                     </div>
 
 
 
                                                     <div class="modal-footer">
                                                         <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="btn btn-info" style=" font-size: 16px; " onclick="basicPopup(this.href); return false">Lihat CV</a>
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-success">Rekrut</button>
 
                                                     </div>
+                                                    </form>
 
                                                 </div>
                                             </div>

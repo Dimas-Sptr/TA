@@ -110,7 +110,7 @@ include '../component/header.php';
                         <tbody>
                             <?php
                             $no = 0;
-                            $data = mysqli_query($conn, "select * from tb_lowonganmagang");
+                            $data = mysqli_query($conn, "select * from tb_lowonganmagang where nama_perusahaan = '$_SESSION[nama]' ");
 
                             while ($d = mysqli_fetch_array($data)) {
                                 $no++;

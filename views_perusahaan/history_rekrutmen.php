@@ -28,13 +28,13 @@ include '../component/header.php';
         <nav aria-label="breadcrumb ">
             <ol class="breadcrumb col-lg-3">
                 <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
-                <li class="breadcrumb-item active" aria-current="page">History</li>
+                <li class="breadcrumb-item active" aria-current="page">History Rekrutmen</li>
             </ol>
         </nav>
 
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between ">
-                <h6 class="m-0 font-weight-bold text-primary">History Approved</h6>
+                <h6 class="m-0 font-weight-bold text-primary">History Rekrutmen</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -44,12 +44,13 @@ include '../component/header.php';
                                 <th scope="col" style="color: white">No</th>
                                 <th scope="col" style="color: white">NIM</th>
                                 <th scope="col" style="color: white">Nama</th>
-                                <th scope="col" style="color: white">Perusahaan</th>
-                                <th scope="col" style="color: white">Posisi</th>
-                                <th scope="col" style="color: white">Persyaratan</th>
-                                <th scope="col" style="color: white">Tanggal Berakhir</th>
-                                <th scope="col" style="color: white">Alamat</th>
+                                <th scope="col" style="color: white">Tempat</th>
+                                <th scope="col" style="color: white">No Handphone</th>
+                                <th scope="col" style="color: white">Jurusan</th>
+                                <th scope="col" style="color: white">IPK</th>
+                                <th scope="col" style="color: white">Rekrutmen By</th>
                                 <th scope="col" style="color: white">Status</th>
+
 
 
                             </tr>
@@ -57,16 +58,15 @@ include '../component/header.php';
                         <tbody>
                             <?php
                             $no = 0;
-                            $data = mysqli_query($conn, "select * from tb_pengajuanmagang where nama_perusahaan= '$_SESSION[nama]'   ");
+                            $data = mysqli_query($conn, "select * from tb_rekrutmen where nama_perusahaan= '$_SESSION[nama]' AND status=0   ");
 
                             while ($d = mysqli_fetch_array($data)) {
                                 $no++;
-                                $date = $d['tgl_berakhir'];
-                                $date =  date('d-M-Y', strtotime($date));
-                                if ($d['status'] == 3  && $d['nama_perusahaan'] == $_SESSION['nama']) {
-                                    $status = '<span class="badge badge-pill badge-danger" style="margin-top: 5px; font-size: 14px; ">Rejected</span>';
+
+                                if ($d['status'] == 0  && $d['nama_perusahaan'] == $_SESSION['nama']) {
+                                    $status = '<span class="badge badge-pill badge-info" style="margin-top: 5px; font-size: 14px; ">Pending</span>';
                                 }
-                                if ($d['status'] == 2 && $d['nama_perusahaan'] == $_SESSION['nama']) {
+                                if ($d['status'] == 3 && $d['nama_perusahaan'] == $_SESSION['nama']) {
                                     $status = '<span class="badge badge-pill badge-success" style="margin-top: 5px; font-size: 14px;">Approved</span>';
                                 }
 
@@ -77,11 +77,18 @@ include '../component/header.php';
                                     <th scope=" row" style="font-size: 14px"><?php echo $no; ?></th>
                                     <td style="font-size: 14px"><?php echo $d['nim'];  ?></td>
                                     <td style="font-size: 14px"><?php echo $d['nama_mahasiswa'];  ?></td>
-                                    <td style="font-size: 14px"><?php echo $d['nama_perusahaan'];  ?></td>
-                                    <td style="font-size: 14px"><?php echo $d['posisi'];  ?></td>
-                                    <td style="font-size: 14px"><?php echo $d['persyaratan']; ?></td>
-                                    <td style="font-size: 14px"> <?php echo $date =  date('d M Y', strtotime($date));  ?></td>
-                                    <td style="font-size: 14px"><?php echo $d['alamat']; ?></td>
+                                    <td style="font-size: 14px"><?php echo $d['tempat'];  ?></td>
+                                    <td style="font-size: 14px"><?php echo $d['no_hp'];  ?></td>
+                                    <td style="font-size: 14px"><?php $jurusan = $d['jurusan'];
+                                                                if ($jurusan == "TK") {
+                                                                    echo $jurusan = "Teknologi Komputer";
+                                                                } else if ($jurusan == "AB") {
+                                                                    echo $jurusan = "Administrasi Bisnis";
+                                                                } else {
+                                                                    echo $jurusan = "Akutansi";
+                                                                } ?></td>
+                                    <td style="font-size: 14px"><?php echo $d['total']; ?></td>
+                                    <td style="font-size: 14px"><?php echo $d['nama_perusahaan']; ?></td>
                                     <td style="font-size: 14px"><?php echo $status; ?></td>
 
 
@@ -111,13 +118,16 @@ include '../component/header.php';
 
         echo " <script>Swal.fire(
   'Berhasil',
-  'Data Berhasil Disimpan',
+  'Rekrutmen Berhasil ',
   'success')
   </script>";
     } else {
     }
 
     ?>
+
+
+
 
     <script type="text/javascript">
         $(document).ready(function() {

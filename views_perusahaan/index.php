@@ -35,7 +35,7 @@ include '../component/header.php';
 
         <?php
 
-        $daftar_pengajuan = mysqli_query($conn, "SELECT * FROM tb_pengajuanmagang where status=1");
+        $daftar_pengajuan = mysqli_query($conn, "SELECT * FROM tb_pengajuanmagang where nama_perusahaan= '$_SESSION[nama]' AND status=1");
 
         $jumlah = mysqli_num_rows($daftar_pengajuan);
 
@@ -46,7 +46,8 @@ include '../component/header.php';
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2 h-10">
-                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pengajuan Magang </div>
+                                <a href="pengajuan_magang.php" class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pengajuan Magang
+                                </a>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah ?></div>
                             </div>
                             <div class="col-auto">
@@ -58,16 +59,35 @@ include '../component/header.php';
             </div>
             <?php
 
-            $data = mysqli_query($conn, "select * from tb_lowonganmagang where status='0' ");
+            $daftar_pengajuan = mysqli_query($conn, "SELECT * FROM tb_pengajuanmagang  where nama_perusahaan= '$_SESSION[nama]' AND status=2");
+
+            $jumlah = mysqli_num_rows($daftar_pengajuan);
+
+            ?>
+            <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card border-left-success shadow py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2 h-10">
+                                <a href="history.php" class="text-xs font-weight-bold text-success text-uppercase mb-1">Pengajuan Magang Approved
+                                </a>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah ?></div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-check fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <?php
+
+            $data = mysqli_query($conn, "select * from tb_lowonganmagang where nama_perusahaan = '$_SESSION[nama]' ");
 
             while ($d = mysqli_fetch_array($data)) {
 
-                if ($d['status'] == 0) {
-                    $status = '<span class="badge badge-pill badge-info" style="margin-top: 5px; font-size: 14px; ">Pending</span>';
-                }
-                if ($d['status'] == 1) {
-                    $status = '<span class="badge badge-pill badge-success" style="margin-top: 5px; font-size: 14px;">Approved</span>';
-                }
+
 
 
 
@@ -82,10 +102,10 @@ include '../component/header.php';
                         <div class="card-body">
                             <?php
                             if ($d['status'] == 0) {
-                                $status = '<div class="alert alert-info" style="text-align: center;">Pengajuan Magang Anda <a href="#" class="btn btn-info btn-sm">Pending</a></div>';
+                                $status = '<div class="alert alert-info" style="text-align: center;">Pengajuan Lowongan Anda <a href="#" class="btn btn-info btn-sm">Pending</a></div>';
                             }
                             if ($d['status'] == 1) {
-                                $status = '<div class="alert alert-success" style="text-align: center;">Pengajuan Magang Anda <a href="status_lowongan.php" class="btn btn-success btn-sm">Approved</a></div>';
+                                $status = '<div class="alert alert-success" style="text-align: center;">Pengajuan Lowongan Anda <a href="status_lowongan.php" class="btn btn-success btn-sm">Approved</a></div>';
                             }
                             ?>
                             <?php echo $status; ?>
@@ -97,28 +117,6 @@ include '../component/header.php';
             <?php
             }
             ?>
-            <?php
-
-            $daftar_pengajuan = mysqli_query($conn, "SELECT * FROM tb_pengajuanmagang  where nama_perusahaan= '$_SESSION[nama]' AND status=2");
-
-            $jumlah = mysqli_num_rows($daftar_pengajuan);
-
-            ?>
-            <div class="col-xl-4 col-md-6 mb-4">
-                <div class="card border-left-success shadow py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2 h-10">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Pengajuan Magang Approved </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah ?></div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-check fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
     </div>

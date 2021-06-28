@@ -50,15 +50,33 @@ function is_active($sidebar)
         <i class="fas fa-clipboard-list"></i>
         <span>Daftar Lowongan</span></a>
     </li>
+    <li class="nav-item <?php is_active('pengajuan_rekrutmen.php'); ?>">
+      <a class="nav-link" href="pengajuan_rekrutmen.php">
+        <i class="far fa-envelope"></i>
+        <span>Pengajuan Rekrutmen</span>
+      </a>
+    </li>
     <hr class="sidebar-divider">
 
     <div class="sidebar-heading">
       History
     </div>
-    <li class="nav-item <?php is_active('history.php'); ?>">
-      <a class="nav-link" href="history.php">
+    <li class="nav-item <?php is_active('history.php'); ?>
+                        <?php is_active('history_rekrutmen.php'); ?> ">
+
+      <a class=" nav-link collapsed" href="#" data-toggle="collapse" data-target="#history" aria-expanded="true" aria-controls="userterdaftar">
         <i class="fas fa-history"></i>
-        <span>History Pengajuan</span></a>
+        <span>History</span>
+      </a>
+      <div id="history" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">History:</h6>
+          <a class="collapse-item" href="history.php">History Pengajuan</a>
+          <a class="collapse-item" href="history_rekrutmen.php">History Rekrutmen</a>
+
+
+        </div>
+      </div>
     </li>
 
     <!-- Divider -->

@@ -64,7 +64,7 @@ include '../component/header.php';
                   <div class="form-group row">
                     <label class="col-sm-4 col-form-label">NIM</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" name="nim" id="recipient-name">
+                      <input type="number" class="form-control" name="nim" id="recipient-name">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -89,7 +89,7 @@ include '../component/header.php';
                     <label class="col-sm-4 col-form-label">Jurusan</label>
                     <div class="col-sm-8">
                       <select class="custom-select" name="prodi" required>
-                        <option selected>Pilih Jurusan...</option>
+                        <option selected value="-">Pilih Jurusan...</option>
                         <option value="AB">Administrasi Bisnis</option>
                         <option value="TK">Teknologi Komputer</option>
                         <option value="AK">Akutansi</option>
@@ -218,7 +218,7 @@ include '../component/header.php';
                               <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">NIM</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control " name="nim" value="<?php echo $d['nim']; ?>" required="">
+                                  <input type="number" class="form-control " name="nim" value="<?php echo $d['nim']; ?>" required="">
                                 </div>
                               </div>
                               <div class="form-group row">
@@ -244,7 +244,7 @@ include '../component/header.php';
                                 <div class="col-sm-8">
                                   <select class="custom-select" name="prodi" required>
                                     <?php
-                                    if ($d['prodi'] == "") echo "<option selected >Pilih Jurusan</option>";
+                                    if ($d['prodi'] == "-") echo "<option selected value='-' >Pilih Jurusan</option>";
 
                                     if ($d['prodi'] == "TK") echo "<option  value='TK' selected >Teknologi Komputer</option> ";
                                     else echo "<option  value='TK'>Teknologi Komputer</option>";
@@ -351,7 +351,7 @@ include '../component/header.php';
                               <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">NIM</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control " value="<?php echo $d['nim']; ?>" readonly>
+                                  <input type="number" class="form-control " value="<?php echo $d['nim']; ?>" readonly>
                                 </div>
                               </div>
                               <div class="form-group row">

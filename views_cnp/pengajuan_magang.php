@@ -104,16 +104,16 @@ include '../component/header.php';
                                                             <div class="form-row">
                                                                 <div class="form-group col-lg-12">
                                                                     <label class="col-sm-4 col-form-label">NIM</label>
-                                                                    <input type="text" class="form-control " name="nim" style="font-size: 14px;" value="<?php echo $d['nim']; ?>" required="">
+                                                                    <input type="number" class="form-control " name="nim" style="font-size: 14px;" value="<?php echo $d['nim']; ?>" readonly>
                                                                 </div>
 
                                                                 <div class="form-group col-lg-12">
                                                                     <label class="col-sm-4 col-form-label">Nama Mahasiswa</label>
-                                                                    <input type="text" class="form-control " name="nama_M" style="font-size: 14px;" value="<?php echo $d['nama_mahasiswa'];  ?>" required>
+                                                                    <input type="text" class="form-control " name="nama_M" style="font-size: 14px;" value="<?php echo $d['nama_mahasiswa'];  ?>" readonly>
                                                                 </div>
                                                                 <div class="form-group col-lg-12">
                                                                     <label class="col-sm-4 col-form-label">Nama Perusahaan</label>
-                                                                    <input type="text" class="form-control " name="nama_P" style="font-size: 14px;" value="<?php echo $d['nama_perusahaan']; ?>" required>
+                                                                    <input type="text" class="form-control " name="nama_P" style="font-size: 14px;" value="<?php echo $d['nama_perusahaan']; ?>" readonly>
                                                                 </div>
                                                                 <div class="form-group col-lg-12">
                                                                     <label class="col-sm-4 col-form-label">Posisi</label>
@@ -139,7 +139,7 @@ include '../component/header.php';
 
 
                                                     <div class="modal-footer ">
-                                                        <button type="submit" name="status" class="btn   btn-primary  " style="font-size: medium;" value="1"> Approve </button>
+                                                        <button type="submit" name="status" class="btn   btn-success  " style="font-size: medium;" value="1"> Approve </button>
                                                         <button type="submit" name="status" class="btn   btn-danger  " style="font-size: medium;" value="3"> Reject </button>
 
                                                     </div>

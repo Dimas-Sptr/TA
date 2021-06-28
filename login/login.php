@@ -1,4 +1,8 @@
 <?php
+session_start();
+session_destroy();
+?>
+<?php
 include '../component/header.php';
 ?>
 
@@ -66,7 +70,7 @@ include '../component/header.php';
                     </div>
 
                     <div class="col-lg-6">
-                      <input type="text" class="form-control form-control-user" name="email" placeholder="Masukkan Email Kamu..." required>
+                      <input type="email" class="form-control form-control-user" name="email" placeholder="Masukkan Email Kamu..." required>
                     </div>
                   </div>
                   <div class="form-group ">

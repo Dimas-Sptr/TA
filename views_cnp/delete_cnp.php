@@ -8,5 +8,5 @@ if ($_GET['id'] != "") {
 }
 if ($delete) {
 
-    echo "<script>document.location.href='admin_cnp.php'</script>";
+    echo "<script>document.location.href='buat_akun.php'</script>";
 }

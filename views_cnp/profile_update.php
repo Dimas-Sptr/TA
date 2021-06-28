@@ -65,7 +65,7 @@ include '../component/header.php';
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label><b>Email</b></label>
-                                        <input type="text" name="email" class="form-control" autocomplete="off" value="<?php echo $d['email'] ?>">
+                                        <input type="email" name="email" class="form-control" autocomplete="off" value="<?php echo $d['email'] ?>">
                                     </div>
                                 </div>
                             </div>

@@ -121,31 +121,31 @@ include '../component/header.php';
                             <div class="row">
                                 <div class="form-group col-lg-6">
                                     <label><b>Tahun Angkatan</b></label>
-                                    <input name="angkatan" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="4" value="<?php echo $d['tahun_angkatan']; ?>" readonly />
+                                    <input name="angkatan" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="4" value="<?php echo $d['tahun_angkatan']; ?>" required />
                                 </div>
 
 
                                 <div class=" form-group col-lg-6">
                                     <label><b>IP 1</b></label>
-                                    <input type="text" class="form-control form-control-user" id="ip1" name="ip1" value="<?php echo $d['ip1']; ?>" required>
+                                    <input type="text" class="form-control form-control-user" id="ip1" name="ip1" value="<?php echo $d['ip1']; ?>" required maxlength="2">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-lg-6">
                                     <label><b>Ip 2</b></label>
-                                    <input type="text" class="form-control form-control-user" id="ip2" name="ip2" value="<?php echo $d['ip2']; ?>" required>
+                                    <input type="text" class="form-control form-control-user" id="ip2" name="ip2" value="<?php echo $d['ip2']; ?>" required maxlength="2">
                                 </div>
 
 
                                 <div class=" form-group col-lg-6">
                                     <label><b>IP 3</b></label>
-                                    <input type="text" class="form-control form-control-user" id="ip3" name="ip3" value="<?php echo $d['ip3']; ?>" required>
+                                    <input type="text" class="form-control form-control-user" id="ip3" name="ip3" value="<?php echo $d['ip3']; ?>" required maxlength="2">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-lg-6">
                                     <label><b>Ip 4</b></label>
-                                    <input type="text" class="form-control form-control-user" id="ip4" name="ip4" value="<?php echo $d['ip4']; ?>" required>
+                                    <input type="text" class="form-control form-control-user" id="ip4" name="ip4" value="<?php echo $d['ip4']; ?>" required maxlength="2">
                                 </div>
 
 
@@ -188,7 +188,88 @@ include '../component/header.php';
     include '../component/script.php';
     include '../component/script_datatable.php';
     ?>
+    <script type="text/javascript">
+        var ip1 = document.getElementById("ip1");
+        ip1.addEventListener("keyup", function(e) {
+            ip1.value = formatRupiah(this.value, "");
+        });
 
+        function formatRupiah(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, "").toString(),
+                split = number_string.split(","),
+                sisa = split[0].length % 2,
+                rupiah = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{1}/gi);
+            if (ribuan) {
+                separator = sisa ? "." : "";
+                rupiah += separator + ribuan.join(".");
+            }
+            rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+            return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+        }
+    </script>
+
+    <script type="text/javascript">
+        var ip2 = document.getElementById("ip2");
+        ip2.addEventListener("keyup", function(e) {
+            ip2.value = formatRupiah(this.value, "");
+        });
+
+        function formatRupiah(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, "").toString(),
+                split = number_string.split(","),
+                sisa = split[0].length % 2,
+                rupiah = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{1}/gi);
+            if (ribuan) {
+                separator = sisa ? "." : "";
+                rupiah += separator + ribuan.join(".");
+            }
+            rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+            return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+        }
+    </script>
+
+    <script type="text/javascript">
+        var ip3 = document.getElementById("ip3");
+        ip3.addEventListener("keyup", function(e) {
+            ip3.value = formatRupiah(this.value, "");
+        });
+
+        function formatRupiah(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, "").toString(),
+                split = number_string.split(","),
+                sisa = split[0].length % 2,
+                rupiah = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{1}/gi);
+            if (ribuan) {
+                separator = sisa ? "." : "";
+                rupiah += separator + ribuan.join(".");
+            }
+            rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+            return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+        }
+    </script>
+    <script type="text/javascript">
+        var ip4 = document.getElementById("ip4");
+        ip4.addEventListener("keyup", function(e) {
+            ip4.value = formatRupiah(this.value, "");
+        });
+
+        function formatRupiah(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, "").toString(),
+                split = number_string.split(","),
+                sisa = split[0].length % 2,
+                rupiah = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{1}/gi);
+            if (ribuan) {
+                separator = sisa ? "." : "";
+                rupiah += separator + ribuan.join(".");
+            }
+            rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+            return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+        }
+    </script>
 
     <?php
     $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');

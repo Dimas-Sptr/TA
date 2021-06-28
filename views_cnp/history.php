@@ -26,15 +26,15 @@ include '../component/header.php';
     ?>
     <div class="container-fluid">
         <nav aria-label="breadcrumb ">
-            <ol class="breadcrumb col-lg-3">
+            <ol class="breadcrumb col-lg-4">
                 <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
-                <li class="breadcrumb-item active" aria-current="page">History</li>
+                <li class="breadcrumb-item active" aria-current="page">History Approved magang</li>
             </ol>
         </nav>
 
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between ">
-                <h6 class="m-0 font-weight-bold text-primary">History</h6>
+                <h6 class="m-0 font-weight-bold text-primary">History Approved magang</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

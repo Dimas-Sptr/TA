@@ -42,25 +42,7 @@ function is_active($sidebar)
     <li class="nav-item <?php is_active('buat_akun.php'); ?> ">
       <a class="nav-link" href="buat_akun.php">
         <i class="fas fa-users"></i>
-        <span>Buat Akun</span></a>
-    </li>
-    <li class="nav-item <?php is_active('admin_cnp.php'); ?>
-                        <?php is_active('perusahaan.php'); ?>
-                        <?php is_active('mahasiswa_teraktivasi.php'); ?>">
-
-      <a class=" nav-link collapsed" href="#" data-toggle="collapse" data-target="#userterdaftar" aria-expanded="true" aria-controls="userterdaftar">
-        <i class="fas fa-address-book"></i>
-        <span>User Terdaftar</span>
-      </a>
-      <div id="userterdaftar" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">User Terdaftar:</h6>
-          <a class="collapse-item" href="admin_cnp.php">Admin C&P</a>
-          <a class="collapse-item" href="perusahaan.php">Perusahaan</a>
-          <a class="collapse-item" href="mahasiswa_teraktivasi.php">Mahasiswa Teraktivasi</a>
-
-        </div>
-      </div>
+        <span>Daftar Akun</span></a>
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -122,7 +104,8 @@ function is_active($sidebar)
       Permintaan
     </div>
     <li class="nav-item <?php is_active('data_permintaan.php'); ?> 
-                        <?php is_active('pengajuan_magang.php'); ?>">
+                        <?php is_active('pengajuan_magang.php'); ?>
+                        <?php is_active('pengajuan_rekrutmen.php'); ?>">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#data_permintaan" aria-expanded="true" aria-controls="collapseTwo">
         <i class="fas fa-chart-area"></i>
         <span>Data Permintaan</span>
@@ -132,6 +115,7 @@ function is_active($sidebar)
           <h6 class="collapse-header">Permintaan</h6>
           <a class="collapse-item" href="data_permintaan.php">Pengajuan Lowongan</a>
           <a class="collapse-item" href="pengajuan_magang.php">Pengajuan Magang</a>
+          <a class="collapse-item" href="pengajuan_rekrutmen.php">Pengajuan Rekrutmen</a>
 
 
         </div>
@@ -142,10 +126,22 @@ function is_active($sidebar)
     <div class="sidebar-heading">
       History
     </div>
-    <li class="nav-item <?php is_active('history.php'); ?>">
-      <a class="nav-link" href="history.php">
+    <li class="nav-item <?php is_active('history.php'); ?>
+                        <?php is_active('history_rekrutmen.php'); ?> ">
+
+      <a class=" nav-link collapsed" href="#" data-toggle="collapse" data-target="#history" aria-expanded="true" aria-controls="userterdaftar">
         <i class="fas fa-history"></i>
-        <span>History</span></a>
+        <span>History</span>
+      </a>
+      <div id="history" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">History:</h6>
+          <a class="collapse-item" href="history.php">History Approved Magang</a>
+          <a class="collapse-item" href="history_rekrutmen.php">History Rekrutmen</a>
+
+
+        </div>
+      </div>
     </li>
 
 

@@ -46,7 +46,7 @@ include '../component/header.php';
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2 h-10">
-                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Akun Perusahaan Terdaftar</div>
+                <a href="buat_akun.php" class="text-xs font-weight-bold text-success text-uppercase mb-1">Akun Perusahaan Terdaftar</a>
                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah ?></div>
               </div>
               <div class="col-auto">
@@ -68,7 +68,8 @@ include '../component/header.php';
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2 h-10">
-                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Akun CNP Terdaftar</div>
+                <a href="buat_akun.php" class="text-xs font-weight-bold text-primary text-uppercase mb-1">Akun CNP Terdaftar
+                </a>
                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah ?></div>
               </div>
               <div class="col-auto">
@@ -91,7 +92,8 @@ include '../component/header.php';
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2 h-10">
-                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pengajuan Magang Approved</div>
+                <a href="history.php" class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pengajuan Magang Approved
+                </a>
                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah ?></div>
               </div>
               <div class="col-auto">
@@ -115,7 +117,8 @@ include '../component/header.php';
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2 h-10">
-                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Lowongan Magang Approved</div>
+                <a href="lowongan_magang.php" class="text-xs font-weight-bold text-danger text-uppercase mb-1">Lowongan Magang Approved
+                </a>
                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah ?></div>
               </div>
               <div class="col-auto">

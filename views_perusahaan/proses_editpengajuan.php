@@ -15,4 +15,4 @@ $status = $_POST['status'];
 mysqli_query($conn, "UPDATE tb_pengajuanmagang SET nim='$nim', nama_mahasiswa= '$nama_M',nama_perusahaan='$nama_P',posisi='$posisi',persyaratan='$persyaratan',tgl_berakhir='$tgl_berakhir'
 ,alamat='$alamat',status='$status' where nim='$nim'") or die(mysqli_error($conn));
 
-header("location:history.php?pesan=approved_success");
+header("location:history.php?pesan=success");

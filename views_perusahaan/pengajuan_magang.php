@@ -37,7 +37,7 @@ include '../component/header.php';
         </nav>
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between ">
-                <h6 class="m-0 font-weight-bold text-primary">Data Permintaan</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Pengajuan Magang</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -88,7 +88,7 @@ include '../component/header.php';
                             tb_cvmahasiswa
                             INNER JOIN tb_pengajuanmagang ON tb_cvmahasiswa.nim = tb_pengajuanmagang.nim 
                         WHERE
-                            tb_pengajuanmagang.`status` =1");
+                        tb_pengajuanmagang.nama_perusahaan = '$_SESSION[nama]' AND  tb_pengajuanmagang.`status`= 1 ");
 
                             while ($d = mysqli_fetch_array($data)) {
                                 $no++;
@@ -135,7 +135,7 @@ include '../component/header.php';
                                                             <div class="form-row">
                                                                 <div class="form-group col-lg-12">
                                                                     <label class="col-sm-4 col-form-label">NIM</label>
-                                                                    <input type="text" class="form-control " name="nim" value="<?php echo $d['nim']; ?>" readonly>
+                                                                    <input type="number" class="form-control " name="nim" value="<?php echo $d['nim']; ?>" readonly>
                                                                 </div>
                                                                 <div class="form-group col-lg-12">
                                                                     <label class="col-sm-4 col-form-label">Nama Mahasiswa</label>
@@ -168,7 +168,7 @@ include '../component/header.php';
 
 
                                                             <div class="modal-footer ">
-                                                                <button type="submit" name="status" class="btn   btn-primary  " style="font-size: medium;" value="2"> Approve </button>
+                                                                <button type="submit" name="status" class="btn   btn-success  " style="font-size: medium;" value="2"> Approve </button>
                                                                 <button type="submit" name="status" class="btn   btn-danger  " style="font-size: medium;" value="3"> Reject </button>
 
                                                             </div>
@@ -188,7 +188,7 @@ include '../component/header.php';
                                         <!-- AWAL DETAIL MODAL -->
 
                                         <div class="modal fade" id="lihat<?php echo $d['nim']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="exampleModalLabel">Detail Mahasiswa</h5>
@@ -198,23 +198,28 @@ include '../component/header.php';
                                                     </div>
                                                     <div class="modal-body">
                                                         <form>
-                                                            <div class="row">
-                                                                <div class="form-group col-6">
-                                                                    <label for="recipient-name" class="col-form-label"><b>NIM</b></label>
-                                                                    <input type="text" class="form-control" value="<?php echo $d['nim']; ?>" readonly>
-                                                                </div>
-                                                                <div class="form-group col-6">
-                                                                    <label for="message-text" class="col-form-label"><b>Nama Mahasiswa</b></label>
-                                                                    <input type="text" class="form-control" value="<?php echo $d['nama_mahasiswa']; ?>" readonly>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">NIM</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="number" class="form-control" value="<?php echo $d['nim']; ?>" readonly>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="form-group col-6">
-                                                                    <label for="recipient-name" class="col-form-label"><b> Handphone</b></label>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Nama Mahasiswa</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" class="form-control" value="<?php echo $d['nama_mahasiswa']; ?>" readonly>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Nomor Handphone</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php echo $d['no_hp']; ?>" readonly>
                                                                 </div>
-                                                                <div class="form-group col-6">
-                                                                    <label for="message-text" class="col-form-label"><b>Jurusan</b></label>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Jurusan</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php $jurusan = $d['jurusan'];
                                                                                                                     if ($jurusan == "-") {
                                                                                                                         echo $jurusan = "-";
@@ -227,9 +232,9 @@ include '../component/header.php';
                                                                                                                     } ?>" readonly>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="form-group col-6">
-                                                                    <label for="recipient-name" class="col-form-label"><b>Status Mahasiswa</b></label>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Status Mahasiswa</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php $status_M = $d['status_mahasiswa'];
                                                                                                                     if ($status_M == "-") {
                                                                                                                         echo $status_M = "-";
@@ -239,70 +244,76 @@ include '../component/header.php';
                                                                                                                         echo $status_M = "Tidak Magang";
                                                                                                                     } ?>" readonly>
                                                                 </div>
-                                                                <div class="form-group col-6">
-                                                                    <label for="message-text" class="col-form-label"><b>Tahun Angkatan</b></label>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Tahun Angkatan</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php echo $d['tahun_angkatan']; ?>" readonly>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="form-group col-6">
-                                                                    <label for="recipient-name" class="col-form-label"><b>IP1</b></label>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">IP 1</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php echo $d['ip1']; ?>" readonly>
                                                                 </div>
-                                                                <div class="form-group col-6">
-                                                                    <label for="message-text" class="col-form-label"><b>IP2</b></label>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">IP 2</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php echo $d['ip2']; ?>" readonly>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="form-group col-6">
-                                                                    <label for="recipient-name" class="col-form-label"><b>IP3</b></label>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">IP 3</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php echo $d['ip3']; ?>" readonly>
                                                                 </div>
-                                                                <div class="form-group col-6">
-                                                                    <label for="message-text" class="col-form-label"><b>IP4</b></label>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">IP 4</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php echo $d['ip4']; ?>" readonly>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="form-group col-6">
-                                                                    <label for="recipient-name" class="col-form-label"><b>Total</b></label>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Total</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control" value="<?php echo number_format($d['total'], 1, '.', ''); ?>" readonly>
                                                                 </div>
-                                                                <div class="form-group col-6">
-
-                                                                    <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="badge badge-info" onclick="basicPopup(this.href); return false" style="margin-top: 45px; font-size: 14px">Lihat CV</a>
-                                                                </div>
                                                             </div>
-                                                        </form>
 
                                                     </div>
+                                                    </form>
+
+
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="btn btn-info" style=" font-size: 16px; " onclick="basicPopup(this.href); return false">Lihat CV</a>
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 
                                                     </div>
 
                                                 </div>
                                             </div>
-
                                         </div>
 
-                                        <!-- AKHIR DETAIL MODAL -->
-
-
-                                    </td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
-
-                    </table>
                 </div>
 
+                <!-- AKHIR DETAIL MODAL -->
 
+
+                </td>
+                </tr>
+            <?php
+                            }
+            ?>
+            </tbody>
+
+            </table>
             </div>
+
+
         </div>
+    </div>
 
 
     </div>

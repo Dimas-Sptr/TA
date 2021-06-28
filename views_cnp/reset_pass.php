@@ -2,25 +2,22 @@
 session_start();
 include '../conn/koneksi.php';
 
+if ($_GET['kode'] != "") {
 
+    $kode = $_GET['kode'];
+    $pass = md5($kode);
 
-$kode = $_SESSION['username'];
-$pass = md5($kode);
+    $query = mysqli_query($conn, "SELECT * FROM pass_adm WHERE kode='$kode'");
+    $num = mysqli_num_rows($query);
 
+    if ($num > 0) {
+        $reset = mysqli_query($conn, "UPDATE  pass_adm SET password='$pass' where kode='$kode' ") or die(mysqli_error($conn));
 
-$query = "SELECT * FROM pass_adm WHERE kode ='$kode' ";
-$sql = mysqli_query($conn, $query);
-$hasil = mysqli_num_rows($sql);
-if ($hasil == 1) {
+        if ($reset) {
 
-    $query = "UPDATE pass_adm SET password='$pass' WHERE kode='$kode'";
-    $sql = mysqli_query($conn, $query);
-    //setelah berhasil update
-    if ($sql) {
-        header("location:admin_cnp.php?pesan=reset_success");
+            header("location:buat_akun.php?pesan=reset_success");
+        }   //header("location:buat_akun.php?pesan=fail");
     } else {
-        header("location:admin_cnp.php?pesan=fail");
+        header("location:buat_akun.php?pesan=reset_fail");
     }
-} else {
-    header("location:admin_cnp.php?pesan=fail");
 }

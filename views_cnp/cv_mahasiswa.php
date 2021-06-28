@@ -68,7 +68,7 @@ include '../component/header.php';
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">NIM</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control " name="nim" required="">
+                                        <input type="number" class="form-control " name="nim" required="">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -244,7 +244,7 @@ include '../component/header.php';
                                                             <div class="form-group row">
                                                                 <label class="col-sm-4 col-form-label">NIM</label>
                                                                 <div class="col-sm-8">
-                                                                    <input type="text" class="form-control " name="nim" value="<?php echo $d['nim']; ?>" required="">
+                                                                    <input type="number" class="form-control " name="nim" value="<?php echo $d['nim']; ?>" required="">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -390,7 +390,7 @@ include '../component/header.php';
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">NIM</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control " name="nim" value="<?php echo $d['nim']; ?>" readonly>
+                                        <input type="number" class="form-control " name="nim" value="<?php echo $d['nim']; ?>" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row">
