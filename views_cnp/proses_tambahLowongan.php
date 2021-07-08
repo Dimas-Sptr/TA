@@ -9,6 +9,6 @@ $tgl_berakhir = $_POST['tgl_berakhir'];
 $alamat = $_POST['alamat'];
 $status = $_POST['status'];
 
-mysqli_query($conn, "insert into tb_lowonganmagang values('','$nama','$posisi','$persyaratan','$tgl_berakhir','$alamat','$status')") or die(mysqli_error($conn));
+mysqli_query($conn, "insert into tb_lowonganmagang (id,nama_perusahaan,posisi,persyaratan,tgl_berakhir,alamat,status) values('NULL','$nama','$posisi','$persyaratan','$tgl_berakhir','$alamat','$status')") or die(mysqli_error($conn));
 
 header("location:lowongan_magang.php?pesan=success");

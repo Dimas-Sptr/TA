@@ -15,12 +15,6 @@ if ($_SESSION['level'] != "admin cnp") {
 include '../conn/koneksi.php';
 include '../component/header.php';
 ?>
-<script>
-    function basicPopup(url) {
-        popupWindow = window.open(url, 'popUpWindow',
-            'height=300, width=700, left=50, top=50, resizable=yes, scrollbar=yes, toolbar=yes, menubar=no, location=no, directories=no, status = yes ')
-    }
-</script>
 
 
 <body id="page-top">
@@ -152,6 +146,7 @@ include '../component/header.php';
                                     <label class="col-sm-4 col-form-label">CV</label>
                                     <div class="col-sm-8">
                                         <input type="file" id="gambar" class="form-control " name="gambar">
+                                        <div style="color: red; font-size:14px">*FILE HARUS BERBENTUK <b>PDF</b></div>
 
                                     </div>
                                 </div>
@@ -343,7 +338,7 @@ include '../component/header.php';
                                                                 <label class="col-sm-4 col-form-label">CV</label>
                                                                 <div class="col-sm-8">
                                                                     <input type="file" id="gambar" class="form-control " name="gambar" value="<?php echo $d['gambar']; ?>">
-
+                                                                    <div style="color: red; font-size:14px">*FILE HARUS BERBENTUK <b>PDF</b></div>
 
                                                                 </div>
                                                             </div>
@@ -473,6 +468,12 @@ include '../component/header.php';
                                         <input type="text" class="form-control " name="ip4" value="<?php echo $d['ip4']; ?>" readonly>
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Portofolio</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control " name="ip4" value="<?php echo $d['portofolio']; ?>" readonly>
+                                    </div>
+                                </div>
 
                         </div>
 
@@ -482,7 +483,9 @@ include '../component/header.php';
 
 
                         <div class="modal-footer ">
-                            <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="btn btn-info" onclick="basicPopup(this.href); return false" style=" font-size: 16px">Lihat CV</a>
+                            <a href="<?php echo $d['portofolio']; ?>" class="btn btn-warning mr-3" style=" font-size: 16px; float:right " target="_blank">Lihat Portofolio</a>
+
+                            <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="btn btn-info" target="_blank" style=" font-size: 16px">Lihat CV</a>
                             <button type="button" name="simpan" class="btn btn-m  btn-danger " data-dismiss="modal"> Close </button>
 
                         </div>

@@ -46,6 +46,7 @@ include '../component/header.php';
                                 <th scope="col" style="color: white">Tanggal Berakhir</th>
                                 <th scope="col" style="color: white">Alamat</th>
                                 <th scope="col" style="color: white;">Status</th>
+                                <th scope="col" style="color: white;">Aksi</th>
 
                             </tr>
                         </thead>
@@ -61,9 +62,16 @@ include '../component/header.php';
 
                                 if ($d['status'] < 2) {
                                     $status = '<span class="badge badge-pill badge-info" style="margin-top: 5px; font-size: 14px; ">Pending</span>';
-                                }
-                                if ($d['status'] == 2) {
+                                } else if ($d['status'] == 2) {
                                     $status = '<span class="badge badge-pill badge-success" style="margin-top: 5px; font-size: 14px;">Approved</span>';
+                                } else {
+                                    $status = '<span class="badge badge-pill badge-danger" style="margin-top: 5px; font-size: 14px;">Rejected</span>';
+                                }
+
+                                if ($d['status'] == 2) {
+                                    $cetak = "<a href='report.php?id=$d[id]' class='btn btn-success btn-circle' target='_blank'><i class='fas fa-print'></i></a>";
+                                } else {
+                                    $cetak = '';
                                 }
 
 
@@ -76,6 +84,8 @@ include '../component/header.php';
                                     <td style="font-size: 14px"><?php echo $date =  date('d M Y', strtotime($date));  ?></td>
                                     <td style="font-size: 14px"><?php echo $d['alamat'];  ?></td>
                                     <td style="font-size: 14px"><?php echo $status; ?></td>
+
+                                    <td style="font-size: 14px"><?php echo $cetak; ?> </td>
 
                                     </td>
                                 </tr>

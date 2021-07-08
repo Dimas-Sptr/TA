@@ -57,16 +57,17 @@ include '../component/header.php';
                         <tbody>
                             <?php
                             $no = 0;
-                            $data = mysqli_query($conn, "select * from tb_pengajuanmagang where nama_perusahaan= '$_SESSION[nama]'   ");
+                            $data = mysqli_query($conn, "select * from tb_pengajuanmagang where nama_perusahaan= '$_SESSION[nama]' and status   ");
 
                             while ($d = mysqli_fetch_array($data)) {
                                 $no++;
                                 $date = $d['tgl_berakhir'];
                                 $date =  date('d-M-Y', strtotime($date));
-                                if ($d['status'] == 3  && $d['nama_perusahaan'] == $_SESSION['nama']) {
+
+                                if ($d['status'] = 3) {
                                     $status = '<span class="badge badge-pill badge-danger" style="margin-top: 5px; font-size: 14px; ">Rejected</span>';
                                 }
-                                if ($d['status'] == 2 && $d['nama_perusahaan'] == $_SESSION['nama']) {
+                                if ($d['status'] = 2) {
                                     $status = '<span class="badge badge-pill badge-success" style="margin-top: 5px; font-size: 14px;">Approved</span>';
                                 }
 
@@ -80,17 +81,17 @@ include '../component/header.php';
                                     <td style="font-size: 14px"><?php echo $d['nama_perusahaan'];  ?></td>
                                     <td style="font-size: 14px"><?php echo $d['posisi'];  ?></td>
                                     <td style="font-size: 14px"><?php echo $d['persyaratan']; ?></td>
-                                    <td style="font-size: 14px"> <?php echo $date =  date('d M Y', strtotime($date));  ?></td>
+                                    <td style="font-size: 14px"><?php echo $date =  date('d M Y', strtotime($date));  ?></td>
                                     <td style="font-size: 14px"><?php echo $d['alamat']; ?></td>
                                     <td style="font-size: 14px"><?php echo $status; ?></td>
 
 
                                 </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
 
+                        </tbody>
+                    <?php
+                            }
+                    ?>
                     </table>
                 </div>
 

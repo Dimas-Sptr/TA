@@ -58,16 +58,16 @@ include '../component/header.php';
                         <tbody>
                             <?php
                             $no = 0;
-                            $data = mysqli_query($conn, "select * from tb_rekrutmen where nama_mahasiswa= '$_SESSION[nama]' AND status = 2   ");
+                            $data = mysqli_query($conn, "select * from tb_rekrutmen where nama_mahasiswa= '$_SESSION[nama]' AND status   ");
 
                             while ($d = mysqli_fetch_array($data)) {
                                 $no++;
 
-                                if ($d['status'] == 3) {
-                                    $status = '<span class="badge badge-pill badge-danger" style="margin-top: 5px; font-size: 14px; ">Rejected</span>';
-                                }
                                 if ($d['status'] == 2) {
-                                    $status = '<span class="badge badge-pill badge-success" style="margin-top: 5px; font-size: 14px;">Approved</span>';
+                                    $status = '<span class="badge badge-pill badge-success" style="margin-top: 5px; font-size: 14px; ">Approved</span>';
+                                }
+                                if ($d['status'] == 3) {
+                                    $status = '<span class="badge badge-pill badge-danger" style="margin-top: 5px; font-size: 14px;">Rejected</span>';
                                 }
 
 

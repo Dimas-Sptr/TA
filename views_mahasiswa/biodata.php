@@ -14,12 +14,6 @@ if ($_SESSION['level'] != "mahasiswa") {
 include '../conn/koneksi.php';
 include '../component/header.php';
 ?>
-<script>
-    function basicPopup(url) {
-        popupWindow = window.open(url, 'popUpWindow',
-            'height=300, width=700, left=50, top=50, resizable=yes, scrollbar=yes, toolbar=yes, menubar=no, location=no, directories=no, status = yes ')
-    }
-</script>
 
 <body id="page-top">
 
@@ -149,23 +143,30 @@ include '../component/header.php';
                                 </div>
 
 
-                                <div class="form-group col-lg-5">
+                                <div class="form-group col-lg-6">
                                     <label><b>CV</b></label>
 
                                     <input type="file" class="form-control " name="gambar" value="<?php echo $d['gambar']; ?>" required>
+                                    <div style="color: red; font-size:14px">*FILE HARUS BERBENTUK <b>PDF</b></div>
 
                                 </div>
-                                <label></label>
-                                <div class="form-group col-lg-1" style="margin-top: 30px;">
-                                    <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="badge badge-info" onclick="basicPopup(this.href); return false" style="margin-top: 10px;">Lihat CV</a>
-                                </div>
-                            </div>
 
-                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label><b>Link Portofolio</b></label>
+                                    <input type="text" class="form-control form-control-user" id="porto" name="porto" value="<?php echo $d['portofolio']; ?>">
+                                </div>
+
+
+
+
                                 <div class="col-lg-12">
                                     <div class="card-footer">
                                         <div class="form-group">
-                                            <button class="btn btn-info btn-lg btn-block" style="margin-top: 20px;" type="submit">Simpan</button>
+
+                                            <button class="btn btn-success " style="margin-top: 20px; float:right" type="submit">Simpan</button>
+                                            <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="btn btn-info mr-3" style=" font-size: 16px; margin-top: 20px; float:right " target="_blank">Lihat CV</a>
+                                            <a href="<?php echo $d['portofolio']; ?>" class="btn btn-warning mr-3" style=" font-size: 16px; margin-top: 20px; float:right " target="_blank">Lihat Portofolio</a>
+
                                         </div>
                                     </div>
                                 </div>

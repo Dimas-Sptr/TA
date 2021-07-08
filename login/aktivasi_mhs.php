@@ -34,7 +34,7 @@ if ($row_cek['nim'] === $nim) {
         }
     }
 } else {
-    echo "<script>alert('system gagal');document.location= 'login.php'</script>";
+    header("location:login.php?pesan=doesnt_exist");
 }
 // jika belum terdata, maka akan muncul pesan ini
 

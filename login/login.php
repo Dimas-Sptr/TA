@@ -66,7 +66,7 @@ include '../component/header.php';
                 <form class="user" method="POST" action="aktivasi_mhs.php">
                   <div class="form-row">
                     <div class="form-group col-xl-6">
-                      <input type="text" class="form-control form-control-user" name="nim" placeholder="Masukkan Nim Kamu..." required="">
+                      <input type="number" class="form-control form-control-user" name="nim" placeholder="Masukkan Nim Kamu..." required="">
                     </div>
 
                     <div class="col-lg-6">
@@ -159,6 +159,22 @@ include '../component/header.php';
   'Maaf, Anda harus login terlebih dahulu',
   'error')
   </script>";
+  } else {
+  }
+
+  ?>
+  <?php
+
+  $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
+
+  if ($pesan == 'doesnt_exist') {
+
+    echo " <script>
+  Swal.fire(
+'GAGAL',
+'NIM yang anda masukkan tidak tersedia',
+'error')
+</script>";
   } else {
   }
 
