@@ -167,6 +167,22 @@ include '../component/header.php';
 
   $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
 
+  if ($pesan == 'exist') {
+
+    echo " <script>
+Swal.fire(
+'GAGAL',
+'Maaf, NIM Sudah Teraktivasi',
+'info')
+</script>";
+  } else {
+  }
+
+  ?>
+  <?php
+
+  $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
+
   if ($pesan == 'doesnt_exist') {
 
     echo " <script>
@@ -181,14 +197,7 @@ include '../component/header.php';
   ?>
 
 
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('.col').tilt({
-        scale: .8
 
-      })
-
-    })
   </script>
 </body>
 

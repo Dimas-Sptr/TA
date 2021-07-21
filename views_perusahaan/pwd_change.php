@@ -20,9 +20,7 @@ include '../component/header.php';
 
     <?php
     include 'menu.php';
-    ?>
-    <?php
-    include '../component/profile.php';
+    include '../component/profile1.php';
     ?>
     <?php
 
@@ -75,20 +73,18 @@ include '../component/header.php';
                             </div>
                         </div>
 
+                    </form>
                 </div>
             </div>
 
         </div>
-        </form>
+
     </div>
     <?php
     include '../component/script.php';
     include '../component/script_datatable.php';
     ?>
-    <?php
-    include '../component/footer.php';
 
-    ?>
     <?php
     $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
 
@@ -120,6 +116,54 @@ include '../component/header.php';
     }
 
     ?>
+    <?php
+    $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
+
+    if ($pesan == 'not_enought') {
+
+        echo " <script>Swal.fire(
+'GAGAL',
+'Password Minimal Terdiri Dari 5 Karakter',
+'error')
+</script>";
+    } else {
+    }
+
+    ?>
+    <?php
+    $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
+
+    if ($pesan == 'passwordOld_failed') {
+
+        echo " <script>Swal.fire(
+'GAGAL',
+'Password Baru Yang Anda Masukkan Tidak Cocok',
+'error')
+</script>";
+    } else {
+    }
+
+    ?>
+    <?php
+    $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
+
+    if ($pesan == 'fail') {
+
+        echo " <script>Swal.fire(
+'GAGAL',
+'Password Baru Yang Anda Masukkan Tidak Cocok',
+'error')
+</script>";
+    } else {
+    }
+
+    ?>
+
+    <?php
+    include '../component/footer.php';
+
+    ?>
+
 </body>
 
 

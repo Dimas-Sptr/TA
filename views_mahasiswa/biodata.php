@@ -79,70 +79,38 @@ include '../component/header.php';
                                 </div>
 
 
-                                <div class="form-group col-lg-6">
-                                    <label><b>Status Mahasiswa</b></label>
-                                    <select class="custom-select " style="font-size: 14px;" name="status_M" required>
-                                        <?php
-                                        if ($d['status_mahasiswa'] == "-") echo "<option selected value='-'>Pilih Status Mahasiswa</option>";
-                                        else echo "<option  value='-'>Pilih Status Mahasiswa</option>";
-
-                                        if ($d['status_mahasiswa'] == "1") echo "<option  value='1' selected >Magang</option> ";
-                                        else echo "<option  value='1'>Magang</option>";
-
-                                        if ($d['status_mahasiswa'] == "0") echo "<option  value='0' selected >Tidak Magang</option> ";
-                                        else echo "<option  value='0'>Tidak Magang</option>";
 
 
-                                        ?>
-
-
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row">
-
-                                <div class="form-group col-lg-6">
-                                    <label><b>Nama Perusahaan</b></label>
-                                    <input type="text" class="form-control form-control-user" id="perusahaan" name="perusahaan" value="<?php echo $d['perusahaan']; ?>">
-                                </div>
-
-
-                                <div class=" form-group col-lg-6">
-                                    <label><b>Posisi</b></label>
-                                    <input type="text" class="form-control form-control-user" id="jabatan" name="posisi" value="<?php echo $d['jabatan']; ?>">
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="form-group col-lg-6">
                                     <label><b>Tahun Angkatan</b></label>
                                     <input name="angkatan" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="4" value="<?php echo $d['tahun_angkatan']; ?>" required />
                                 </div>
-
+                            </div>
+                            <div class="row">
 
                                 <div class=" form-group col-lg-6">
                                     <label><b>IP 1</b></label>
                                     <input type="text" class="form-control form-control-user" id="ip1" name="ip1" value="<?php echo $d['ip1']; ?>" required maxlength="2">
                                 </div>
-                            </div>
-                            <div class="row">
+
+
                                 <div class="form-group col-lg-6">
                                     <label><b>Ip 2</b></label>
                                     <input type="text" class="form-control form-control-user" id="ip2" name="ip2" value="<?php echo $d['ip2']; ?>" required maxlength="2">
                                 </div>
-
-
+                            </div>
+                            <div class="row">
                                 <div class=" form-group col-lg-6">
                                     <label><b>IP 3</b></label>
                                     <input type="text" class="form-control form-control-user" id="ip3" name="ip3" value="<?php echo $d['ip3']; ?>" required maxlength="2">
                                 </div>
-                            </div>
-                            <div class="row">
+
                                 <div class="form-group col-lg-6">
                                     <label><b>Ip 4</b></label>
                                     <input type="text" class="form-control form-control-user" id="ip4" name="ip4" value="<?php echo $d['ip4']; ?>" required maxlength="2">
                                 </div>
-
-
+                            </div>
+                            <div class="row">
                                 <div class="form-group col-lg-6">
                                     <label><b>CV</b></label>
 
@@ -155,128 +123,127 @@ include '../component/header.php';
                                     <label><b>Link Portofolio</b></label>
                                     <input type="text" class="form-control form-control-user" id="porto" name="porto" value="<?php echo $d['portofolio']; ?>">
                                 </div>
+                            </div>
 
 
 
+                            <div class="col-lg-12">
+                                <div class="card-footer">
+                                    <div class="form-group">
 
-                                <div class="col-lg-12">
-                                    <div class="card-footer">
-                                        <div class="form-group">
+                                        <button class="btn btn-success " style="margin-top: 20px; float:right" type="submit">Simpan</button>
+                                        <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="btn btn-info mr-3" style=" font-size: 16px; margin-top: 20px; float:right " target="_blank">Lihat CV</a>
+                                        <a href="<?php echo $d['portofolio']; ?>" class="btn btn-warning mr-3" style=" font-size: 16px; margin-top: 20px; float:right " target="_blank">Lihat Portofolio</a>
 
-                                            <button class="btn btn-success " style="margin-top: 20px; float:right" type="submit">Simpan</button>
-                                            <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="btn btn-info mr-3" style=" font-size: 16px; margin-top: 20px; float:right " target="_blank">Lihat CV</a>
-                                            <a href="<?php echo $d['portofolio']; ?>" class="btn btn-warning mr-3" style=" font-size: 16px; margin-top: 20px; float:right " target="_blank">Lihat Portofolio</a>
-
-                                        </div>
                                     </div>
                                 </div>
                             </div>
-
-                        </form>
-
                     </div>
-                <?php
-                }
-                ?>
-            </div>
 
         </form>
 
-
     </div>
+<?php
+                }
+?>
+</div>
 
-    <?php
-    include '../component/script.php';
-    include '../component/script_datatable.php';
-    ?>
-    <script type="text/javascript">
-        var ip1 = document.getElementById("ip1");
-        ip1.addEventListener("keyup", function(e) {
-            ip1.value = formatRupiah(this.value, "");
-        });
+</form>
 
-        function formatRupiah(angka, prefix) {
-            var number_string = angka.replace(/[^,\d]/g, "").toString(),
-                split = number_string.split(","),
-                sisa = split[0].length % 2,
-                rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{1}/gi);
-            if (ribuan) {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");
-            }
-            rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-            return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+
+
+<?php
+include '../component/script.php';
+include '../component/script_datatable.php';
+?>
+<script type="text/javascript">
+    var ip1 = document.getElementById("ip1");
+    ip1.addEventListener("keyup", function(e) {
+        ip1.value = formatRupiah(this.value, "");
+    });
+
+    function formatRupiah(angka, prefix) {
+        var number_string = angka.replace(/[^,\d]/g, "").toString(),
+            split = number_string.split(","),
+            sisa = split[0].length % 2,
+            rupiah = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{1}/gi);
+        if (ribuan) {
+            separator = sisa ? "." : "";
+            rupiah += separator + ribuan.join(".");
         }
-    </script>
+        rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+        return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+    }
+</script>
 
-    <script type="text/javascript">
-        var ip2 = document.getElementById("ip2");
-        ip2.addEventListener("keyup", function(e) {
-            ip2.value = formatRupiah(this.value, "");
-        });
+<script type="text/javascript">
+    var ip2 = document.getElementById("ip2");
+    ip2.addEventListener("keyup", function(e) {
+        ip2.value = formatRupiah(this.value, "");
+    });
 
-        function formatRupiah(angka, prefix) {
-            var number_string = angka.replace(/[^,\d]/g, "").toString(),
-                split = number_string.split(","),
-                sisa = split[0].length % 2,
-                rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{1}/gi);
-            if (ribuan) {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");
-            }
-            rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-            return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+    function formatRupiah(angka, prefix) {
+        var number_string = angka.replace(/[^,\d]/g, "").toString(),
+            split = number_string.split(","),
+            sisa = split[0].length % 2,
+            rupiah = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{1}/gi);
+        if (ribuan) {
+            separator = sisa ? "." : "";
+            rupiah += separator + ribuan.join(".");
         }
-    </script>
+        rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+        return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+    }
+</script>
 
-    <script type="text/javascript">
-        var ip3 = document.getElementById("ip3");
-        ip3.addEventListener("keyup", function(e) {
-            ip3.value = formatRupiah(this.value, "");
-        });
+<script type="text/javascript">
+    var ip3 = document.getElementById("ip3");
+    ip3.addEventListener("keyup", function(e) {
+        ip3.value = formatRupiah(this.value, "");
+    });
 
-        function formatRupiah(angka, prefix) {
-            var number_string = angka.replace(/[^,\d]/g, "").toString(),
-                split = number_string.split(","),
-                sisa = split[0].length % 2,
-                rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{1}/gi);
-            if (ribuan) {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");
-            }
-            rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-            return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+    function formatRupiah(angka, prefix) {
+        var number_string = angka.replace(/[^,\d]/g, "").toString(),
+            split = number_string.split(","),
+            sisa = split[0].length % 2,
+            rupiah = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{1}/gi);
+        if (ribuan) {
+            separator = sisa ? "." : "";
+            rupiah += separator + ribuan.join(".");
         }
-    </script>
-    <script type="text/javascript">
-        var ip4 = document.getElementById("ip4");
-        ip4.addEventListener("keyup", function(e) {
-            ip4.value = formatRupiah(this.value, "");
-        });
+        rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+        return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+    }
+</script>
+<script type="text/javascript">
+    var ip4 = document.getElementById("ip4");
+    ip4.addEventListener("keyup", function(e) {
+        ip4.value = formatRupiah(this.value, "");
+    });
 
-        function formatRupiah(angka, prefix) {
-            var number_string = angka.replace(/[^,\d]/g, "").toString(),
-                split = number_string.split(","),
-                sisa = split[0].length % 2,
-                rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{1}/gi);
-            if (ribuan) {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");
-            }
-            rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-            return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+    function formatRupiah(angka, prefix) {
+        var number_string = angka.replace(/[^,\d]/g, "").toString(),
+            split = number_string.split(","),
+            sisa = split[0].length % 2,
+            rupiah = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{1}/gi);
+        if (ribuan) {
+            separator = sisa ? "." : "";
+            rupiah += separator + ribuan.join(".");
         }
-    </script>
+        rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+        return prefix == undefined ? rupiah : rupiah ? +rupiah : "";
+    }
+</script>
 
-    <?php
-    $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
+<?php
+$pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
 
-    if ($pesan == 'add_success') {
-        echo "<script>
+if ($pesan == 'add_success') {
+    echo "<script>
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -285,16 +252,16 @@ include '../component/header.php';
                     timer: 1500
                 })
             </script>";
-    } else {
-    }
-    ?>
+} else {
+}
+?>
 
 
 
-    <?php
-    include '../component/footer.php';
+<?php
+include '../component/footer.php';
 
-    ?>
+?>
 
 </body>
 

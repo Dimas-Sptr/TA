@@ -57,21 +57,19 @@ include '../component/header.php';
                         <tbody>
                             <?php
                             $no = 0;
-                            $data = mysqli_query($conn, "select * from tb_pengajuanmagang where nama_perusahaan= '$_SESSION[nama]' and status   ");
+                            $data = mysqli_query($conn, "select * from tb_pengajuanmagang where nama_perusahaan= '$_SESSION[nama]' and status > 1  ");
 
                             while ($d = mysqli_fetch_array($data)) {
                                 $no++;
                                 $date = $d['tgl_berakhir'];
                                 $date =  date('d-M-Y', strtotime($date));
 
-                                if ($d['status'] = 3) {
-                                    $status = '<span class="badge badge-pill badge-danger" style="margin-top: 5px; font-size: 14px; ">Rejected</span>';
-                                }
-                                if ($d['status'] = 2) {
+                                if ($d['status'] == 2) {
                                     $status = '<span class="badge badge-pill badge-success" style="margin-top: 5px; font-size: 14px;">Approved</span>';
                                 }
-
-
+                                if ($d['status'] == 3) {
+                                    $status = '<span class="badge badge-pill badge-danger" style="margin-top: 5px; font-size: 14px; ">Rejected</span>';
+                                }
 
                             ?>
                                 <tr>

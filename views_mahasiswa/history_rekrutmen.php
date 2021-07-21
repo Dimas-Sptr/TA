@@ -58,7 +58,7 @@ include '../component/header.php';
                         <tbody>
                             <?php
                             $no = 0;
-                            $data = mysqli_query($conn, "select * from tb_rekrutmen where nama_mahasiswa= '$_SESSION[nama]' AND status   ");
+                            $data = mysqli_query($conn, "select * from tb_rekrutmen where nama_mahasiswa= '$_SESSION[nama]' AND status > 1   ");
 
                             while ($d = mysqli_fetch_array($data)) {
                                 $no++;

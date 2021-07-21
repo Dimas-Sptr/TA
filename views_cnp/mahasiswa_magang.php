@@ -52,7 +52,7 @@ include '../component/header.php';
                         <tbody>
                             <?php
                             $no = 0;
-                            $data = mysqli_query($conn, "select * from tb_cvmahasiswa where status_mahasiswa = '1'");
+                            $data = mysqli_query($conn, "SELECT * FROM tb_pengajuanmagang where status = '2'");
 
                             while ($d = mysqli_fetch_array($data)) {
                                 $no++;
@@ -63,9 +63,11 @@ include '../component/header.php';
                                     <th scope="row" style="font-size: 14px"><?php echo $no; ?></th>
                                     <td style="font-size: 14px"><?php echo $d['nim'];  ?></td>
                                     <td style="font-size: 14px"><?php echo $d['nama_mahasiswa'];  ?></td>
-                                    <td style="font-size: 14px"><?php $status_M = $d['status_mahasiswa'];
-                                                                if ($status_M == "1") {
-                                                                    echo $status_M = "Magang";
+                                    <td style="font-size: 14px"><?php $status_M = $d['status'];
+                                                                if ($status_M == '2') {
+                                                                    echo $status_M = " Magang";
+                                                                } else {
+                                                                    echo $status_M = "-";
                                                                 } ?></td>
                                     <td style="font-size: 14px"> <a href="#" class="btn btn-success btn-circle" data-target="#edit<?php echo $d['id']; ?>" data-toggle="modal">
                                             <i class="fas fa-edit"></i>
@@ -99,26 +101,41 @@ include '../component/header.php';
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-sm-4 col-form-label">Status Mahasiswa</label>
+                                                                <label class="col-sm-4 col-form-label">Status Mahsiswa</label>
                                                                 <div class="col-sm-8">
-                                                                    <select class="custom-select" name="status_M" required>
-                                                                        <?php
-                                                                        if ($d['status_mahasiswa'] == "") echo "<option selected >Pilih Status</option>";
-
-                                                                        if ($d['status_mahasiswa'] == "1") echo "<option  value='1' selected >Magang</option> ";
-                                                                        else echo "<option  value='1'>Magang</option>";
-
-                                                                        if ($d['status_mahasiswa'] == "0") echo "<option  value='0' selected >Tidak Magang</option> ";
-                                                                        else echo "<option  value='0'>Tidak Magang</option>";
-                                                                        ?>
-                                                                    </select>
+                                                                    <input type="text" class="form-control " name="status" value="<?php $status_M = $d['status'];
+                                                                                                                                    if ($status_M == '2') {
+                                                                                                                                        echo $status_M = " Magang";
+                                                                                                                                    } else {
+                                                                                                                                        echo $status_M = "-";
+                                                                                                                                    } ?>" readonly>
                                                                 </div>
                                                             </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Nama Perusahaan</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" class="form-control " name="perusahaan" value="<?php echo $d['nama_perusahaan']; ?>" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Posisi</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" class="form-control " name="posisi" value="<?php echo $d['posisi']; ?>" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Alamat</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" class="form-control " name="alamat" value="<?php echo $d['alamat']; ?>" readonly>
+                                                                </div>
+                                                            </div>
+
 
                                                     </div>
 
 
                                                     <div class="modal-footer ">
+                                                        <button type="submit" name="selesai" class="btn   btn-danger " style="font-size: medium;" value='4'>Selesai Magang</button>
                                                         <button type="submit" name="simpan" class="btn   btn-primary " style="font-size: medium;"> Simpan </button>
 
                                                     </div>
@@ -128,6 +145,7 @@ include '../component/header.php';
                                         </div>
                 </div>
                 <!----------- Akhir Edit  Modal -------------->
+
                 </td>
                 </tr>
             <?php

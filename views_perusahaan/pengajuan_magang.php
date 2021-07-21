@@ -74,15 +74,13 @@ include '../component/header.php';
                             tb_cvmahasiswa.nama_mahasiswa,
                             tb_cvmahasiswa.no_hp,
                             tb_cvmahasiswa.jurusan,
-                            tb_cvmahasiswa.status_mahasiswa,
-                            tb_cvmahasiswa.perusahaan,
-                            tb_cvmahasiswa.jabatan,
                             tb_cvmahasiswa.tahun_angkatan,
                             tb_cvmahasiswa.ip1,
                             tb_cvmahasiswa.ip2,
                             tb_cvmahasiswa.ip3,
                             tb_cvmahasiswa.ip4,
                             tb_cvmahasiswa.total,
+                            tb_cvmahasiswa.portofolio,
                             tb_cvmahasiswa.gambar 
                         FROM
                             tb_cvmahasiswa
@@ -235,13 +233,13 @@ include '../component/header.php';
                                                             <div class="form-group row">
                                                                 <label class="col-sm-4 col-form-label">Status Mahasiswa</label>
                                                                 <div class="col-sm-8">
-                                                                    <input type="text" class="form-control" value="<?php $status_M = $d['status_mahasiswa'];
+                                                                    <input type="text" class="form-control" value="<?php $status_M = $d['status'];
                                                                                                                     if ($status_M == "-") {
                                                                                                                         echo $status_M = "-";
                                                                                                                     } else if ($status_M == "1") {
-                                                                                                                        echo $status_M = "Magang";
-                                                                                                                    } else {
                                                                                                                         echo $status_M = "Tidak Magang";
+                                                                                                                    } else {
+                                                                                                                        echo $status_M = " Magang";
                                                                                                                     } ?>" readonly>
                                                                 </div>
                                                             </div>
@@ -281,13 +279,20 @@ include '../component/header.php';
                                                                     <input type="text" class="form-control" value="<?php echo number_format($d['total'], 1, '.', ''); ?>" readonly>
                                                                 </div>
                                                             </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Portofolio</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" class="form-control" value="<?php echo $d['portofolio']; ?>" readonly>
+                                                                </div>
+                                                            </div>
 
                                                     </div>
                                                     </form>
 
 
                                                     <div class="modal-footer">
-                                                        <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="btn btn-info" style=" font-size: 16px; " onclick="basicPopup(this.href); return false">Lihat CV</a>
+                                                        <a href="<?php echo $d['portofolio']; ?>" class="btn btn-warning mr-3" style=" font-size: 16px;  float:right " target="_blank">Lihat Portofolio</a>
+                                                        <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="btn btn-info" style=" font-size: 16px; " target="_blank">Lihat CV</a>
                                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 
                                                     </div>

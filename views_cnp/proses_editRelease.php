@@ -5,12 +5,14 @@ include '../conn/koneksi.php';
 $id = $_POST['id'];
 $nim = $_POST['nim'];
 $nama = $_POST['nama'];
-$status_M = $_POST['status_M'];
+$perusahaan = $_POST['perusahaan'];
+$posisi = $_POST['posisi'];
+$alamat = $_POST['alamat'];
+$status = $_POST['selesai'];
 
 
 
+mysqli_query($conn, "update tb_pengajuanmagang set nim='$nim',nama_mahasiswa='$nama',nama_perusahaan='$perusahaan',posisi='$posisi',alamat='$alamat',
+status='$status' where id='$id'") or die(mysqli_error($conn));
 
-mysqli_query($conn, "update tb_cvmahasiswa set nim='$nim',nama_mahasiswa='$nama',status_mahasiswa='$status_M', 
-perusahaan='', jabatan='' where id='$id'") or die(mysqli_error($conn));
-
-header("location:mahasiswa_magang.php?pesan=Update_success");
+header("location:history.php?pesan=Update_success");

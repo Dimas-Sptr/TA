@@ -116,6 +116,48 @@ include '../component/header.php';
     }
 
     ?>
+    <?php
+    $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
+
+    if ($pesan == 'not_enought') {
+
+        echo " <script>Swal.fire(
+'GAGAL',
+'Password Minimal Terdiri Dari 5 Karakter',
+'error')
+</script>";
+    } else {
+    }
+
+    ?>
+    <?php
+    $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
+
+    if ($pesan == 'passwordOld_failed') {
+
+        echo " <script>Swal.fire(
+'GAGAL',
+'Password Baru Yang Anda Masukkan Tidak Cocok',
+'error')
+</script>";
+    } else {
+    }
+
+    ?>
+    <?php
+    $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
+
+    if ($pesan == 'fail') {
+
+        echo " <script>Swal.fire(
+'GAGAL',
+'Password Baru Yang Anda Masukkan Tidak Cocok',
+'error')
+</script>";
+    } else {
+    }
+
+    ?>
 
     <?php
     include '../component/footer.php';

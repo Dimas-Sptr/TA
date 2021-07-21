@@ -63,11 +63,14 @@ include '../component/header.php';
                                 $no++;
                                 $date = $d['tgl_berakhir'];
                                 $date =  date('d-M-Y', strtotime($date));
-                                if ($d['status'] == 0) {
-                                    $status = '<span class="badge badge-pill badge-info" style="margin-top: 5px; font-size: 14px; ">Pending</span>';
+                                if ($d['status'] >  0) {
+                                    $status = '<span class="badge badge-pill badge-success" style="margin-top: 5px; font-size: 14px; ">Approved</span>';
                                 }
-                                if ($d['status'] > 0) {
-                                    $status = '<span class="badge badge-pill badge-success" style="margin-top: 5px; font-size: 14px;">Approved</span>';
+                                if ($d['status'] == 3) {
+                                    $status = '<span class="badge badge-pill badge-danger" style="margin-top: 5px; font-size: 14px;">Rejected</span>';
+                                }
+                                if ($d['status'] == 4) {
+                                    $status = '<span class="badge badge-pill badge-info" style="margin-top: 5px; font-size: 14px;">Selesai Magang</span>';
                                 }
 
 
@@ -107,11 +110,25 @@ include '../component/header.php';
     <?php
     $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
 
-    if ($pesan == 'approved_success') {
+    if ($pesan == 'success') {
 
         echo " <script>Swal.fire(
   'Berhasil',
-  'Data Berhasil Diapprove',
+  'Data Berhasil Disimpan',
+  'success')
+  </script>";
+    } else {
+    }
+
+    ?>
+    <?php
+    $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
+
+    if ($pesan == 'Update_success') {
+
+        echo " <script>Swal.fire(
+  'Berhasil',
+  'Data Berhasil Disimpan',
   'success')
   </script>";
     } else {

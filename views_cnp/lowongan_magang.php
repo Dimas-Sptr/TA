@@ -83,7 +83,7 @@ include '../component/header.php';
                 </div>
             </div>
             <div class=" modal-footer ">
-              <button type=" submit" name="status" class="btn   btn-primary  " value="1"> Simpan </button>
+              <button type=" submit" name="status" class="btn   btn-primary  " value='1'> Simpan </button>
 
             </div>
             </form>
@@ -105,14 +105,14 @@ include '../component/header.php';
                 <th scope="col" style="color: white">Tanggal Berakhir</th>
                 <th scope="col" style="color: white">Alamat</th>
                 <th scope="col" style="color: white">Status</th>
-                <th scope="col" style="color: white;">Aksi</th>
+                <th scope="col" style="color: white; width: 100px;">Aksi</th>
 
               </tr>
             </thead>
             <tbody>
               <?php
               $no = 0;
-              $data = mysqli_query($conn, "select * from tb_lowonganmagang where status='1' ");
+              $data = mysqli_query($conn, "select * from tb_lowonganmagang where status ");
 
               while ($d = mysqli_fetch_array($data)) {
                 $no++;
@@ -124,6 +124,10 @@ include '../component/header.php';
                 if ($d['status'] == 1) {
                   $status = '<span class="badge badge-pill badge-success" style="margin-top: 5px; font-size: 14px;">Approved</span>';
                 }
+                if ($d['status'] == 2) {
+                  $status = '<span class="badge badge-pill badge-danger" style="margin-top: 5px; font-size: 14px;">Rejected</span>';
+                }
+
 
 
 
@@ -181,7 +185,7 @@ include '../component/header.php';
                               </div>
                           </div>
                           <div class="modal-footer ">
-                            <button type="submit" name="simpan" class="btn   btn-primary  ">Simpan </button>
+                            <button type="submit" name="simpan" class="btn   btn-primary  " value='1'>Simpan </button>
 
                           </div>
                           </form>
@@ -216,7 +220,7 @@ include '../component/header.php';
   <?php
   $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
 
-  if ($pesan == 'approved_success') {
+  if ($pesan == 'success') {
 
     echo " <script>Swal.fire(
   'Berhasil',

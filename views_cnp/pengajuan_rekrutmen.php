@@ -168,7 +168,7 @@ include '../component/header.php';
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="submit" name="status" class="btn btn-success" value="1">Approve</button>
-                                                        <button type="submit" name="status" class="btn btn-danger" value="2">Reject</button>
+                                                        <button type="submit" name="status" class="btn btn-danger" value="3">Reject</button>
 
                                                     </div>
                                                 </div>

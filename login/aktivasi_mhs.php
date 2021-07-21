@@ -1,6 +1,6 @@
 <?php
 //$conn = "koneksi.php";
-include 'koneksi.php';
+include '../conn/koneksi.php';
 error_reporting(0);
 
 $nim = mysqli_escape_string($conn, $_POST['nim']);
@@ -23,9 +23,9 @@ $periksa = mysqli_num_rows($cek_daftar);
 // Cek apakah username terdafar di tabel cnp_user
 if ($row_cek['nim'] === $nim) {
     if ($periksa > 0) {
-        header("location:login.php?pesan=failed");
+        header("location:login.php?pesan=exist");
     } else {
-        $save_login = "INSERT INTO pass_adm ( kode, password, nama,email, level) VALUES ('$nim','$pass','$nama','$email','$level')";
+        $save_login = "INSERT INTO pass_adm (id, kode, password, nama,email, level) VALUES ('','$nim','$pass','$nama','$email','$level')";
         $q_sl = mysqli_query($conn, $save_login) or die(mysqli_error($conn));
 
         if ($q_sl) {

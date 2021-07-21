@@ -72,7 +72,8 @@ include '../component/header.php';
                             pass_adm.alamat
                             FROM
                             tb_rekrutmen
-                            INNER JOIN pass_adm ON tb_rekrutmen.nama_perusahaan = pass_adm.nama WHERE tb_rekrutmen.`status`=1");
+                            INNER JOIN pass_adm ON tb_rekrutmen.nama_perusahaan = pass_adm.nama 
+                            WHERE tb_rekrutmen.nim = $_SESSION[username] AND tb_rekrutmen.`status`=1");
 
                             while ($d = mysqli_fetch_array($data)) {
                                 $no++;
@@ -80,7 +81,7 @@ include '../component/header.php';
                                 if ($d['status'] == 1) {
                                     $status = '<span class="badge badge-pill badge-info" style="margin-top: 5px; font-size: 14px; ">Pending</span>';
                                 }
-                                if ($d['status'] == 3) {
+                                if ($d['status'] == 2) {
                                     $status = '<span class="badge badge-pill badge-success" style="margin-top: 5px; font-size: 14px;">Approved</span>';
                                 }
 

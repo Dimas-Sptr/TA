@@ -3,7 +3,7 @@
 // mengaktifkan session pada php
 session_start();
 // menghubungkan php dengan koneksi database
-include 'koneksi.php';
+include '../conn/koneksi.php';
 
 // menangkap data yang dikirim dari form login
 $username = $_POST['username'];

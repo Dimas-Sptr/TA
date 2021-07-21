@@ -88,29 +88,7 @@ include '../component/header.php';
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Status Mahasiswa</label>
-                                    <div class="col-sm-8">
-                                        <select class="custom-select" name="status_M">
-                                            <option selected value="-">Pilih Status Mahasiswa...</option>
-                                            <option value="1">Magang</option>
-                                            <option value="0">Tidak Magang</option>
 
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Nama Perusahaan</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control " name="perusahaan">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Posisi</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control " name="jabatan">
-                                    </div>
-                                </div>
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">Tahun Angkatan</label>
                                     <div class="col-sm-8">
@@ -173,9 +151,6 @@ include '../component/header.php';
                                 <th scope="col" style="color: white">Nim</th>
                                 <th scope="col" style="color: white; width: 30px;">Nama</th>
                                 <th scope="col" style="color: white">Jurusan</th>
-                                <th scope="col" style="color: white">Status Mahasiswa Magang</th>
-                                <th scope="col" style="color: white; ">Perusahaan</th>
-                                <th scope="col" style="color: white; ">Posisi</th>
                                 <th scope="col" style="color: white; ">CV</th>
                                 <th scope="col" style="color: white; width: 120px">Aksi</th>
 
@@ -206,16 +181,6 @@ include '../component/header.php';
                                                                     echo $jurusan = "Akutansi";
                                                                 } ?></td>
 
-                                    <td style="font-size: 14px"><?php $status_M = $d['status_mahasiswa'];
-                                                                if ($status_M == "-") {
-                                                                    echo $status_M = "-";
-                                                                } else if ($status_M == "1") {
-                                                                    echo $status_M = "Magang";
-                                                                } else {
-                                                                    echo $status_M = "Tidak Magang";
-                                                                } ?></td>
-                                    <td style="font-size: 14px"><?php echo $d['perusahaan']  ?></td>
-                                    <td style="font-size: 14px"><?php echo $d['jabatan']  ?></td>
                                     <td> <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="badge badge-info" onclick="basicPopup(this.href); return false" style="margin-top: 10px;">Lihat CV</a></td>
                                     <td> <a href=" #" class="btn btn-success btn-circle" data-target="#edit<?php echo $d['id']; ?>" data-toggle="modal">
                                             <i class="fas fa-edit"></i>
@@ -274,36 +239,7 @@ include '../component/header.php';
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-4 col-form-label">Status Mahsiswa</label>
-                                                                <div class="col-sm-8">
-                                                                    <select class="custom-select" name="status_M">
-                                                                        <?php
-                                                                        if ($d['status_mahasiswa'] == "-") echo "<option selected value='-'  >Pilih Status Mahasiswa</option>";
-                                                                        else echo "<option  value='-'>Pilih Status Mahasiswa</option>";
-                                                                        if ($d['status_mahasiswa'] == "1") echo "<option  value='1' selected >Magang</option> ";
-                                                                        else echo "<option  value='1'>Magang</option>";
 
-                                                                        if ($d['status_mahasiswa'] == "0") echo "<option  value='0' selected >Tidak Magang</option> ";
-                                                                        else echo "<option  value='0'>Tidak Magang</option>";
-
-
-                                                                        ?>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-4 col-form-label">Nama Perusahaan</label>
-                                                                <div class="col-sm-8">
-                                                                    <input type="text" class="form-control " name="perusahaan" value="<?php echo $d['perusahaan']; ?>">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-4 col-form-label">Posisi</label>
-                                                                <div class="col-sm-8">
-                                                                    <input type="text" class="form-control " name="jabatan" value="<?php echo $d['jabatan']; ?>">
-                                                                </div>
-                                                            </div>
                                                             <div class="form-group row">
                                                                 <label class="col-sm-4 col-form-label">Tahun Angkatan</label>
                                                                 <div class="col-sm-8">
@@ -372,7 +308,7 @@ include '../component/header.php';
                 <div class="modal-dialog modal-lg  modal-dialog-scrollable " role="document">
                     <div class="modal-content">
                         <div class="modal-header ">
-                            <h5 class="modal-title" id="edit">Edit CV Mahasiswa</h5>
+                            <h5 class="modal-title" id="edit">Detail CV Mahasiswa</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -415,29 +351,7 @@ include '../component/header.php';
                                                                                         } ?>" readonly>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Status Mahsiswa</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control " value="<?php $jenkel = $d['status_mahasiswa'];
-                                                                                        if ($jenkel == "0") {
-                                                                                            echo $jenkel = "Tidak Magang";
-                                                                                        } else {
-                                                                                            echo $jenkel = "Magang";
-                                                                                        } ?>" readonly>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Nama Perusahaan</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control " name="perusahaan" value="<?php echo $d['perusahaan']; ?>" readonly>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Posisi</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control " name="jabatan" value="<?php echo $d['jabatan']; ?>" readonly>
-                                    </div>
-                                </div>
+
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">Tahun Angkatan</label>
                                     <div class="col-sm-8">
@@ -714,26 +628,43 @@ if ($pesan == 'Update_failed') {
     echo " <script>
         Swal.fire(
             'GAGAL',
-            'Update Data Gagal Mohon Isi Dengan Benar',
+            'Update Data Gagal, Mohon Isi Data Dengan Benar',
             'error')
     </script>";
 } else {
 }
+?>
+<?php
 $pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
 
-if ($pesan == 'already_exist') {
+if ($pesan == 'add_failed') {
+
+    echo " <script>
+        Swal.fire(
+            'GAGAL',
+            ' Mohon Isi Data Dengan Benar',
+            'error')
+    </script>";
+} else {
+}
+?>
+<?php
+$pesan = (isset($_GET['pesan']) ? $_GET['pesan'] : '');
+
+if ($pesan == 'exist') {
 
     echo " <script>
         Swal.fire(
             'GAGAL',
             'Maaf Nim Yang Anda Masukkan Sudah Tersedia',
-            'error')
+            'info')
     </script>";
 } else {
 }
 
 
-?> <script type="text/javascript">
+?>
+<script type="text/javascript">
     $(document).ready(function() {
         var table = $('#datatable').DataTable({
             lengthChange: false,

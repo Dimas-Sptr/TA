@@ -7,9 +7,6 @@ $nim         = $_POST['nim'];
 $nama        = $_POST['nama'];
 $nohp        = $_POST['nohp'];
 $jurusan     = $_POST['jurusan'];
-$status_M    = $_POST['status_M'];
-$perusahaan  = $_POST['perusahaan'];
-$posisi      = $_POST['jabatan'];
 $thn_angkatan = $_POST['angkatan'];
 $ip1         = $_POST['ip1'];
 $ip2         = $_POST['ip2'];
@@ -30,8 +27,7 @@ if ($gambar != "") {
 
 
         $query  = "UPDATE tb_cvmahasiswa SET nim = '$nim', nama_mahasiswa = '$nama', no_hp = '$nohp',
-         jurusan = '$jurusan', status_mahasiswa = '$status_M',perusahaan='$perusahaan', jabatan='$posisi',tahun_angkatan='$thn_angkatan',
-         ip1='$ip1',ip2='$ip2',ip3 ='$ip3',ip4 ='$ip4',total ='$ipk',gambar='$gambar_baru' ";
+         jurusan = '$jurusan', ip1='$ip1',ip2='$ip2',ip3 ='$ip3',ip4 ='$ip4',total ='$ipk',gambar='$gambar_baru' ";
         $query .= "WHERE id = '$id'";
         $result = mysqli_query($conn, $query);
 
@@ -47,8 +43,7 @@ if ($gambar != "") {
     }
 } else {
     $query  = "UPDATE tb_cvmahasiswa SET nim = '$nim', nama_mahasiswa = '$nama', no_hp = '$nohp',
-    jurusan = '$jurusan', status_mahasiswa = '$status_M',perusahaan='$perusahaan', jabatan='$posisi',
-    ip1='$ip1',ip2='$ip2',ip3 ='$ip3',ip4 ='$ip4',total ='$ipk',tahun_angkatan='$thn_angkatan' ";
+    jurusan = '$jurusan',ip1='$ip1',ip2='$ip2',ip3 ='$ip3',ip4 ='$ip4',total ='$ipk',tahun_angkatan='$thn_angkatan' ";
     $query .= "WHERE id = '$id'";
     $result = mysqli_query($conn, $query);
 
