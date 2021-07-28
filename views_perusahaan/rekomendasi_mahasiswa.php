@@ -115,7 +115,7 @@ include '../component/header.php';
                                             echo $jurusan = "Akutansi";
                                         } ?> </td>
                                     <td><?php echo number_format($d['total'], 1, '.', '');   ?></td>
-                                    <td><a href="view_cv.php?id=<?php echo $d['id']; ?>" class="badge badge-info" onclick="basicPopup(this.href); return false" style="margin-top: 5px;">Lihat CV</a></td>
+                                    <td><a href="<?php echo $d['gambar']; ?>" class="badge badge-info" onclick="basicPopup(this.href); return false" style="margin-top: 5px;">Lihat CV</a></td>
                                     <td><a href="#" class="btn btn-warning btn-circle" data-target="#lihat<?php echo $d['nim']; ?>" data-toggle="modal">
                                             <i class="fas fa-info"></i>
                                         </a>
@@ -251,7 +251,7 @@ include '../component/header.php';
                                                     <div class="modal-footer">
                                                         <a href="<?php echo $d['portofolio']; ?>" class="btn btn-warning mr-3" style=" font-size: 16px;  float:right " target="_blank">Lihat Portofolio</a>
 
-                                                        <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="btn btn-info" style=" font-size: 16px; " target="_blank">Lihat CV</a>
+                                                        <a href="<?php echo $d['gambar']; ?>" class="btn btn-info" style=" font-size: 16px; " target="_blank">Lihat CV</a>
                                                         <button type="submit" class="btn btn-success">Rekrut</button>
 
                                                     </div>

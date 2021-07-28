@@ -194,7 +194,7 @@ include '../component/header.php';
                       </div>
                     </div>
                     <!---------------- AKHIR Edit Lowongan ----------------->
-                    <a href="delete_Lowongan.php?id=<?= $d['id'] ?>" class="btn btn-danger btn-xs delete-data btn-circle">
+                    <a href="delete_lowongan.php?id=<?= $d['id'] ?>" class="btn btn-danger btn-xs delete-data btn-circle">
                       <i class="far fa-trash-alt"></i>
                     </a>
 

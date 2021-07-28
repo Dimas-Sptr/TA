@@ -114,14 +114,23 @@ include '../component/header.php';
                                 <div class="form-group col-lg-6">
                                     <label><b>CV</b></label>
 
-                                    <input type="file" class="form-control " name="gambar" value="<?php echo $d['gambar']; ?>" required>
-                                    <div style="color: red; font-size:14px">*FILE HARUS BERBENTUK <b>PDF</b></div>
-
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-file-pdf"></i></span>
+                                        </div>
+                                        <input type="text" id="gambar" class="form-control " name="gambar" value="<?php echo $d['gambar']; ?>" required>
+                                    </div>
                                 </div>
 
                                 <div class="form-group col-lg-6">
                                     <label><b>Link Portofolio</b></label>
-                                    <input type="text" class="form-control form-control-user" id="porto" name="porto" value="<?php echo $d['portofolio']; ?>">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-link"></i></span>
+                                        </div>
+
+                                        <input type="text" class="form-control form-control-user" id="porto" name="porto" value="<?php echo $d['portofolio']; ?>">
+                                    </div>
                                 </div>
                             </div>
 
@@ -132,7 +141,7 @@ include '../component/header.php';
                                     <div class="form-group">
 
                                         <button class="btn btn-success " style="margin-top: 20px; float:right" type="submit">Simpan</button>
-                                        <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="btn btn-info mr-3" style=" font-size: 16px; margin-top: 20px; float:right " target="_blank">Lihat CV</a>
+                                        <a href="<?php echo $d['gambar']; ?>" class="btn btn-info mr-3" style=" font-size: 16px; margin-top: 20px; float:right " target="_blank">Lihat CV</a>
                                         <a href="<?php echo $d['portofolio']; ?>" class="btn btn-warning mr-3" style=" font-size: 16px; margin-top: 20px; float:right " target="_blank">Lihat Portofolio</a>
 
                                     </div>

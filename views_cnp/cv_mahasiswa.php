@@ -123,9 +123,12 @@ include '../component/header.php';
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">CV</label>
                                     <div class="col-sm-8">
-                                        <input type="file" id="gambar" class="form-control " name="gambar">
-                                        <div style="color: red; font-size:14px">*FILE HARUS BERBENTUK <b>PDF</b></div>
-
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-file-pdf"></i></span>
+                                            </div>
+                                            <input type="text" id="gambar" class="form-control " name="gambar">
+                                        </div>
                                     </div>
                                 </div>
                         </div>
@@ -181,7 +184,7 @@ include '../component/header.php';
                                                                     echo $jurusan = "Akutansi";
                                                                 } ?></td>
 
-                                    <td> <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="badge badge-info" onclick="basicPopup(this.href); return false" style="margin-top: 10px;">Lihat CV</a></td>
+                                    <td> <a href="<?php echo $d['gambar']; ?>" class="badge badge-info" target="_blank" style="margin-top: 10px;">Lihat CV</a></td>
                                     <td> <a href=" #" class="btn btn-success btn-circle" data-target="#edit<?php echo $d['id']; ?>" data-toggle="modal">
                                             <i class="fas fa-edit"></i>
                                         </a>
@@ -273,9 +276,12 @@ include '../component/header.php';
                                                             <div class="form-group row">
                                                                 <label class="col-sm-4 col-form-label">CV</label>
                                                                 <div class="col-sm-8">
-                                                                    <input type="file" id="gambar" class="form-control " name="gambar" value="<?php echo $d['gambar']; ?>">
-                                                                    <div style="color: red; font-size:14px">*FILE HARUS BERBENTUK <b>PDF</b></div>
-
+                                                                    <div class="input-group mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-file-pdf"></i></span>
+                                                                        </div>
+                                                                        <input type="text" id="gambar" class="form-control " name="gambar" value="<?php echo $d['gambar']; ?>">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                     </div>
@@ -399,7 +405,7 @@ include '../component/header.php';
                         <div class="modal-footer ">
                             <a href="<?php echo $d['portofolio']; ?>" class="btn btn-warning mr-3" style=" font-size: 16px; float:right " target="_blank">Lihat Portofolio</a>
 
-                            <a href="view_cv.php?id=<?php echo $d['id']; ?>" class="btn btn-info" target="_blank" style=" font-size: 16px">Lihat CV</a>
+                            <a href="<?php echo $d['gambar']; ?>" class="btn btn-info" target="_blank" style=" font-size: 16px">Lihat CV</a>
                             <button type="button" name="simpan" class="btn btn-m  btn-danger " data-dismiss="modal"> Close </button>
 
                         </div>

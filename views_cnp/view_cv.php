@@ -1,7 +1,7 @@
 <?php
 include '../conn/koneksi.php';
 
-$id    = mysqli_real_escape_string($conn, $_GET['id']);
+$id    = $_GET['id'];
 $query = mysqli_query($conn, "SELECT * FROM tb_cvmahasiswa WHERE id='$id' ");
 $data  = mysqli_fetch_array($query);
 

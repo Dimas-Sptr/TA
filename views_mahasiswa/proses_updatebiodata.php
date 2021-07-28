@@ -14,53 +14,15 @@ $ip3         = $_POST['ip3'];
 $ip4         = $_POST['ip4'];
 $porto       = $_POST['porto'];
 
-$gambar = $_FILES['gambar']['name'];
+$gambar = $_POST['gambar'];
 
 $ipk = ($_POST['ip1'] + $_POST['ip2'] + $_POST['ip3'] + $_POST['ip4']) / 4;
 
-if ($gambar != "") {
-    $ekstensi_diperbolehkan = array('pdf');
-    $x = explode('.', $gambar);
-    $ekstensi = strtolower(end($x));
-    $file_tmp = $_FILES['gambar']['tmp_name'];
-    $angka_acak     = rand(1, 99999);
-    $gambar_baru = $angka_acak . '-' . $gambar;
-    if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
-        move_uploaded_file($file_tmp, '../file_cv/' . $gambar_baru);
 
 
-        $query  = "UPDATE tb_cvmahasiswa SET  nama_mahasiswa = '$nama', no_hp = '$nohp',
-         jurusan = '$jurusan',tahun_angkatan='$thn_angkatan',
-         ip1='$ip1',ip2='$ip2',ip3 ='$ip3',ip4 ='$ip4',total ='$ipk',portofolio='$porto',gambar='$gambar_baru' ";
-
-        $query .= "WHERE id = '$id'";
-        $result = mysqli_multi_query($conn, $query);
+mysqli_query($conn, "UPDATE tb_cvmahasiswa SET  nama_mahasiswa = '$nama', no_hp = '$nohp', jurusan = '$jurusan',
+   tahun_angkatan='$thn_angkatan',ip1='$ip1',ip2='$ip2',ip3 ='$ip3',ip4 ='$ip4',total ='$ipk',portofolio='$porto',
+   gambar='$gambar' WHERE id = '$id'") or die(mysqli_error($conn));
 
 
-
-
-        if (!$result) {
-            header("location:biodata.php?pesan=Update_failed");
-        } else {
-
-            header("location:biodata.php?pesan=add_success");
-        }
-    } else {
-
-        header("location:biodata.php?pesan=ekstensi_nothing");
-    }
-} else {
-    $query  = "UPDATE tb_cvmahasiswa SET nim = '$nim', nama_mahasiswa = '$nama', no_hp = '$nohp',
-    jurusan = '$jurusan',tahun_angkatan='$thn_angkatan',
-    ip1='$ip1',ip2='$ip2',ip3 ='$ip3',ip4 ='$ip4',total ='$ipk',portofolio='$porto' ";
-
-    $query .= "WHERE id = '$id'";
-    $result = mysqli_multi_query($conn, $query);
-
-    if (!$result) {
-        header("location:biodata.php?pesan=Update_failed");
-    } else {
-
-        header("location:biodata.php?pesan=add_success");
-    }
-}
+header("location:biodata.php?pesan=add_success");
